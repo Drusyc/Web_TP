@@ -1,0 +1,164 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: none repeat scroll 0 0 #fff;
+    color: #333333;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+img {
+    border: medium none;
+}
+
+a {
+    color: #57626a;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+#wrap {
+    margin: 0 auto;
+    width: 1024px;
+}
+
+#header {
+    padding: 10px 0 20px;
+}
+
+#header h1 {
+    font-size: 26px;
+    font-weight: 100;
+    padding: 12px 0 5px 10px;
+}
+
+#header h1 a {
+    color: #57626a;
+    text-decoration: none;
+}
+
+#header h1 a:hover {
+    color: #57626a;
+    text-decoration: none;
+}
+
+#header h2 {
+    color: #ccc;
+    font-size: 15px;
+    font-weight: 100;
+    letter-spacing: -1px;
+    line-height: 12px;
+    padding: 0 0 0 11px;
+}
+
+#menu {
+    height: 20px;
+    line-height: 20px;
+    border-bottom: #000 solid thin;
+}
+
+#menu ul {
+    list-style-type: none;
+    text-align:center;
+}
+
+#menu ul li {
+    display:inline-block;
+    border: #000 solid thin;
+    border-radius: 15px;
+    margin:0px 10px;
+    padding:0;
+    background-color: #eee;
+}
+
+#menu ul li.selectionne {
+    border-bottom: thin solid #FFF;
+    background-color: #fff;
+}
+
+#menu ul li a {
+    color: black;
+    font-size: 14px;
+    font-weight: 100;
+    padding: 0 10px;
+    text-decoration: none;
+}
+
+#content {
+    padding: 10px 20px;
+}
+.right {
+    float: right;
+    text-align: justify;
+    width: 568px;
+}
+
+.right h2 {
+    color: black;
+    font-size: 20px;
+    font-weight: 100;
+    letter-spacing: 0;
+    padding: 10px 0 15px;
+}
+
+.right li {
+    margin: 0 0 0 15px;
+}
+
+.right img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.left {
+    border: 1px solid grey;
+    border-radius: 5px;
+    background: #eee;
+    float: left;
+    font-size: 12px;
+    padding: 0px; 
+    width: 25%;
+}
+
+.left ul {
+    color: #57626a;
+    list-style-type: none;
+}
+
+.left ul li {
+    border-top: #000 solid thin;
+}
+
+.left h2 {
+    color: #fff; 
+    background: #ccc;
+    font-size: 14px;
+    font-weight: 600;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.left a {
+    text-decoration: none;
+}
+
+#footer {
+    background: none repeat scroll 0 0 #eee;
+    border-top: 3px solid #57626a;
+    color: #333;
+    font-size: 11px;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+}
