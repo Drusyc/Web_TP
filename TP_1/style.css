@@ -1,164 +1,207 @@
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
+@charset "UTF-8";
 body {
-    background: none repeat scroll 0 0 #fff;
-    color: #333333;
-    font-family: Verdana,Arial,Helvetica,sans-serif;
-    font-size: 12px;
-    line-height: 18px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	background-color: #FFF;
+	margin: 0;
+	padding: 0;
+	color: #000;
 }
 
-img {
-    border: medium none;
+ul {
+	padding: 0;
+	margin: 0;
 }
 
-a {
-    color: #57626a;
-    text-decoration: none;
+/* ~~ Mise en forme des liens ~~ */
+a:link {
+	color: #000;
+	text-decoration: none;
 }
 
-a:hover {
-    color: #000;
-    text-decoration: underline;
+a:visited {
+	color: #000;
+	text-decoration: none;
 }
 
-#wrap {
-    margin: 0 auto;
-    width: 1024px;
+a:hover, a:active, a:focus {
+	text-decoration: none;
 }
 
+
+/* ~~ Ce conteneur entoure toutes les autres divs, en leur attribuant leur largeur sur base d'un pourcentage ~~ */
+#container {
+	width: 99%;
+	background-color: #FFF;
+	margin: 0 auto; /* permet de centrer la mise en page */
+}
+
+
+/* ~~ En-tête de page ~~ */
 #header {
-    padding: 10px 0 20px;
+	border-bottom: 1px solid #000;
+	height: 30px;
+	padding: 0 5px; 
+	margin: 10px 0;
+	text-align: center;
 }
 
-#header h1 {
-    font-size: 26px;
-    font-weight: 100;
-    padding: 12px 0 5px 10px;
+#header ul {
+	list-style-type: none;
+	display: inline-block;
 }
 
-#header h1 a {
-    color: #57626a;
-    text-decoration: none;
+#header ul li {
+	height: 19px;
+	margin: 0;
+	padding: 0;
+	float: left; /* pour aligner horizontalement les items de la liste */
 }
 
-#header h1 a:hover {
-    color: #57626a;
-    text-decoration: none;
+#header ul.languages {
+	position: absolute;
+	left: 0;
 }
 
-#header h2 {
-    color: #ccc;
-    font-size: 15px;
-    font-weight: 100;
-    letter-spacing: -1px;
-    line-height: 12px;
-    padding: 0 0 0 11px;
+#header ul.languages li {
+	margin: 0 5px;
 }
 
-#menu {
-    height: 20px;
-    line-height: 20px;
-    border-bottom: #000 solid thin;
+#header ul.menu li {
+	margin: 0 20px;
+	padding: 5px;
+	background-color: #DDD;
+	border-top: 1px solid #000;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
 }
 
-#menu ul {
-    list-style-type: none;
-    text-align:center;
+#header ul.menu li.current { /* propriétés spécifiques à l'item sélectionné */
+	background-color: #FFF;
+	border-bottom: 1px solid #FFF;
 }
 
-#menu ul li {
-    display:inline-block;
-    border: #000 solid thin;
-    border-radius: 15px;
-    margin:0px 10px;
-    padding:0;
-    background-color: #eee;
+
+/* ~~ Barre des filières ~~ */
+#filieres {
+	float: left;
+	width: 20%;
+	background-color: #808080;
+	text-transform: uppercase;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
 }
 
-#menu ul li.selectionne {
-    border-bottom: thin solid #FFF;
-    background-color: #fff;
+.title {
+	display: block;
+	text-align: center;
+	color: #FFF;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: bold;
 }
 
-#menu ul li a {
-    color: black;
-    font-size: 14px;
-    font-weight: 100;
-    padding: 0 10px;
-    text-decoration: none;
+#filieres ul {
+	list-style-type: none;
 }
 
+#filieres ul li {
+	background-color: #DDD;
+	border-top: 1px solid #000;
+}
+
+#filieres ul li.current { /* propriétés spécifiques à la filière sélectionnée */
+	background-color: #808080;
+}
+
+#filieres li.annee { /* propriétés spécifiques à l'année sélectionnée */
+	padding-left: 10px;
+	background-color: #FFF;
+	text-transform: none;
+	font-weight: bold;
+}
+
+/* ~~ Contenu de la page ~~ */
 #content {
-    padding: 10px 20px;
-}
-.right {
-    float: right;
-    text-align: justify;
-    width: 568px;
+	width: 75%;
+	float: left;
+	text-align: right;
 }
 
-.right h2 {
-    color: black;
-    font-size: 20px;
-    font-weight: 100;
-    letter-spacing: 0;
-    padding: 10px 0 15px;
+#content a.editer_supprimer {
+	color: #FFF;
+	background-color: #5E5E5E;
+	border: 1px solid #000;
+	text-transform: uppercase;
+	padding: 2px;
 }
 
-.right li {
-    margin: 0 0 0 15px;
+/* ~~ Propriétés du tableau ~~ */
+#content table {
+	margin: 10px 0;
+	text-align: center;
+	width: 85%;
 }
 
-.right img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#content td, th {
+	border: 1px solid #000;
+	white-space: nowrap
 }
 
-.left {
-    border: 1px solid grey;
-    border-radius: 5px;
-    background: #eee;
-    float: left;
-    font-size: 12px;
-    padding: 0px; 
-    width: 25%;
+#content th {	/* propriétés spécifiques à l'en-tête du tableau */
+	height: 35px;
+	background-color: #C0C0C0;
+	text-transform: uppercase;
+	color: #FFF;
+	font-weight: normal;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
 }
 
-.left ul {
-    color: #57626a;
-    list-style-type: none;
+#content tr.noms_colonnes {
+	font-weight: bold;
+	height: 40px;
 }
 
-.left ul li {
-    border-top: #000 solid thin;
+#content tr.noms_colonnes td {
+	border: 1px solid #000;
+	border-radius: 5px;
 }
 
-.left h2 {
-    color: #fff; 
-    background: #ccc;
-    font-size: 14px;
-    font-weight: 600;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
+#content tr.domaine {
+	background-color: #808080;
+	color: #FFF;
+	height: 50px;
 }
 
-.left a {
-    text-decoration: none;
+#content tr.domaine td {
+	border: 1px solid #C0C0C0;
+	border-radius: 5px;
 }
 
-#footer {
-    background: none repeat scroll 0 0 #eee;
-    border-top: 3px solid #57626a;
-    color: #333;
-    font-size: 11px;
-    margin-top: 20px;
-    padding: 10px;
-    text-align: center;
+#content tr.obligatoire {
+	background-color: #FFF;
+	border-color: #C0C0C0;
+	height: 25px;
+}
+
+#content tr.obligatoire td {
+	border: 1px solid #C0C0C0;
+	border-radius: 5px;
+}
+
+#content tr.description {
+	background-color: #DBEEEE;
+}
+
+#content tr.description td {
+	border: none ;
+}
+
+#content td.white {
+	background-color: #FFF;
+	border: none !important;
 }

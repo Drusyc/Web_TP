@@ -1,82 +1,291 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Ensimag : Construction d'application Web</title>
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Exercice</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
 
-    <meta http-equiv="Content-Language" content="French" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen" /></head>
-    <body>
-        <div id="wrap">
-            <div id="header">
-                <h1><a href="#">Construction d'applications WEB</a></h1>
-                <h2>Ensimag : apprentissage 2ème année
-                </h2>
-            </div>
-            <div id="menu">
-                <ul>
-                    <li><a href="index.html">Structure</a></li>
-                    <li><a href="logiciels.html">Enseignant</a></li>
-                    <li><a href="liens.html">Type Heures</a></li>
-                    <li class="selectionne"><a href="Exercices.html">Langue</a></li>
-                </ul>
-            </div>
-            <div id="content">
-                <div class="right">
-                    <h2><a href="liens.html" name="install">Installation de l'environnement</a></h2>
-                    <div class="articles">
-                        Installer les logiciels : netbeans, firefox et les plugins web developper et firebug.
-                    </div>
+<body>
 
-
-
-                    <h2><a name="domcss">DOM et CSS</a></h2>
-                    <div class="articles">
-                        Pour cette page:
-                        <ul>
-                            <li>Explorer le DOM.</li>
-                            <li>Tracer l'arbre correspondant en indiquant les types de noeuds (vous pouvez utiliser les outils intégrés à Web Developper)</li>
-                            <li>En utilisant le mode CSS de firebug,modifier la CSS pour que les liens sur lesquels passent la souris soient en vert.</li>
-                            <li>De même modifier la CSS pour que le menu récapitulatif soit à droite plutôt qu'à gauche, avec la ligne de séparation du bon coté, ajuster les marges et espacements pour que les numéros des items soient après la ligne de séparation.</li>
-                            <li>Modifier la couleur de l'élément selectionné dans la barre de menu en jaune.</li>
-                        </ul>
-                    </div>
-
-                    <h2><a name="conception">Conception de page web</a></h2>
-                    Dans cet exercice on veillera à bien séparer la forme (css) du fond (html)
-                    <ul><li>
-                        Proposer un code html pur décrire le contenu illustré ci-dessous:
-                        <a title="cliquer ici pour agrandir l'image" href="Images/Exercice.png"><img height="200px" alt="Image de l'interface à réaliser" src="Images/Exercice.png"></a>
-                        </li>
-                        <li> Proposer un code css pour avoir le rendu correspondant</li>
-                    </ul>
-                    <h2><a name="http">Protocoles</a></h2>
-                    <div class="articles">
-                        <ul>
-                            <li>Vider le cache du navigateur et recharger la page en utilisant la partie réseau de fire bug pour observer les échanges.
-                                Quels sont les informations échangées lors du rechargement. Détailler les entêtes </li>
-
-                            <li>Même question en allant sur google.fr et en faisant une recherche. </li>
-
-                            <li>Désactiver le css et javascript voir les changements.</li>
-
-                            <li>En examinant la RFC2616, indiquer quels sont toutes les méthodes possibles et leurs rôles.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="left">  
-                    <h2>Filières</h2>
-                    <ul>
-                        <li><a href="#install">Tronc commun</a></li>
-                        <li><a href="#http">ISI</a></li>
-                        <li><a href="#domcss">SLE</a></li>
-                        <li><a href="#conception">Alternant 2ème Année</a></li>
-                    </ul>
-
-                </div>
-
-                <div style="clear: both;"> </div>
-            </div>
-            <div id="footer">Grenole INP - Ensimag 2A - <a href="mailto:Sebastien.Viardot@imag.fr">Sébastien Viardot</a> <br>
-            </div>
-        </div>
-    </body>
+<div id="container">
+  <div id="header">
+  	<ul class="languages">
+  		<li><a href="#">Francais</a></li>
+  		<li><a href="#">Anglais</a></li>
+    </ul>
+  	<ul class="menu">
+    	<li class="current"><a href="#">Structure</a></li>
+        <li><a href="#">Enseignant</a></li>
+        <li><a href="#">Type Heures</a></li>
+        <li><a href="#">Langue</a></li>
+    </ul>
+  </div>
+  <div id="filieres">
+  	<span class="title">Filieres</span>
+    <ul>
+      <li><a href="#">Tronc Commun</a></li>
+      <li><a href="#">ISI</a></li>
+      <li><a href="#">SLE</a></li>
+      <li><a href="#">MMIS-IRVM</a></li>
+      <li><a href="#">MMIS-LOAD</a></li>
+      <li><a href="#">MMIS-MCS</a></li>
+      <li><a href="#">Admis sur titre</a></li>
+      <li><a href="#">MIF</a></li>
+      <li><a href="#">SIF</a></li>
+      <li><a href="#">Télécom ARR</a></li>
+      <li><a href="#">Télécom STR</a></li>
+      <li><a href="#">Alternance 1ère année</a></li>
+      <li><a href="#">MMIS-BIO</a></li>
+      <li><a href="#">Télécom</a></li>
+      <li><a href="#">MMIS-AAD</a></li>
+      <li><a href="#">ASI</a></li>
+      <li><a href="#">Semestre à choix</a></li>
+      <li><a href="#">IF</a></li>
+      <li><a href="#">ISI+MSIO</a></li>
+      <li><a href="#">M1 MOSIG</a></li>
+      <li class="current">
+      	<a href="#">Alternance 2ème année</a>
+        <ul>
+        	<li class="annee"><a href="#">Alternance 2ème année Année 21</a></li>
+        </ul>
+      </li>
+      <li><a href="#">CSE</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    Alternance 2ème année
+    <a href="#" class="editer_supprimer">Editer</a>
+    <a href="#" class="editer_supprimer">Supprimer</a>
+   	<table>
+    	<tr>
+        	<th colspan="6">Annee 21 <a href="#" class="editer_supprimer">Editer</a>
+    <a href="#" class="editer_supprimer">Supprimer</a></td>
+        </tr>
+    	<tr class="noms_colonnes">
+        	<td>Apogee</td>
+        	<td>Matiere</td>
+        	<td>ECTS</td>
+        	<td>Volume</td>
+        	<td>Periode</td>
+        	<td></td>
+        </tr>
+    	<tr class="domaine">
+        	<td colspan="5">1 - Mathématiques</td>
+        	<td class="white">
+            	<a href="#" class="editer_supprimer">Editer</a>
+    			<a href="#" class="editer_supprimer">Supprimer</a>
+        	</td>
+        </tr>
+    	<tr class="obligatoire">
+        	<td colspan="5">Obligatoire</td>
+        	<td class="white">
+            	<a href="#" class="editer_supprimer">Editer</a>
+    			<a href="#" class="editer_supprimer">Supprimer</a>
+            </td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1CC</td>
+        	<td>Codes et cryptographie</td>
+        	<td>1.0</td>
+        	<td>18.0 h</td>
+        	<td>période 3</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1PMS</td>
+        	<td>Principes et méthodes statistiques</td>
+        	<td>2.0</td>
+        	<td>36.0 h</td>
+        	<td>période 1</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1PPI</td>
+        	<td>Probabilité pour l'informatique</td>
+        	<td>2.0</td>
+        	<td>18.0 h</td>
+        	<td>période 2</td>
+        	<td></td>
+        </tr>
+    	<tr class="domaine">
+        	<td colspan="5">2 - Génie Logiciel</td>
+        	<td class="white">
+            	<a href="#" class="editer_supprimer">Editer</a>
+    			<a href="#" class="editer_supprimer">Supprimer</a>
+        	</td>
+        </tr>
+    	<tr class="obligatoire">
+        	<td colspan="5">Obligatoire</td>
+        	<td class="white">
+            	<a href="#" class="editer_supprimer">Editer</a>
+    			<a href="#" class="editer_supprimer">Supprimer</a>
+            </td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1ACVL</td>
+        	<td>ACVL - Analyse, Conception, Validation</td>
+        	<td>2.0</td>
+        	<td>36.0 h</td>
+        	<td>période 1</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1CAW</td>
+        	<td>Construction d'applications Web</td>
+        	<td>2.0</td>
+        	<td>36.0 h</td>
+        	<td>période(s) 2,3</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1SAP</td>
+        	<td>Sémantique et analyse de programmes</td>
+        	<td>2.0</td>
+        	<td>36.0 h</td>
+        	<td>période(s) 2,3</td>
+        	<td></td>
+        </tr>
+    	<tr class="domaine">
+        	<td colspan="5">3 - Informatique</td>
+        	<td class="white">
+            	<a href="#" class="editer_supprimer">Editer</a>
+    			<a href="#" class="editer_supprimer">Supprimer</a>
+        	</td>
+        </tr>
+    	<tr class="obligatoire">
+        	<td colspan="5">Obligatoire</td>
+        	<td class="white">
+            	<a href="#" class="editer_supprimer">Editer</a>
+    			<a href="#" class="editer_supprimer">Supprimer</a>
+            </td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1AA</td>
+        	<td>Algorithmique avancée</td>
+        	<td>2.0</td>
+        	<td>36.0 h</td>
+        	<td>période 1</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1PS</td>
+        	<td>Projet système</td>
+        	<td>5.0</td>
+        	<td>80.0 h</td>
+        	<td>période 3</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1RES</td>
+        	<td>Réseaux</td>
+        	<td>4.0</td>
+        	<td>54.0 h</td>
+        	<td>période(s) 1,2</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1SE</td>
+        	<td>Systèmes d'exploitation</td>
+        	<td>4.0</td>
+        	<td>54.0 h</td>
+        	<td>période(s) 2,3</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1SGBD</td>
+        	<td>Systèmes de gestion de bases de données</td>
+        	<td>4.0</td>
+        	<td>54.0 h</td>
+        	<td>période(s) 2,3</td>
+        	<td></td>
+        </tr>
+    	<tr class="domaine">
+        	<td colspan="5">4 - Sciences Humaines et Sociales</td>
+        	<td class="white">
+            	<a href="#" class="editer_supprimer">Editer</a>
+    			<a href="#" class="editer_supprimer">Supprimer</a>
+        	</td>
+        </tr>
+    	<tr class="obligatoire">
+        	<td colspan="5">Obligatoire</td>
+        	<td class="white">
+            	<a href="#" class="editer_supprimer">Editer</a>
+    			<a href="#" class="editer_supprimer">Supprimer</a>
+            </td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1ANGN</td>
+        	<td>Anglais</td>
+        	<td>5.0</td>
+        	<td>72.0 h</td>
+        	<td>période(s) 1,2,3</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1DA</td>
+        	<td>Droit des affaires</td>
+        	<td>1.0</td>
+        	<td>12.0 h</td>
+        	<td>période 2</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1GF</td>
+        	<td>Gestion financière</td>
+        	<td>1.5</td>
+        	<td>15.0 h</td>
+        	<td>période 2</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1MAN</td>
+        	<td>Management</td>
+        	<td>1.0</td>
+        	<td>18.0 h</td>
+        	<td>période(s) 2,3</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1CV</td>
+        	<td>Projet Professionnel : atelier CV</td>
+        	<td>0.0</td>
+        	<td>3.0 h</td>
+        	<td>période 1</td>
+        	<td></td>
+        </tr>
+    	<tr class="description">
+        	<td>4MM1SMA</td>
+        	<td>Stratégie - Marketing</td>
+        	<td>1.5</td>
+        	<td>15.0 h</td>
+        	<td>période 1</td>
+        	<td></td>
+        </tr>
+    	<tr class="domaine">
+        	<td colspan="5">5 - Périodes en Entreprise</td>
+        	<td class="white">
+            	<a href="#" class="editer_supprimer">Editer</a>
+    			<a href="#" class="editer_supprimer">Supprimer</a>
+        	</td>
+        </tr>
+    	<tr class="obligatoire">
+        	<td colspan="5">Obligatoire</td>
+        	<td class="white">
+            	<a href="#" class="editer_supprimer">Editer</a>
+    			<a href="#" class="editer_supprimer">Supprimer</a>
+            </td>
+        </tr>
+    	<tr class="description">
+        	<td>4MU1ENT</td>
+        	<td>Périodes en Entreprise</td>
+        	<td>20.0</td>
+        	<td>0.0 h</td>
+        	<td>période(s) 1,2,3</td>
+        	<td></td>
+        </tr>
+    </table>
+  </div>
+</div>
+</body>
 </html>
