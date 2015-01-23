@@ -38,7 +38,7 @@ a:hover, a:active, a:focus {
 
 
 /* ~~ En-tête de page ~~ */
-#header {
+header {
 	border-bottom: 1px solid #000;
 	height: 30px;
 	padding: 0 5px; 
@@ -46,28 +46,28 @@ a:hover, a:active, a:focus {
 	text-align: center;
 }
 
-#header ul {
+header ul {
 	list-style-type: none;
 	display: inline-block;
 }
 
-#header ul li {
+header ul li {
 	height: 19px;
 	margin: 0;
 	padding: 0;
 	float: left; /* pour aligner horizontalement les items de la liste */
 }
 
-#header ul.languages {
+header ul.languages {
 	position: absolute;
 	left: 0;
 }
 
-#header ul.languages li {
+header ul.languages li {
 	margin: 0 5px;
 }
 
-#header ul.menu li {
+header ul.menu li {
 	margin: 0 20px;
 	padding: 5px;
 	background-color: #DDD;
@@ -79,14 +79,14 @@ a:hover, a:active, a:focus {
 	border-top-right-radius: 15px;
 }
 
-#header ul.menu li.current { /* propriétés spécifiques à l'item sélectionné */
+header ul.menu li.current { /* propriétés spécifiques à l'item sélectionné */
 	background-color: #FFF;
 	border-bottom: 1px solid #FFF;
 }
 
 
 /* ~~ Barre des filières ~~ */
-#filieres {
+nav.filieres {
 	float: left;
 	width: 20%;
 	background-color: #808080;
@@ -104,20 +104,20 @@ a:hover, a:active, a:focus {
 	font-weight: bold;
 }
 
-#filieres ul {
+nav.filieres ul {
 	list-style-type: none;
 }
 
-#filieres ul li {
+nav.filieres ul li {
 	background-color: #DDD;
 	border-top: 1px solid #000;
 }
 
-#filieres ul li.current { /* propriétés spécifiques à la filière sélectionnée */
+nav.filieres ul li.current { /* propriétés spécifiques à la filière sélectionnée */
 	background-color: #808080;
 }
 
-#filieres li.annee { /* propriétés spécifiques à l'année sélectionnée */
+nav.filieres li.annee { /* propriétés spécifiques à l'année sélectionnée */
 	padding-left: 10px;
 	background-color: #FFF;
 	text-transform: none;
@@ -125,13 +125,13 @@ a:hover, a:active, a:focus {
 }
 
 /* ~~ Contenu de la page ~~ */
-#content {
+main {
 	width: 75%;
 	float: left;
 	text-align: right;
 }
 
-#content a.editer_supprimer {
+main a.editer_supprimer {
 	color: #FFF;
 	background-color: #5E5E5E;
 	border: 1px solid #000;
@@ -140,18 +140,18 @@ a:hover, a:active, a:focus {
 }
 
 /* ~~ Propriétés du tableau ~~ */
-#content table {
+main table {
 	margin: 10px 0;
 	text-align: center;
 	width: 85%;
 }
 
-#content td, th {
+main td, th {
 	border: 1px solid #000;
 	white-space: nowrap
 }
 
-#content th {	/* propriétés spécifiques à l'en-tête du tableau */
+main th {	/* propriétés spécifiques aux cellules de l'en-tête du tableau */
 	height: 35px;
 	background-color: #C0C0C0;
 	text-transform: uppercase;
@@ -161,47 +161,47 @@ a:hover, a:active, a:focus {
 	border-top-right-radius: 20px;
 }
 
-#content tr.noms_colonnes {
+main tr.noms_colonnes {
 	font-weight: bold;
 	height: 40px;
 }
 
-#content tr.noms_colonnes td {
+main tr.noms_colonnes td {
 	border: 1px solid #000;
 	border-radius: 5px;
 }
 
-#content tr.domaine {
+main tr.domaine {
 	background-color: #808080;
 	color: #FFF;
 	height: 50px;
 }
 
-#content tr.domaine td {
+main tr.domaine td {
 	border: 1px solid #C0C0C0;
 	border-radius: 5px;
 }
 
-#content tr.obligatoire {
+main tr.obligatoire {
 	background-color: #FFF;
 	border-color: #C0C0C0;
 	height: 25px;
 }
 
-#content tr.obligatoire td {
+main tr.obligatoire td {
 	border: 1px solid #C0C0C0;
 	border-radius: 5px;
 }
 
-#content tr.description {
+main tr.description {
 	background-color: #DBEEEE;
 }
 
-#content tr.description td {
+main tr.description td {
 	border: none ;
 }
 
-#content td.white {
+main td.white {
 	background-color: #FFF;
 	border: none !important;
 }
