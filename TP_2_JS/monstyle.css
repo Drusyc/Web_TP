@@ -1,0 +1,30 @@
+
+thead tr {
+  font-family: "Sans Serif";
+  color: white;
+  background-color: black;
+}
+
+.UE {
+  background: #318CE7;
+}
+
+.gray {
+  background: #C0C0C0;
+}
+
+.badGrade {
+  background: #FF0000;
+}
+
+.bofGrade {
+  background: #ED7F10;
+}
+
+.fairGrade {
+  background: #F6DC12;
+}
+
+.goodGrade {
+  background: #3AF24B;
+}
