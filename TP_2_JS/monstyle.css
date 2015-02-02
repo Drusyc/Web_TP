@@ -9,22 +9,26 @@ thead tr {
   background: #318CE7;
 }
 
-.gray {
+.grayHeader {
   background: #C0C0C0;
 }
 
 .badGrade {
-  background: #FF0000;
+  color: #FF0000;
 }
 
-.bofGrade {
-  background: #ED7F10;
+.mediocreGrade {
+  color: #ED7F10;
 }
 
 .fairGrade {
-  background: #F6DC12;
+  color: #F6DC12;
 }
 
 .goodGrade {
-  background: #3AF24B;
+  color: #3AF24B;
+}
+
+.hidden {
+  display: none;
 }
