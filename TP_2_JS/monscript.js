@@ -5,7 +5,7 @@ function color() {
 
   for (var i = 1; i < rows.length; ++i) {
     if (i % 2 == 0)
-      rows[i].className = "grayHeader"; 
+      rows[i].classList.add("grayHeader"); 
 
     var cells = rows[i].getElementsByTagName("td");
 // //     al(cells[5]);
@@ -45,32 +45,66 @@ function removeIndex() {
 function MrHide () {
    
   var table = document.getElementById("T-1");
-  if (table.className.contains("hidden")) {
-    table.classList.remove("hidden"); 
-  } else {
-    table.classList.add("hidden");  
-  }
+  table.classList.toggle("hidden");
 }
 
-function isSorted(table, id) {
-  var table = document.getElementById("T-1");
-  var rows = table.getElementsByTagName("tr");
-  var columns = table.getElementsByTagName("th");
-  
+function MrSort(tableRows, id) {  
+  //alert(typeof tableRows[1].getElementsByTagName("td")[id].textContent);
+  //alert (isNaN(tableRows[1].getElementsByTagName("td")[id].textContent));
+  var isStr = isNaN(tableRows[1].getElementsByTagName("td")[id].textContent);
+
+  var isAsc = true;
+  for (var i = 1; i < tableRows.length-1; i++) {
+    var v1 = tableRows[i].cells[id].textContent;
+    var v2 = tableRows[i+1].cells[id].textContent;
+
+    if (!isStr) {
+      v1 = (tableRows[i].cells[id].textContent == "") ? 0 : parseFloat(tableRows[i].cells[id].textContent); 
+      v2 = (tableRows[i+1].cells[id].textContent == "") ? 0 : parseFloat(tableRows[i+1].cells[id].textContent);
+    }
+
+    if (v1 > v2) {
+      isAsc = false;
+      break;
+    }
+  }
+
+  for (var i = 1; i < tableRows.length - 1; i++) {
+    var min = i;
+
+    for (var j = i + 1; j < tableRows.length; j++) {
+      v1 = tableRows[j].cells[id].textContent;
+      v2 = tableRows[min].cells[id].textContent;
+
+      if (!isStr) {
+	v1 = (tableRows[j].cells[id].textContent == "") ? 0 : parseFloat(tableRows[j].cells[id].textContent); 
+	v2 = (tableRows[min].cells[id].textContent == "") ? 0 : parseFloat(tableRows[min].cells[id].textContent);
+      }
+
+      if (isAsc) {
+	if (v1 > v2) {
+	  min = j;
+	}
+      } else {
+	if (v1 < v2) {
+	  min = j;
+	}
+      }	
+    }//for
+    
+    if (min != i) {
+      var tmp = tableRows[i].outerHTML;
+      tableRows[i].outerHTML = tableRows[min].outerHTML;
+      tableRows[min].outerHTML = tmp;
+    }
+  }//for
 }
 
 function MrTrie () {
   var id = this.cellIndex;
   var table = document.getElementById("T-1");
-  var rows = table.getElementsByTagName("tr");
-  var tableData = [];
-
-  for (var i = 1; i < rows.length; ++i) {
-    var cells = rows[i].getElementsByTagName("td");
-    tableData[i] = cells[id].textContent;
-  }
-
-  //isSorted(tableData);
+  var rows = table.rows;
+  MrSort(rows, id);
 }
 
 function main () {
