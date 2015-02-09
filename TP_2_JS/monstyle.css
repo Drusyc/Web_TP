@@ -1,34 +1,58 @@
 
-thead tr {
-  font-family: "Sans Serif";
-  color: white;
-  background-color: black;
+@media screen and (min-width:800px) {
+  thead tr {
+    font-family: "Sans Serif";
+    color: white;
+    background-color: black;
+  }
+
+  .UE {
+    background: #318CE7 !important;
+  }
+
+  .grayHeader {
+    background: #C0C0C0;
+  }
+
+  .badGrade {
+    color: #FF0000;
+  }
+
+  .mediocreGrade {
+    color: #ED7F10;
+  }
+
+  .fairGrade {
+    color: #F6DC12;
+  }
+
+  .goodGrade {
+    color: #3AF24B;
+  }
+
+  .hidden {
+    display: none;
+  }
 }
 
-.UE {
-  background: #318CE7 !important;
-}
+@media screen and (max-width:800px) {
+  tr:not(.UE) {
+    display:none;
+  }
 
-.grayHeader {
-  background: #C0C0C0;
-}
+  #histogramme {
+    display:none;
+  }
 
-.badGrade {
-  color: #FF0000;
-}
+  .UE {
+    background-color:#EEE !important;
+  }
 
-.mediocreGrade {
-  color: #ED7F10;
-}
+  td:not(:nth-child(4)):not(:nth-child(6)) {
+    display:none;
+  }
 
-.fairGrade {
-  color: #F6DC12;
-}
-
-.goodGrade {
-  color: #3AF24B;
-}
-
-.hidden {
-  display: none;
+  .hidden {
+    display: none;
+  }
 }
