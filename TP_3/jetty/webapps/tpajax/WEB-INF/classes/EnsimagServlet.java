@@ -57,13 +57,13 @@ public class EnsimagServlet extends HttpServlet {
 				if (cells.size() > 2){
 					m = p.matcher((cells.get(0).text()));
 					
-					String strApo 	= "";
-					String strNom 	= "";
+					String strApo 	= "\"apogee\":\"";
+					String strNom 	= "\"\"nom\":\"";
 					String strEcts 	= "\"ects\":\"" + cells.get(1).text() + "\"";
 					String strUrl 	= "\"url\":\"" + cells.get(0).getElementsByTag("a").get(0).attributes().get("href") + "\""; //EASY
 					while (m.find()) {
-						strApo = "\"apogee\":\"" + m.group(1) + "\"";
-						strNom  = "\"\"nom\":\"" + m.group(2) + "\""; 
+						strApo 	+= m.group(1) + "\"";
+						strNom  += m.group(2) + "\""; 
 					}
 					
 					if(strApo.toLowerCase().contains(recherche.toLowerCase()) 
