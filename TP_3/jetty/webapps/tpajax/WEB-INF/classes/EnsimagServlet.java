@@ -40,7 +40,7 @@ public class EnsimagServlet extends HttpServlet {
 	private void recherche(HttpServletResponse resp,String recherche) throws ServletException,
 	IOException {
 		// A decommenter pour avoir l'entete http correspondant à une réponse au format JSON
-		//resp.setContentType("/application/json; charset=UTF8");
+		resp.setContentType("/application/json; charset=UTF8");
 		// Fin a commenter
 		
 		PrintWriter out=resp.getWriter();
