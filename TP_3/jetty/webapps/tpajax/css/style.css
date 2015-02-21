@@ -1,0 +1,41 @@
+h1 {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 40px;
+}
+
+h2 {
+  font-family: Verdana, Geneva, sans-serif;
+  font-style: italic;
+  font-size: 20px;
+}
+
+
+input {
+  background-color:#FFF3F3;
+}
+
+body ul {
+  font-family: "Times New Roman", Times, serif;
+  padding : 10px;
+  margin : 0;
+}
+
+body ul li {
+  height : auto;
+  width : auto;
+  margin : 0;
+  padding : 0;
+  padding-bottom : 5px;
+}
+
+.objectifs {
+  display : none;
+  text-indent: 10px;
+  text-align: justify;
+  background-color: #E8E8E8;
+}
+
+
+.hidden {
+  display: none;
+}

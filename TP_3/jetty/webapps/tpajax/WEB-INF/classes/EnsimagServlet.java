@@ -2,9 +2,11 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import java.util.regex.*;
+
 import org.jsoup.*;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -58,7 +60,7 @@ public class EnsimagServlet extends HttpServlet {
 					m = p.matcher((cells.get(0).text()));
 					
 					String strApo 	= "\"apogee\":\"";
-					String strNom 	= "\"\"nom\":\"";
+					String strNom 	= "\"nom\":\"";
 					String strEcts 	= "\"ects\":\"" + cells.get(1).text() + "\"";
 					String strUrl 	= "\"url\":\"" + cells.get(0).getElementsByTag("a").get(0).attributes().get("href") + "\""; //EASY
 					while (m.find()) {
@@ -79,18 +81,58 @@ public class EnsimagServlet extends HttpServlet {
 		out.print("]");
 		
 	}
+	
+	
+	private void getObjectifs(HttpServletResponse resp,String urlMatiere) throws ServletException,
+	IOException {
+		try {
+		resp.setContentType("/application/json; charset=UTF8");
+		PrintWriter out=resp.getWriter();
+		
+		Document doc = Jsoup.connect("http://ensimag.grenoble-inp.fr/cursus-ingenieur/" + urlMatiere).get();
+				
+		Element page = doc.getElementById("contenus_page");
+		Element objectifs = null;
+		for (int i = 0; i < page.children().size(); i++) {
+			if (page.child(i).hasClass("hsep")) {
+				objectifs = page.child(i);
+			}			
+		}
+		
+		out.print("[");
+		out.print("{\"Objectifs\" : \"");
+		String[] sub = objectifs.text().split("\"");
+		for (int i = 0; i < sub.length; i++) {
+			if (i == 0 && (sub[i].substring(0, "Objectifs".length()).equals("Objectifs"))) {
+				out.print(sub[i].substring("Objectifs".length(), sub[i].length()-1));
+			} else {
+				out.print(sub[i]);
+			}
+		}
+		out.print("\"}");
+		out.print("]");
+		}
+		catch(Exception e ) {System.out.println(e);e.printStackTrace();}		
+	}
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
 			IOException {
 			//Récupère le chemin dans l'URL
 			try {
 			String [] valeurs=req.getRequestURI().substring(req.getContextPath().length()+1).split("/");
+			
 			if (valeurs.length==2){
-				String recherche=URLDecoder.decode(valeurs[1],"UTF-8");
+				String parametre=URLDecoder.decode(valeurs[1],"UTF-8");
 				if ("recherche".equals(valeurs[0])) {
-					recherche(resp,recherche);
+					recherche(resp,parametre);
+				}
+				else if ("objectifs".equals(valeurs[0])){
+					getObjectifs(resp,parametre);				
 				}
 			}
+			
 			}
 			catch (Exception e ){System.out.println(e);e.printStackTrace();}
 	}
