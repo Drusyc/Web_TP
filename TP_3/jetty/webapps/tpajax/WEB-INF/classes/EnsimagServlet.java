@@ -89,8 +89,13 @@ public class EnsimagServlet extends HttpServlet {
 		resp.setContentType("/application/json; charset=UTF8");
 		PrintWriter out=resp.getWriter();
 		
-		Document doc = Jsoup.connect("http://ensimag.grenoble-inp.fr/cursus-ingenieur/" + urlMatiere).get();
-				
+		Connection con = Jsoup.connect("http://ensimag.grenoble-inp.fr/cursus-ingenieur/" + urlMatiere).userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21").timeout(10000);
+		Connection.Response response = con.execute();
+		//Document doc = Jsoup.connect("http://ensimag.grenoble-inp.fr/cursus-ingenieur/" + urlMatiere).get();
+        if (response.statusCode() != 200) {
+            return;
+        }
+        Document doc = con.get();
 		Element page = doc.getElementById("contenus_page");
 		Element objectifs = null;
 		for (int i = 0; i < page.children().size(); i++) {
@@ -111,6 +116,9 @@ public class EnsimagServlet extends HttpServlet {
 		}
 		out.print("\"}");
 		out.print("]");
+		}
+		catch (HttpStatusException e) {
+	        System.out.println("URL incorrecte : " + e.getUrl());
 		}
 		catch(Exception e ) {System.out.println(e);e.printStackTrace();}		
 	}

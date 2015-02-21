@@ -30,7 +30,8 @@ body ul li {
 
 .objectifs {
   display : none;
-  text-indent: 10px;
+  text-indent: 20px;
+  font-size : 20px;
   text-align: justify;
   background-color: #E8E8E8;
 }
