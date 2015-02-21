@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app> 
+  <servlet>
+    <servlet-name>ServletEnsimag</servlet-name>
+    <servlet-class>EnsimagServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ServletEnsimag</servlet-name>
+    <url-pattern>/recherche/*</url-pattern>
+    <url-pattern>/objectifs/*</url-pattern>
+  </servlet-mapping>
+</web-app>
