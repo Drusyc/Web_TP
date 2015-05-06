@@ -28,15 +28,88 @@ body ul li {
   padding-bottom : 5px;
 }
 
-.objectifs {
-  display : none;
+body button {
+  margin-left : 25px;
+}
+
+details {
+  display : block;
+}
+
+.lastCommentaire {
+/*   display : none; */
   text-indent: 20px;
   font-size : 20px;
   text-align: justify;
   background-color: #E8E8E8;
+  margin-bottom : 25px;
+}
+
+.objectifs {
+/*   display : none; */
+  text-indent: 20px;
+  font-size : 20px;
+  text-align: justify;
+  background-color: #E8E8E8;
+  margin-bottom : 25px;
+}
+
+
+.objAndComm {
+/*   display : none; */
+  text-indent: 20px;
+  font-size : 20px;
+  text-align: justify;
+  background-color: #E8E8E8;
+  margin-bottom : 25px;
 }
 
 
 .hidden {
   display: none;
+}
+
+
+/****** CSS pour commentaires.html *******/
+
+.header {
+  padding: 0.5em;
+  color : white;
+  background-color: gray;
+  clear : left;
+}
+
+.myForm {
+  float : left;
+  width : 160px;
+  margin : 0;
+}
+
+main {
+  margin-left : 50%;
+  border-left : 1px solid gray;
+  padding: 1em;
+  line-height : 100%;
+}
+
+main.h2 {
+  padding :0;
+  margin : 0;
+}
+
+input:valid {
+  box-shadow: 0 0 2px 1px green;
+}
+
+.alignInput {
+/*   position : fixed; */
+  left : 150px;
+}
+
+#inputTxt {
+  min-height:200px;
+  min-width:250px;
+  max-width: 550px;
+  max-height: 360px;
+  box-shadow: 0 0 2px 1px green;
 }

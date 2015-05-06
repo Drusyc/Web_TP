@@ -9,5 +9,7 @@
     <servlet-name>ServletEnsimag</servlet-name>
     <url-pattern>/recherche/*</url-pattern>
     <url-pattern>/objectifs/*</url-pattern>
+<!--     <url-pattern>/commentaires</url-pattern> -->
+    <url-pattern>/commentaires/*</url-pattern>
   </servlet-mapping>
 </web-app>
