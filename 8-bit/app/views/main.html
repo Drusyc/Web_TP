@@ -3,12 +3,37 @@
 <html>
     <head>
         <title>#{get 'title' /}</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="@{'/public/images/favicons/apple-touch-icon-57x57.png'}"/>
+        <link rel="apple-touch-icon" sizes="60x60" href="@{'/public/images/favicons/apple-touch-icon-60x60.png'}"/>
+        <link rel="icon" type="image/png" href="@{'/public/images/favicons/favicon-32x32.png'}" sizes="32x32"/>
+        <link rel="icon" type="image/png" href="@{'/public/images/favicons/favicon-16x16.png'}" sizes="16x16"/>
+        <link rel="manifest" href="@{'/public/images/favicons/manifest.json'}"/>
         <meta charset="${_response_encoding}">
+        <meta name="apple-mobile-web-app-title" content="8-bit">
+        <meta name="application-name" content="8-bit">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
     </head>
     <body>
+    <header>
+        <a href="/"><img src="@{'/public/images/logo.png'}" class="logo" alt="8-bit"/></a>
+        <nav>
+            <ul class="toolbar-list">
+                <li class="toolbar-item btn conf-icon"><span>Configuration système</span></li>
+                <li class="toolbar-item btn search-icon"><span>Rechercher un jeu</span></li>
+                <li class="toolbar-item btn gamepad-icon"><span>Suggestions de jeux</span></li>
+            </ul>
+        </nav>
+        <div class="login-box">
+        #{form @Application.login()}
+            <input type="text" name="username" class="text-input" placeholder="Nom d'utilisateur" autofocus/>
+            <input type="password" name="password" class="text-input" placeholder="Mot de passe"/>
+            <button type="submit" class="btn login-btn">Connexion</button>
+        #{/form}
+        </div>
+    </header>
         #{doLayout /}
         
         <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
