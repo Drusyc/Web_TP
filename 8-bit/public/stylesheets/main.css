@@ -4,19 +4,52 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 10px;
+    font-size: 12px;
+    background: #000000 url('/public/images/backgrounds/space_bg.jpg') center center no-repeat fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #FFFFFF;
+}
+
+h1 {
+    margin: 30px 0;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+h2 {
+    margin: 15px 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+a:hover, a:focus, a:active {
+    text-decoration: underline;
 }
 
 header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
     width: 100%;
     height: 35px;
-    position: fixed;
     background: #FFFFFF;
-    -webkit-border-image: -webkit-gradient(linear, 100% 0, 0 0, from(#C72C48), to(#D43A57)) 1 100%;
     -webkit-border-image: -webkit-linear-gradient(right, #C72C48, #D43A57) 1 100%;
     -moz-border-image: -moz-linear-gradient(right, #C72C48, #D43A57) 1 100%;
     -o-border-image: -o-linear-gradient(right, #C72C48, #D43A57) 1 100%;
     border-image: linear-gradient(to right, #C72C48, #D43A57) 1 100%;
+    border-style: solid;
+}
+
+main {
+    width: 100%;
+    margin: 50px 0;
+    display: block;
 }
 
 .logo {
@@ -41,10 +74,12 @@ header {
 }
 
 .toolbar-item {
+    float: left;
+}
+
+.toolbar-item a {
+    display: block;
     padding: 0 20px;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     font-size: 11px;
     font-weight: 600;
     text-align: center;
@@ -53,8 +88,7 @@ header {
     background: -ms-linear-gradient(#C72C48, #D43A57);
     background: -o-linear-gradient(#C72C48, #D43A57);
     background: linear-gradient(#C72C48, #D43A57);
-    border-right: thin solid #FFFFFF;
-    float: left;
+    border-right: 3px solid #FFFFFF;
     position: relative;
     overflow: hidden;
     -webkit-backface-visibility: hidden;
@@ -62,11 +96,11 @@ header {
     backface-visibility: hidden;
 }
 
-.toolbar-item:active {
+.toolbar-item a:active {
     top: 2px;
 }
 
-.toolbar-item span {
+.toolbar-item a span {
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -78,7 +112,7 @@ header {
     backface-visibility: hidden;
 }
 
-.toolbar-item:before {
+.toolbar-item a:before {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -89,37 +123,37 @@ header {
     top: -100%;
 }
 
-.toolbar-item:hover:before {
+.toolbar-item a:hover:before {
     top: 0;
 }
 
-.toolbar-item:hover span {
+.toolbar-item a:hover span {
     -webkit-transform: translateY(200%);
     -moz-transform: translateY(200%);
     -ms-transform: translateY(200%);
     transform: translateY(200%);
 }
 
-.conf-icon:before {
+.conf-icon a:before {
     content: url('/public/images/icons/conf.png');
 }
 
-.search-icon:before {
+.search-icon a:before {
     content: url('/public/images/icons/search.png');
 }
 
-.gamepad-icon:before {
+.gamepad-icon a:before {
     content: url('/public/images/icons/gamepad.png');
 }
 
 .text-input {
     margin: 5px 2px;
     padding: 5px 10px;
-    border: thin solid #DCDCDC;
     outline: none;
+    border: thin solid #DCDCDC;
 }
 
-.text-input:focus {
+.login-input:focus {
     border: solid 1px #D43A57;
     -webkit-box-shadow: 0 0 5px 1px #C72C48;
     -moz-box-shadow: 0 0 5px 1px #C72C48;
@@ -128,6 +162,9 @@ header {
 
 .btn {
     cursor: pointer;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
@@ -141,15 +178,11 @@ header {
 
 .login-btn {
     border: none;
-    background: none;
+    outline: none;
     margin: 5px 2px;
     padding: 5px 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     font-weight: 700;
-    outline: none;
     background: #C72C48;
-    color: #FFFFFF;
     font-size: 12px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -158,4 +191,67 @@ header {
 
 .login-btn:hover {
     background: #D43A57;
+}
+
+.welcome-box {
+    margin-left: 120px;
+    height: 350px;
+    width: 35%;
+    font-size: 16px;
+    line-height: 40px;
+    padding: 20px;
+    float: left;
+}
+
+.recent-games {
+    width: 500px;
+    margin-right: 10px;
+    float: right;
+    text-align: center;
+}
+
+.signup-box {
+    clear: both;
+    margin-left: 120px;
+}
+
+.signup-input:focus {
+    border: solid 1px #6050DC;
+    -webkit-box-shadow: 0 0 5px 1px #9683EC;
+    -moz-box-shadow: 0 0 5px 1px #9683EC;
+    box-shadow: 0 0 5px 1px #9683EC;
+}
+
+.signup-btn {
+    border: none;
+    outline: none;
+    margin: 5px 2px;
+    padding: 5px 10px;
+    font-weight: 500;
+    background: #6050DC;
+    font-size: 11px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.signup-btn:hover {
+    background: #9683EC;
+}
+
+footer {
+    position: fixed;
+    z-index: 1;
+    right: 10px;
+    bottom: 10px;
+    font-size: 11px;
+}
+
+.footer-list {
+    list-style-type: none;
+}
+
+.footer-item {
+    float: left;
+    padding: 10px;
 }
