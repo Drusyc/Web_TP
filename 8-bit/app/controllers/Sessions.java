@@ -10,5 +10,4 @@ public class Sessions extends Controller {
     public static void login() {
 
     }
-
 }
