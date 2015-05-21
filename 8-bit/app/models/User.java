@@ -1,17 +1,13 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-
-import net.sf.oval.constraint.MaxSize;
+import javax.persistence.*;
 
 import org.hibernate.annotations.DiscriminatorOptions;
 
+import play.db.jpa.Blob;
 import play.db.jpa.GenericModel;
+
+import play.data.validation.Email;
 
 @Inheritance
 @DiscriminatorOptions(force=true)
@@ -20,19 +16,16 @@ import play.db.jpa.GenericModel;
 public abstract class User extends GenericModel {
 	
 	@Id
-    public String pseudo;
+    private String pseudo;
 	
 	@Column(nullable=false)
-	@MaxSize(value=255, message = "email.maxsize")
-    @play.data.validation.Email
-    public String mail;	
+    @Email
+    private String mail;
     
-    public /*Blob*/ String avatar;
-    
-    
-    
-    
-    /* ** Setters / Getters ** */
+    private Blob avatar;
+
+
+    /* *** Getters / Setters *** */
 
 	public String getMail() {
 		return mail;
@@ -42,11 +35,11 @@ public abstract class User extends GenericModel {
 		this.mail = mail;
 	}
 
-	public String getAvatar() {
+	public Blob getAvatar() {
 		return avatar;
 	}
 
-	public void setAvatar(String avatar) {
+	public void setAvatar(Blob avatar) {
 		this.avatar = avatar;
 	}
 
@@ -57,7 +50,4 @@ public abstract class User extends GenericModel {
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
-	
-	
-    
 }

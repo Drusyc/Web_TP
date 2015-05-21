@@ -2,44 +2,41 @@ package models;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
-import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
 public class Request extends Model {
+
 	public enum Status {
 		OK,
 		NOK,
 		IN_PROGRESS;
 	}
 	
-	
 	@Column(nullable=false)
 	private Date date;
-	
-	@Required
+
 	@Column(nullable=false)
 	private String game;
-	
-	private Configuration.OS OS;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable=false)
 	private Status status = Status.IN_PROGRESS;
-	
+
+
 	/* *** Relationships *** */
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="OS")
+    private OS OS;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="requester")
 	private Gamer requester;
-	
+
+
 	/* *** Getters / Setters *** */
 
 	public String getGame() {
@@ -50,12 +47,11 @@ public class Request extends Model {
 		this.game = game;
 	}
 
-	
-	public Configuration.OS getOS() {
+	public OS getOS() {
 		return OS;
 	}
 
-	public void setOS(Configuration.OS OS) {
+	public void setOS(OS OS) {
 		this.OS = OS;
 	}
 
@@ -82,5 +78,4 @@ public class Request extends Model {
 	public void setRequester(Gamer requester) {
 		this.requester = requester;
 	}
-	
 }

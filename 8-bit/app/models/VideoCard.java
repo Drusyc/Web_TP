@@ -2,7 +2,6 @@ package models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import play.db.jpa.GenericModel;
 
@@ -20,12 +19,8 @@ public class VideoCard extends GenericModel {
 	
 	private String versionDirectX;
 
-	/* *** Relationships *** */
-//	
-//	@OneToMany(mappedBy="videoCard")
-//	private Configuration configuration;	
-//	
-	/* ** Setters / Getters ** */	
+
+	/* *** Getters / Setters *** */
 	
 	public String getName() {
 		return name;
@@ -66,10 +61,4 @@ public class VideoCard extends GenericModel {
 	public void setVersionDirectX(String versionDirectX) {
 		this.versionDirectX = versionDirectX;
 	}
-	
-	
-	
-	
-	
-	
 }

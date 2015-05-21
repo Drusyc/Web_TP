@@ -1,65 +1,51 @@
 package models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import play.db.jpa.Model;
 
-@Entity
-public class Configuration extends Model{
-	public enum OS {
-		Win7("Windows 7"),
-		Win8("Windows 8"),
-		Linux("Linux"),
-		Mac("Macintosh");
-		
-		private final String text;
-		
-		private OS(final String txt) {
-			this.text = txt;
-		}
-		
-		@Override
-		public String toString(){
-			return text;			
-		}
-	}
+import javax.persistence.*;
+import java.util.Set;
 
-	@Enumerated(EnumType.STRING)
-	private OS operatingSystem;
-	
+@Entity
+public class Configuration extends Model {
+
 	private Integer freeDiskSpace;
-	
+
 	private Integer RAM;
 	
 	
 	/* *** Relationships *** */
-	
-	@ManyToOne
-	@JoinColumn(name="processor")
-	private Processor processor;
-	
-	@ManyToOne
-	@JoinColumn(name="videoCard")
-	private VideoCard videoCard;
-	
-	@OneToOne(mappedBy="configuration",cascade=CascadeType.ALL)
-	private Game game;
+
+    @ManyToMany
+    @JoinTable(
+            name="Configuration_OS",
+            joinColumns={@JoinColumn(name="configuration_id", referencedColumnName="id")},
+            inverseJoinColumns={@JoinColumn(name="OS_id", referencedColumnName="id")})
+    private Set<OS> operatingSystems;
+
+    @ManyToMany
+    @JoinTable(
+            name="Configuration_processors",
+            joinColumns={@JoinColumn(name="configuration_id", referencedColumnName="id")},
+            inverseJoinColumns={@JoinColumn(name="processor_name", referencedColumnName="name")})
+	private Set<Processor> processors;
+
+	@ManyToMany
+    @JoinTable(
+            name="Configuration_video_cards",
+            joinColumns={@JoinColumn(name="configuration_id", referencedColumnName="id")},
+            inverseJoinColumns={@JoinColumn(name="video_card_name", referencedColumnName="name")})
+	private Set<VideoCard> videoCards;
 	
 	
 	/* *** Getters / Setters *** */
 	
-	public OS getOperatingSystem() {
-		return operatingSystem;
+	public Set<OS> getOperatingSystems() {
+		return operatingSystems;
 	}
 
-	public void setOperatingSystem(OS operatingSystem) {
-		this.operatingSystem = operatingSystem;
+	public void setOperatingSystems(Set<OS> operatingSystems) {
+		this.operatingSystems = operatingSystems;
 	}
 
 	public Integer getFreeDiskSpace() {
@@ -78,31 +64,19 @@ public class Configuration extends Model{
 		this.RAM = RAM;
 	}
 
-	public Processor getProcessor() {
-		return processor;
+	public Set<Processor> getProcessors() {
+		return processors;
 	}
 
-	public void setProcessor(Processor processor) {
-		this.processor = processor;
+	public void setProcessors(Set<Processor> processors) {
+		this.processors = processors;
 	}
 
-	public VideoCard getVideoCard() {
-		return videoCard;
+	public Set<VideoCard> getVideoCards() {
+		return videoCards;
 	}
 
-	public void setVideoCard(VideoCard videoCard) {
-		this.videoCard = videoCard;
+	public void setVideoCards(Set<VideoCard> videoCards) {
+		this.videoCards = videoCards;
 	}
-
-	public Game getGame() {
-		return game;
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
-	}
-	
-	
-	
-	
 }

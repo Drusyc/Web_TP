@@ -1,19 +1,13 @@
 package models;
 
+import java.sql.Date;
+import java.util.Map;
 import java.util.Set;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
-import play.data.validation.Required;
+import play.db.jpa.Blob;
 import play.db.jpa.GenericModel;
+
+import javax.persistence.*;
 
 @Entity
 public class Game extends GenericModel {
@@ -21,15 +15,35 @@ public class Game extends GenericModel {
 	@Id
     private String name;
 
-	@Required
-	@ElementCollection(targetClass=Genre.class)
-	@Enumerated(EnumType.STRING)
-	@CollectionTable(name="Game_Genre")
-	private Set<Genre> Genres;
-	
+    @ElementCollection
+    @CollectionTable(joinColumns=@JoinColumn(name="game_name"))
+    @Column(name="developer")
+    private Set<String> developers;
+
+    @ElementCollection
+    @CollectionTable(joinColumns=@JoinColumn(name="game_name"))
+    @Column(name="mode")
+    private Set<String> modes;
+
+    @ElementCollection
+    @MapKeyColumn(name="country")
+    @CollectionTable(joinColumns=@JoinColumn(name="game_name"))
+    @Column(name="date")
+    private Map<String, Date> releaseDates;
+
+    private Blob photo;
+
+
 	/* *** Relationships *** */
-	
-	@ManyToOne
+
+    @ManyToMany
+    @JoinTable(
+            name="Game_genres",
+            joinColumns={@JoinColumn(name="game_name", referencedColumnName="name")},
+            inverseJoinColumns={@JoinColumn(name="genre_name", referencedColumnName="name")})
+    private Set<Genre> genres;
+
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="provider")
 	private Provider provider;
 	
@@ -37,7 +51,8 @@ public class Game extends GenericModel {
 	@JoinColumn(name="configuration")
 	private Configuration configuration;
 
-	/* ** Setters / Getters ** */
+
+	/* *** Getters / Setters *** */
 	
 	public String getName() {
 		return name;
@@ -48,11 +63,11 @@ public class Game extends GenericModel {
 	}
 
 	public Set<Genre> getGenres() {
-		return Genres;
+		return genres;
 	}
 
 	public void setGenres(Set<Genre> genres) {
-		Genres = genres;
+		this.genres = genres;
 	}
 
 	public Provider getProvider() {
@@ -70,6 +85,36 @@ public class Game extends GenericModel {
 	public void setConfiguration(Configuration configuration) {
 		this.configuration = configuration;
 	}
-	
-	
+
+    public Set<String> getDevelopers() {
+        return developers;
+    }
+
+    public void setDevelopers(Set<String> developers) {
+        this.developers = developers;
+    }
+
+    public Set<String> getModes() {
+        return modes;
+    }
+
+    public void setModes(Set<String> modes) {
+        this.modes = modes;
+    }
+
+    public Map<String, Date> getReleaseDates() {
+        return releaseDates;
+    }
+
+    public void setReleaseDates(Map<String, Date> releaseDates) {
+        this.releaseDates = releaseDates;
+    }
+
+    public Blob getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Blob photo) {
+        this.photo = photo;
+    }
 }

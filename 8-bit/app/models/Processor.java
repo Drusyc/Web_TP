@@ -9,17 +9,16 @@ import play.db.jpa.GenericModel;
 public class Processor extends GenericModel{
 
 	@Id
-	public String name;
+	private String name;
 	
-	public String manufacturer;
+	private String manufacturer;
 	
-	public Double speed;
+	private Double speed;
 	
-	public Integer cores;
-	
-	
-	
-	
+	private Integer cores;
+
+
+    /* *** Getters / Setters *** */
 
 	public String getName() {
 		return name;

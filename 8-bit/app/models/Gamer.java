@@ -2,46 +2,44 @@ package models;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue("gamer")
 public class Gamer extends User {
 
-	
-	@ElementCollection(targetClass=Genre.class)
-	@Enumerated(EnumType.STRING)
-	@CollectionTable(name="Gamer_Genre")
-	private Set<Genre> preferredGenres;
-
 	/* *** Relationships *** */
 
-	@ElementCollection(targetClass=Configuration.class)
-	@CollectionTable(name="Gamer_Configuration")
+    @ManyToMany
+    @JoinTable(
+            name="Gamer_genres",
+            joinColumns={@JoinColumn(name="gamer_pseudo", referencedColumnName="pseudo")},
+            inverseJoinColumns={@JoinColumn(name="genre_name", referencedColumnName="name")})
+    private Set<Genre> preferredGenres;
+
+	@OneToMany
+    @JoinTable(
+            name="Gamer_configurations",
+            joinColumns={@JoinColumn(name="gamer_pseudo", referencedColumnName="pseudo")},
+            inverseJoinColumns={@JoinColumn(name="configuration_id", referencedColumnName="id")})
 	private Set<Configuration> configurations;
-	
-	/* ** Setters / Getters ** */
+
+
+	/* *** Getters / Setters *** */
 	
 	public Set<Genre> getPreferredGenres() {
 		return preferredGenres;
 	}
 
-	public String getPseudo() {
-		return pseudo;
-	}
-
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
-
 	public void setPreferredGenres(Set<Genre> preferredGenres) {
 		this.preferredGenres = preferredGenres;
 	}
+
+    public Set<Configuration> getConfigurations() {
+        return configurations;
+    }
+
+    public void setConfigurations(Set<Configuration> configurations) {
+        this.configurations = configurations;
+    }
 }
