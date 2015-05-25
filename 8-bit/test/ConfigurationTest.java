@@ -11,7 +11,7 @@ import org.junit.Test;
 import play.test.UnitTest;
 
 
-public class CongifurationTest extends UnitTest {
+public class ConfigurationTest extends UnitTest {
 
 	/*
 	 * Création de confs 

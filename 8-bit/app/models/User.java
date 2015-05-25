@@ -24,15 +24,16 @@ public abstract class User extends GenericModel {
     
     private Blob avatar;
     
-    /* *** Construtor *** */
+    /* *** Constructor *** */
     
     public User () {
     	super();
     }
     
-	public User(String pseudo, String mail, Blob avatar) {
+	public User(String pseudo, String password, String mail, Blob avatar) {
 		super();
 		this.pseudo = pseudo;
+        this.password = password;
 		this.mail = mail;
 		this.avatar = avatar;
 	}

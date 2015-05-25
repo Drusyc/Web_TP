@@ -35,7 +35,10 @@ public class Gamer extends User {
 	}
 
     public Gamer(String pseudo, String mail, Blob avatar) {
-		super(pseudo, mail, avatar);
+		super();
+        setPseudo(pseudo);
+        setMail(mail);
+        setAvatar(avatar);
 	}
 
 	/* *** Getters / Setters *** */

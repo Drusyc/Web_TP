@@ -24,7 +24,10 @@ public class Provider extends User {
 	}
 	
 	public Provider(String pseudo, String mail, Blob avatar) {
-		super(pseudo, mail, avatar);
+		super();
+        setPseudo(pseudo);
+        setMail(mail);
+        setAvatar(avatar);
 	}
 
 	public Provider(Set<Game> games) {
