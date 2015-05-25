@@ -16,9 +16,10 @@ public abstract class User extends GenericModel {
 	
 	@Id
     private String pseudo;
+
+    private String password;
 	
 	@Column(nullable=false)
-    @Email
     private String mail;
     
     private Blob avatar;
@@ -62,4 +63,12 @@ public abstract class User extends GenericModel {
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

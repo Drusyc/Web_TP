@@ -15,25 +15,25 @@
         <meta name="theme-color" content="#ffffff">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
+        <script src="@{'/public/javascripts/jquery-1.11.3.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{get 'moreScripts' /}
     </head>
     <body>
         <header>
             <a href="/"><img src="@{'/public/images/logo.png'}" class="logo" alt="8-bit"/></a>
             <nav>
                 <ul class="toolbar-list">
-                    <li class="toolbar-item btn conf-icon"><a href="/details"><span>Configuration système</span></a></li>
+                    <li class="toolbar-item btn conf-icon"><a href="/configuration"><span>Configuration système</span></a></li>
                     <li class="toolbar-item btn search-icon"><a href="/search"><span>Rechercher un jeu</span></a></li>
-                    <li class="toolbar-item btn gamepad-icon"><a href="/suggestions"><span>Suggestions de jeux</span></a>
-                    </li>
+                    <li class="toolbar-item btn gamepad-icon"><a href="/suggestions"><span>Suggestions de jeux</span></a></li>
                 </ul>
             </nav>
             <div class="login-box">
-            #{form @Sessions.login()}
-                <input type="text" name="username" class="text-input login-input" placeholder="Nom d'utilisateur"
-                       autofocus/>
-                <input type="password" name="password" class="text-input login-input" placeholder="Mot de passe"/>
-                <button type="submit" class="btn login-btn">Connexion</button>
-            #{/form}
+	            #{form @Secure.authenticate()}
+	                <input type="text" name="username" class="text-input login-input" placeholder="Nom d'utilisateur" autofocus/>
+	                <input type="password" name="password" class="text-input login-input" placeholder="Mot de passe"/>
+                    <button type="submit" class="btn login-btn">Connexion</button>
+	            #{/form}
             </div>
         </header>
         #{doLayout /}
@@ -46,7 +46,5 @@
                 <li class="footer-item"><a href="/contact">Contact</a></li>
             </ul>
         </footer>
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
-        #{get 'moreScripts' /}
     </body>
 </html>

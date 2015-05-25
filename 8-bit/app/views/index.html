@@ -8,14 +8,14 @@
             mieux. Et partagez votre expérience avec d'autres gamers.</p>
     </div>
     <section class="recent-games">
-        <h2 class="title">Jeux récents</h2>
+        <h2>Jeux récents</h2>
         <article>Jeu 1</article>
         <article>Jeu 2</article>
         <article>...</article>
     </section>
     <div class="signup-box">
         <h2>Pas encore inscrit ?</h2>
-        #{form @Application.signup()}
+        #{form @Signup.show()}
             <input type="text" name="username" class="text-input signup-input" placeholder="Nom d'utilisateur"/>
             <input type="password" name="password" class="text-input signup-input" placeholder="Mot de passe"/>
             <button type="submit" class="btn signup-btn">S'inscrire</button>

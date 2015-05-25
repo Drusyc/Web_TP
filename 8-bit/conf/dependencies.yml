@@ -2,3 +2,4 @@
 
 require:
     - play
+    - org.im4java -> im4java 1.4.0

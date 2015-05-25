@@ -35,8 +35,10 @@ a:hover, a:focus, a:active {
 header {
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1;
-    width: 100%;
+    overflow: hidden;
     height: 35px;
     background: #FFFFFF;
     -webkit-border-image: -webkit-linear-gradient(right, #C72C48, #D43A57) 1 100%;
@@ -47,7 +49,8 @@ header {
 }
 
 main {
-    width: 100%;
+    margin-left: 120px;
+    margin-right: 80px;
     padding: 50px 0;
     display: block;
 }
@@ -194,9 +197,8 @@ main {
 }
 
 .welcome-box {
-    margin-left: 120px;
     height: 350px;
-    width: 35%;
+    width: 370px;
     font-size: 16px;
     line-height: 40px;
     padding: 20px;
@@ -205,11 +207,11 @@ main {
 
 .recent-games {
     float: right;
-    width: 35%;
-    margin-right: 80px;
+    width: 370px;
+    height: 350px;
 }
 
-.title {
+.recent-games h2 {
     border-bottom: 2px solid #FFFFFF;
     line-height: 35px;
     text-align: center;
@@ -217,7 +219,6 @@ main {
 
 .signup-box {
     clear: both;
-    margin-left: 120px;
 }
 
 .signup-input:focus {
