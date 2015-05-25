@@ -39,7 +39,8 @@ public class GamerTest extends UnitTest {
     	
     	Gamer jfound = Gamer.findById(id);
     	
-    	assertNotNull(jfound);    	
+    	assertNotNull(jfound);
+    	ga.delete();
    	}
 	
 	/*
@@ -94,6 +95,8 @@ public class GamerTest extends UnitTest {
 		found = Gamer.findById(ga.getPseudo());
 		assertEquals(ga.getMail(), found.getMail());
 		assertEquals(ga, found);
+		
+		ga.delete();
 	}
 	
 	/*

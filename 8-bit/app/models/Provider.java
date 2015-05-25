@@ -27,6 +27,12 @@ public class Provider extends User {
 		super(pseudo, mail, avatar);
 	}
 
+	public Provider(Set<Game> games) {
+		super();
+		this.games = games;
+	}
+	
+
     /* *** Getters / Setters *** */
 
 	public Set<Game> getGames() {

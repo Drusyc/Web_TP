@@ -15,6 +15,8 @@ public class Game extends GenericModel {
 	@Id
     private String name;
 
+	private Blob photo;
+	
     @ElementCollection
     @CollectionTable(joinColumns=@JoinColumn(name="game_name"))
     @Column(name="developer")
@@ -30,12 +32,47 @@ public class Game extends GenericModel {
     @CollectionTable(joinColumns=@JoinColumn(name="game_name"))
     @Column(name="date")
     private Map<String, Date> releaseDates;
+    
+    /* *** Constructors *** */
+    
 
-    private Blob photo;
+	public Game() {
+		super();
+	}
+    
+	public Game(String name, Blob photo) {
+		super();
+		this.name = name;
+		this.photo = photo;
+	}
+	
+	public Game(String name, Blob photo, Set<String> developers,
+			Set<String> modes, Map<String, Date> releaseDates) {
+		super();
+		this.name = name;
+		this.photo = photo;
+		this.developers = developers;
+		this.modes = modes;
+		this.releaseDates = releaseDates;
+	}
+
+	public Game(String name, Set<String> developers, Set<String> modes,
+			Map<String, Date> releaseDates, Blob photo, Set<Genre> genres,
+			Provider provider, Configuration configuration) {
+		super();
+		this.name = name;
+		this.developers = developers;
+		this.modes = modes;
+		this.releaseDates = releaseDates;
+		this.photo = photo;
+		this.genres = genres;
+		this.provider = provider;
+		this.configuration = configuration;
+	}
 
 
 	/* *** Relationships *** */
-
+    
     @ManyToMany
     @JoinTable(
             name="Game_genres",

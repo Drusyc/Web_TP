@@ -25,6 +25,7 @@ public class RequestTest extends UnitTest {
 		Request found = Request.findById(r1.getId());
 		assertNotNull(found);
 		assertEquals(r1, found);
+		r1.delete();
 	}
 	
 	/*
@@ -67,6 +68,7 @@ public class RequestTest extends UnitTest {
 		
 		found = Request.findById(r1.getId());
 		assertEquals(r1.getGame(), found.getGame());
+		r1.delete();
 	}
 	
 	
