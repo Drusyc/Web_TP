@@ -6,15 +6,26 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import play.db.jpa.Blob;
+
 @Entity
 @DiscriminatorValue("provider")
 public class Provider extends User {
 
 	/* *** Relationships *** */
-	
+
 	@OneToMany(mappedBy="provider")
 	private Set<Game> games;
 
+	/* *** Construtors *** */
+	
+	public Provider() {
+		super();
+	}
+	
+	public Provider(String pseudo, String mail, Blob avatar) {
+		super(pseudo, mail, avatar);
+	}
 
     /* *** Getters / Setters *** */
 

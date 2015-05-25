@@ -13,12 +13,28 @@ public class Processor extends GenericModel{
 	
 	private String manufacturer;
 	
+	/* Exprimée en GigaHertz */
 	private Double speed;
 	
 	private Integer cores;
+	
+	
+	/* *** Constructors *** */ 
 
+    public Processor() {
+		super();
+	}
 
-    /* *** Getters / Setters *** */
+	public Processor(String name, String manufacturer, Double speed,
+			Integer cores) {
+		super();
+		this.name = name;
+		this.manufacturer = manufacturer;
+		this.speed = speed;
+		this.cores = cores;
+	}
+
+	/* *** Getters / Setters *** */
 
 	public String getName() {
 		return name;

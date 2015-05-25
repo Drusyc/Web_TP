@@ -25,13 +25,36 @@ public class Request extends Model {
 	@Column(nullable=false)
 	private Status status = Status.IN_PROGRESS;
 
+	
+	/* *** Constructors *** */
+	
+	public Request() {
+		super();
+	}
+
+	public Request(Date date, String game, Status status) {
+		super();
+		this.date = date;
+		this.game = game;
+		this.status = status;
+	}
+
+	public Request(Date date, String game, Status status, models.OS oS,
+			Gamer requester) {
+		super();
+		this.date = date;
+		this.game = game;
+		this.status = status;
+		OS = oS;
+		this.requester = requester;
+	}	
 
 	/* *** Relationships *** */
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="OS")
     private OS OS;
-	
+
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="requester")
 	private Gamer requester;

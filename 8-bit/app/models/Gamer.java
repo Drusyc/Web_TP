@@ -4,13 +4,16 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import play.db.jpa.Blob;
+
 @Entity
 @DiscriminatorValue("gamer")
 public class Gamer extends User {
 
 	/* *** Relationships *** */
 
-    @ManyToMany
+
+	@ManyToMany
     @JoinTable(
             name="Gamer_genres",
             joinColumns={@JoinColumn(name="gamer_pseudo", referencedColumnName="pseudo")},
@@ -24,6 +27,16 @@ public class Gamer extends User {
             inverseJoinColumns={@JoinColumn(name="configuration_id", referencedColumnName="id")})
 	private Set<Configuration> configurations;
 
+	
+	/* *** Construtor *** */
+	
+	public Gamer() {
+		super();
+	}
+
+    public Gamer(String pseudo, String mail, Blob avatar) {
+		super(pseudo, mail, avatar);
+	}
 
 	/* *** Getters / Setters *** */
 	

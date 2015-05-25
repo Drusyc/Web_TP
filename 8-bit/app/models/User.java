@@ -6,7 +6,6 @@ import org.hibernate.annotations.DiscriminatorOptions;
 
 import play.db.jpa.Blob;
 import play.db.jpa.GenericModel;
-
 import play.data.validation.Email;
 
 @Inheritance
@@ -23,9 +22,22 @@ public abstract class User extends GenericModel {
     private String mail;
     
     private Blob avatar;
-
+    
+    /* *** Construtor *** */
+    
+    public User () {
+    	super();
+    }
+    
+	public User(String pseudo, String mail, Blob avatar) {
+		super();
+		this.pseudo = pseudo;
+		this.mail = mail;
+		this.avatar = avatar;
+	}
 
     /* *** Getters / Setters *** */
+
 
 	public String getMail() {
 		return mail;

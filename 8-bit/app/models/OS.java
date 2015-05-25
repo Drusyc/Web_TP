@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import play.db.jpa.Model;
 
 @Entity
@@ -10,10 +11,22 @@ public class OS extends Model {
     @Column(nullable=false)
     private String name;
 
-    private Float version;
+    private Double version;
+    
+    
+    /* *** Constructors *** */
+    
+    public OS() {
+		super();
+	}
 
+	public OS(String name, Double version) {
+		super();
+		this.name = name;
+		this.version = version;
+	}
 
-    /* *** Getters / Setters *** */
+	/* *** Getters / Setters *** */
 
     public String getName() {
         return name;
@@ -23,11 +36,11 @@ public class OS extends Model {
         this.name = name;
     }
 
-    public Float getVersion() {
+    public Double getVersion() {
         return version;
     }
 
-    public void setVersion(Float version) {
+    public void setVersion(Double version) {
         this.version = version;
     }
 }

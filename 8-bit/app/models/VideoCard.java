@@ -15,10 +15,27 @@ public class VideoCard extends GenericModel {
 	
 	private String manufacturer;
 	
-	private Integer memory;
+	/* Exprimée en MegaHertz */
+	private Double speedMemory;
 	
 	private String versionDirectX;
+	
+	
+	/* *** Construtors *** */
 
+	public VideoCard() {
+		super();
+	}
+
+	public VideoCard(String name, String chipset, String manufacturer,
+			Double memory, String versionDirectX) {
+		super();
+		this.name = name;
+		this.chipset = chipset;
+		this.manufacturer = manufacturer;
+		this.speedMemory = memory;
+		this.versionDirectX = versionDirectX;
+	}
 
 	/* *** Getters / Setters *** */
 	
@@ -46,12 +63,12 @@ public class VideoCard extends GenericModel {
 		this.manufacturer = manufacturer;
 	}
 
-	public Integer getMemory() {
-		return memory;
+	public Double getMemory() {
+		return speedMemory;
 	}
 
-	public void setMemory(Integer memory) {
-		this.memory = memory;
+	public void setMemory(Double memory) {
+		this.speedMemory = memory;
 	}
 
 	public String getVersionDirectX() {

@@ -4,16 +4,42 @@ package models;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
+
 import java.util.Set;
 
 @Entity
 public class Configuration extends Model {
 
+	/* Exprimée en GigaOctets*/
 	private Integer freeDiskSpace;
 
+	/* Exprimée en MegaOctets */
 	private Integer RAM;
 	
 	
+	/* *** Constructors *** */	
+	
+	public Configuration() {
+		super();
+	}
+
+	public Configuration(Integer freeDiskSpace, Integer rAM) {
+		super();
+		this.freeDiskSpace = freeDiskSpace;
+		RAM = rAM;
+	}
+
+	public Configuration(Integer freeDiskSpace, Integer rAM,
+			Set<OS> operatingSystems, Set<Processor> processors,
+			Set<VideoCard> videoCards) {
+		super();
+		this.freeDiskSpace = freeDiskSpace;
+		RAM = rAM;
+		this.operatingSystems = operatingSystems;
+		this.processors = processors;
+		this.videoCards = videoCards;
+	}
+
 	/* *** Relationships *** */
 
     @ManyToMany
