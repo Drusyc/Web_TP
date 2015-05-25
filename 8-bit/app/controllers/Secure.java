@@ -1,5 +1,9 @@
 package controllers;
 
+import models.Gamer;
+import models.Provider;
+import models.User;
+import play.Logger;
 import play.Play;
 import play.data.validation.Required;
 import play.libs.Crypto;
@@ -8,6 +12,8 @@ import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.utils.Java;
+import utils.BCrypt;
+import validators.Check;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
@@ -139,7 +145,8 @@ public class Secure extends Controller {
          * @return true if the authentication process succeeded
          */
         static boolean authenticate(String username, String password) {
-            return true;
+            User user = User.findById(username);
+            return user != null && BCrypt.checkpw(password, user.getPassword());
         }
 
         /**
@@ -150,7 +157,14 @@ public class Secure extends Controller {
          * @return true if you are allowed to execute this controller method.
          */
         static boolean check(String profile) {
-            return true;
+            User user = User.findById(connected());
+            if ("gamer".equals(profile)) {
+                return user instanceof Gamer;
+            } else if ("provider".equals(profile)) {
+                return user instanceof Provider;
+            } else {
+                return false;
+            }
         }
 
         /**
@@ -174,6 +188,7 @@ public class Secure extends Controller {
          * You need to override this method if you with to perform specific actions (eg. Record the time the user signed in)
          */
         static void onAuthenticated() {
+            Logger.info("User " + connected() + " logged in.");
         }
 
          /**
@@ -181,6 +196,7 @@ public class Secure extends Controller {
          * You need to override this method if you wish to perform specific actions (eg. Record the name of the user who signed off)
          */
         static void onDisconnect() {
+            Logger.info("User " + connected() + " logging out.");
         }
 
          /**

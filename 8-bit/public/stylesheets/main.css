@@ -35,8 +35,10 @@ a:hover, a:focus, a:active {
 header {
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1;
-    width: 100%;
+    overflow: hidden;
     height: 35px;
     background: #FFFFFF;
     -webkit-border-image: -webkit-linear-gradient(right, #C72C48, #D43A57) 1 100%;
