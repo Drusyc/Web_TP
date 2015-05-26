@@ -24,8 +24,8 @@ public class Signup extends Controller {
     private static final String ERROR_CREATING_ACCOUNT = "errorCreatingAccount";
     private static final String ACCOUNT_CREATED = "accountCreated";
 
-    private static final int THUMB_WIDTH = 48;
-    private static final int THUMB_HEIGHT = 48;
+    private static final int THUMB_WIDTH = 35;
+    private static final int THUMB_HEIGHT = 35;
 
     public static void show() {
         renderTemplate("signup.html");
@@ -41,10 +41,18 @@ public class Signup extends Controller {
      */
     public static void createAccount(@Required(message = "requiredPseudo") String pseudo,
                                      @Required @Email(message = "invalidEmail") String email,
-                                     @Required @Min(value = 8, message = "invalidPassword") String password,
+                                     @Required @MinSize(value = 8, message = "invalidPassword") String password,
                                      @Required @Equals(message = "passwordsMustMatch", value = "password") String password2,
                                      @CheckWith(AvatarCheck.class) Blob avatar) {
+        Logger.debug("Signup::createAccount\n"
+                + "-- pseudo: " + pseudo + "\n"
+                + "-- email: " + email + "\n"
+                + "-- password: " + password + "\n"
+                + "-- password2: " + password2 + "\n"
+                + "-- avatar: " + avatar);
+
         if (validation.hasErrors()) {
+            Logger.debug("Signup::createAccount - Validation errors: " + validation.errorsMap());
             tryAgain(pseudo, email);
         }
 
@@ -52,7 +60,8 @@ public class Signup extends Controller {
         User user = new Gamer();
         user.setPseudo(pseudo);
 
-        if (User.find(pseudo) != null) {
+        if (User.findById(pseudo) != null) {
+            Logger.debug("Signup::createAccount - Pseudo taken");
             validation.addError(PSEUDO, Messages.get(PSEUDO_TAKEN));
             tryAgain(pseudo, email);
         }
@@ -62,18 +71,20 @@ public class Signup extends Controller {
         user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
 
         // Resize and set avatar
-        toThumb(avatar.getFile());
-        user.setAvatar(avatar);
+        if (avatar != null) {
+            toThumb(avatar.getFile());
+            user.setAvatar(avatar);
+        }
 
         try {
             user.save();
         } catch (Throwable e) {
-            Logger.error("Error while invoking user.save()");
+            Logger.error("Signup::createAccount - Error while invoking user.save()");
             flash.error(Messages.get(ERROR_CREATING_ACCOUNT));
             tryAgain(pseudo, email);
         }
 
-        Logger.info("User " + pseudo + " created.");
+        Logger.info("Signup::createAccount - User " + pseudo + " created.");
         flash.success(Messages.get(ACCOUNT_CREATED));
         show();
     }

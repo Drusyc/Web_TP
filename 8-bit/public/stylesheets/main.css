@@ -55,6 +55,30 @@ main {
     display: block;
 }
 
+/* Input styles */
+.text-input {
+    margin: 5px 2px;
+    padding: 5px 10px;
+    outline: none;
+    border: thin solid #DCDCDC;
+}
+
+input[type=file] {
+    display: none;
+}
+
+/* Button styles */
+.btn {
+    cursor: pointer;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+/* Logo */
 .logo {
     width: 70px;
     height: 35px;
@@ -68,6 +92,7 @@ main {
     opacity: 0.9;
 }
 
+/* Toolbar */
 .toolbar-list {
     margin: 0;
     padding: 0;
@@ -149,11 +174,11 @@ main {
     content: url('/public/images/icons/gamepad.png');
 }
 
-.text-input {
-    margin: 5px 2px;
-    padding: 5px 10px;
-    outline: none;
-    border: thin solid #DCDCDC;
+/* Login box */
+.login-box {
+    line-height: 35px;
+    margin: 0 10px;
+    float: right;
 }
 
 .login-input:focus {
@@ -161,22 +186,6 @@ main {
     -webkit-box-shadow: 0 0 5px 1px #C72C48;
     -moz-box-shadow: 0 0 5px 1px #C72C48;
     box-shadow: 0 0 5px 1px #C72C48;
-}
-
-.btn {
-    cursor: pointer;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-.login-box {
-    line-height: 35px;
-    margin: 0 10px;
-    float: right;
 }
 
 .login-btn {
@@ -196,8 +205,8 @@ main {
     background: #D43A57;
 }
 
+/* Welcome box */
 .welcome-box {
-    height: 350px;
     width: 370px;
     font-size: 16px;
     line-height: 40px;
@@ -205,6 +214,7 @@ main {
     float: left;
 }
 
+/* Recent games section */
 .recent-games {
     float: right;
     width: 370px;
@@ -217,8 +227,21 @@ main {
     text-align: center;
 }
 
+/* Sign-up form */
 .signup-box {
     clear: both;
+}
+
+.signup-form {
+    width: 356px;
+}
+
+.signup-input {
+    background: rgba(0, 0, 0, 0.4);
+    width: 300px;
+    display: block;
+    height: 25px;
+    color: #FFFFFF;
 }
 
 .signup-input:focus {
@@ -228,26 +251,50 @@ main {
     box-shadow: 0 0 5px 1px #9683EC;
 }
 
+.user-icon {
+    background-image: url('/public/images/icons/user.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 20px 20px;
+    padding-left: 40px;
+}
+
+.mail-icon {
+    background-image: url('/public/images/icons/mail.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 20px 20px;
+    padding-left: 40px;
+
+}
+
+.pwd-icon {
+    background-image: url('/public/images/icons/password.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 20px 20px;
+    padding-left: 40px;
+
+}
+
 .signup-btn {
+    height: 35px;
     border: none;
     outline: none;
-    margin: 5px 2px;
     padding: 5px 10px;
     font-weight: 500;
     background: #6050DC;
     font-size: 11px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
 }
 
 .signup-btn:hover {
     background: #9683EC;
 }
 
+/* Footer */
 footer {
     position: fixed;
-    z-index: 1;
+    z-index: -1;
     right: 10px;
     bottom: 10px;
     font-size: 11px;

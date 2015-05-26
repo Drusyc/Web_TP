@@ -26,7 +26,7 @@ public class Genre extends GenericModel {
     @ManyToMany(mappedBy="genres")
     private Set<Game> games;
     
-    /* *** Construtors *** */
+    /* *** Constructors *** */
     
     public Genre() {
 		super();

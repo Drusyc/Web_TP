@@ -1,5 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'S\'inscrire sur 8-bit' /}
 <main>
-    <h1>S'inscrire sur 8-bit</h1>
+	<h1>S'inscrire sur 8-bit</h1>
+	#{form @Signup.createAccount(), enctype:'multipart/form-data', class:'signup-form'}
+		<input type="text" id="pseudo" name="pseudo" class="text-input signup-input user-icon" placeholder="Pseudo *" autocomplete="off" autofocus/>
+		<input type="text" id="email" name="email" class="text-input signup-input mail-icon" placeholder="Email *" autocomplete="off"/>
+		<input type="password" id="password" name="password" class="text-input signup-input pwd-icon" placeholder="Mot de passe *"/>
+		<input type="password" id="password2" name="password2" class="text-input signup-input pwd-icon" placeholder="Confirmez votre mot de passe *"/>
+		<button type="submit" class="btn signup-btn">S'inscrire</button>
+	#{/form}
 </main>

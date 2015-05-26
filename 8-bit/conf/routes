@@ -11,11 +11,11 @@ GET     /contact                                Contact.show
 GET     /privacy                                Privacy.show
 GET     /search                                 Search.show
 POST    /signup                                 Signup.show
+GET     /signup                                 Secure.login
 GET     /suggestions                            Suggestions.show
 
 # Secure routes
 POST    /authenticate                           Secure.authenticate
-GET     /login                                  Secure.login
 GET     /logout                                 Secure.logout
 
 # Ignore favicon requests

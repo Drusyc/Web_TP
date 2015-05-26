@@ -24,7 +24,7 @@ public abstract class User extends GenericModel {
     
     private Blob avatar;
     
-    /* *** Constructor *** */
+    /* *** Constructors *** */
     
     public User () {
     	super();

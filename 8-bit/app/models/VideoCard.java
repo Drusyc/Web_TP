@@ -21,7 +21,7 @@ public class VideoCard extends GenericModel {
 	private String versionDirectX;
 	
 	
-	/* *** Construtors *** */
+	/* *** Constructors *** */
 
 	public VideoCard() {
 		super();

@@ -17,17 +17,14 @@ public class Provider extends User {
 	@OneToMany(mappedBy="provider")
 	private Set<Game> games;
 
-	/* *** Construtors *** */
+	/* *** Constructors *** */
 	
 	public Provider() {
 		super();
 	}
 	
-	public Provider(String pseudo, String mail, Blob avatar) {
-		super();
-        setPseudo(pseudo);
-        setMail(mail);
-        setAvatar(avatar);
+	public Provider(String pseudo, String password, String mail, Blob avatar) {
+		super(pseudo, password, mail, avatar);
 	}
 
 	public Provider(Set<Game> games) {

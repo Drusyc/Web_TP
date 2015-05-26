@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import play.Logger;
 import play.data.validation.Check;
 import play.db.jpa.Blob;
 
@@ -19,6 +20,9 @@ public class AvatarCheck extends Check {
         // Customized validation message
         setMessage("invalidAvatar");
 
+        if (image == null)
+            return true; // Avatar is optional
+
         if (!(image instanceof Blob)) {
             return false;
         }
@@ -27,11 +31,13 @@ public class AvatarCheck extends Check {
 
         // Type check (must be JPEG or PNG)
         if (!avatar.type().equals("image/jpeg") && !avatar.type().equals("image/png")) {
+            Logger.debug("AvatarCheck::isSatisfied - Wrong type");
             return false;
         }
 
         // Size check
         if (avatar.getFile().length() > MAX_SIZE) {
+            Logger.debug("AvatarCheck::isSatisfied - Wrong size");
             return false;
         }
 
@@ -42,9 +48,11 @@ public class AvatarCheck extends Check {
             int height = source.getHeight();
 
             if (width > MAX_WIDTH || height > MAX_HEIGHT) {
+                Logger.debug("AvatarCheck::isSatisfied - Wrong dimensions");
                 return false;
             }
         } catch (IOException e) {
+            Logger.debug("AvatarCheck::isSatisfied - Cannot read avatar");
             return false;
         }
 

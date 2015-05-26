@@ -108,7 +108,7 @@ public class Secure extends Controller {
         session.clear();
         response.removeCookie("rememberme");
         Security.invoke("onDisconnected");
-        login();
+        renderTemplate("index.html");
     }
 
     // ~~~ Utils

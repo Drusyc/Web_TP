@@ -28,17 +28,14 @@ public class Gamer extends User {
 	private Set<Configuration> configurations;
 
 	
-	/* *** Construtor *** */
+	/* *** Constructor *** */
 	
 	public Gamer() {
 		super();
 	}
 
-    public Gamer(String pseudo, String mail, Blob avatar) {
-		super();
-        setPseudo(pseudo);
-        setMail(mail);
-        setAvatar(avatar);
+    public Gamer(String pseudo, String password, String mail, Blob avatar) {
+		super(pseudo, password, mail, avatar);
 	}
 
 	/* *** Getters / Setters *** */

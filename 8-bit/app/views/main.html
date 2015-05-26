@@ -30,8 +30,9 @@
             </nav>
             <div class="login-box">
 	            #{form @Secure.authenticate()}
-	                <input type="text" name="username" class="text-input login-input" placeholder="Nom d'utilisateur" autofocus/>
+	                <input type="text" name="username" class="text-input login-input" placeholder="Pseudo"/>
 	                <input type="password" name="password" class="text-input login-input" placeholder="Mot de passe"/>
+		            <input type="hidden" name="rememberme" value="true"/>
                     <button type="submit" class="btn login-btn">Connexion</button>
 	            #{/form}
             </div>
