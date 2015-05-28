@@ -121,8 +121,8 @@ public class RequestTest extends UnitTest {
 	public void gamerRequest () {
 		
 		/* Création d'user*/
-		Gamer ga1 = new Gamer("Toto", "Toto@test.com", null); ga1.save();
-		Gamer ga2 = new Gamer("Titi", "Titi@test.com", null); ga2.save();
+		Gamer ga1 = new Gamer("Toto", "mdp","Toto@test.com", null); ga1.save();
+		Gamer ga2 = new Gamer("Titi", "mdp","Titi@test.com", null); ga2.save();
 		
 		/* Création de request */
 		Request r1 = new Request(new Date(System.currentTimeMillis()), "r1userToto", Request.Status.IN_PROGRESS);	

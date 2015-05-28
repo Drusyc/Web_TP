@@ -136,7 +136,7 @@ public class GameTest extends UnitTest {
 	@Test
 	public void gameProvider() {
 		/* Création d'un Provider */
-		Provider prov1 = new Provider("Oiram Srob","Bowser@test.com",null); prov1.save();
+		Provider prov1 = new Provider("Oiram Srob", "mdp","Bowser@test.com",null); prov1.save();
 
 		/* Création d'un game */
 		Game game1 = new Game("8 Trak Oiram", null); 

@@ -1,6 +1,7 @@
 package models;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -154,4 +155,22 @@ public class Game extends GenericModel {
     public void setPhoto(Blob photo) {
         this.photo = photo;
     }
+    
+    /* Methods */
+
+    public static List<Game> findByName (String name) {
+    	String NAME = "name";
+    	String GAME_REQUEST = "SELECT * FROM GAME "
+    			+ "WHERE LOWER(NAME) LIKE LOWER(" + ":" + NAME + ") ORDER BY NAME;";
+    	
+    	EntityManager m = Game.em();
+
+    	/* Création de la requête */
+    	Query q = m.createNativeQuery(GAME_REQUEST, Game.class);
+    	q.setParameter(NAME, "%" + name.toUpperCase() + "%");
+    	
+    	return q.getResultList();
+    }
+    
+    
 }

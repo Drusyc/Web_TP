@@ -18,7 +18,7 @@ public class ProviderTest  extends UnitTest {
 	@Test
 	public void createProvider () {
 		/* Création d'un Provider */		
-		Provider prov1 = new Provider("createProviderTest","createProviderTest@test.com",null); 
+		Provider prov1 = new Provider("createProviderTest", "mdp", "createProviderTest@test.com",null); 
 		prov1.save();
 		
 		assertNotNull(Provider.findById(prov1.getPseudo()));
@@ -36,7 +36,7 @@ public class ProviderTest  extends UnitTest {
 	@Test
 	public void deleteGame() {
 		/* Création d'un Provider */
-		Provider prov1 = new Provider("deleteProviderTest","deleteProviderTest@test.com",null); 
+		Provider prov1 = new Provider("deleteProviderTest", "mdp", "deleteProviderTest@test.com",null); 
 		prov1.save();
 		
 		Provider found =  Provider.findById(prov1.getPseudo());
@@ -58,7 +58,7 @@ public class ProviderTest  extends UnitTest {
 	@Test
 	public void updateProvider() {	
 		/* Création d'un Provider */
-		Provider prov1 = new Provider("updateProviderTest","wrongMail@test.com",null); 
+		Provider prov1 = new Provider("updateProviderTest", "mdp", "wrongMail@test.com",null); 
 		prov1.save();
 		
 		Provider found = Provider.findById(prov1.getPseudo());
@@ -94,7 +94,7 @@ public class ProviderTest  extends UnitTest {
 		setGame.add(game1); setGame.add(game2); setGame.add(game3);
 		
 		/* Création d'un Provider */
-		Provider prov1 = new Provider("Nihoné","Nihonhéarobaselu@test.com",null);
+		Provider prov1 = new Provider("Nihoné", "mdp", "Nihonhéarobaselu@test.com",null);
 		prov1.setGames(setGame); prov1.save();
 		
 		/* Assert */

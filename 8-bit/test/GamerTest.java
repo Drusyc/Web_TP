@@ -33,7 +33,7 @@ public class GamerTest extends UnitTest {
 	@Test
 	public void createGamer() {
 		
-		Gamer ga = new Gamer("createGamerTest","createGamerTest@test.com",null);ga.save();
+		Gamer ga = new Gamer("createGamerTest", "mdp", "createGamerTest@test.com",null);ga.save();
     	
     	String id = ga.getPseudo();
     	
@@ -59,7 +59,7 @@ public class GamerTest extends UnitTest {
 	@Test
 	public void deleteGamer() {
 		
-		Gamer ga = new Gamer("deleteGamerTest","deleteGamerTest@test.com", null);ga.save();
+		Gamer ga = new Gamer("deleteGamerTest", "mdp", "deleteGamerTest@test.com", null);ga.save();
     	
     	String id = ga.getPseudo();
     	
@@ -82,7 +82,7 @@ public class GamerTest extends UnitTest {
 	 */
 	@Test
 	public void updateGamer() {	
-		Gamer ga = new Gamer("updateGamerTest","wrongMail@test.com", null);ga.save();
+		Gamer ga = new Gamer("updateGamerTest", "mdp", "wrongMail@test.com", null);ga.save();
 		
 		Gamer found = Gamer.findById(ga.getPseudo());
 		assertEquals(ga, found);
@@ -112,8 +112,8 @@ public class GamerTest extends UnitTest {
 	public void gamerGenres() {
 		
 		/* Création des users Toto et Titi */
-		Gamer ga1 = new Gamer("Toto", "Toto@test.com", null); ga1.save();
-		Gamer ga2 = new Gamer("Titi", "Titi@test.com", null); ga2.save();
+		Gamer ga1 = new Gamer("Toto", "mdp", "Toto@test.com", null); ga1.save();
+		Gamer ga2 = new Gamer("Titi", "mdp", "Titi@test.com", null); ga2.save();
 		
 		/* Création des genres RPG / ACTION / AVENTURE */
     	Genre ge1 = new Genre(Genre.RPG); ge1.save();
@@ -173,8 +173,8 @@ public class GamerTest extends UnitTest {
 	public void gamerConfig() {
 
 		/* Création des users Toto et Titi */
-		Gamer ga1 = new Gamer("Toto", "Toto@test.com", null); ga1.save();
-		Gamer ga2 = new Gamer("Titi", "Titi@test.com", null); ga2.save();
+		Gamer ga1 = new Gamer("Toto", "mdp", "Toto@test.com", null); ga1.save();
+		Gamer ga2 = new Gamer("Titi", "mdp", "Titi@test.com", null); ga2.save();
 		
 		/* Création d'une configuration avec seulement freeDiskSpace et RAM */
 		Configuration conf1 = new Configuration(500, 2000); conf1.save();
