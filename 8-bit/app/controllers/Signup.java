@@ -9,6 +9,7 @@ import play.Logger;
 import play.data.validation.*;
 import play.db.jpa.Blob;
 import play.i18n.Messages;
+import play.mvc.Before;
 import play.mvc.Controller;
 import utils.BCrypt;
 import validators.AvatarCheck;
@@ -20,15 +21,39 @@ public class Signup extends Controller {
 
     private static final String PSEUDO = "pseudo";
     private static final String EMAIL = "email";
+    private static final String PASSWORD = "password";
     private static final String PSEUDO_TAKEN = "pseudoTaken";
-    private static final String ERROR_CREATING_ACCOUNT = "errorCreatingAccount";
-    private static final String ACCOUNT_CREATED = "accountCreated";
 
     private static final int THUMB_WIDTH = 35;
     private static final int THUMB_HEIGHT = 35;
 
-    public static void show() {
+    @Before
+    /**
+     * Checks if user is connected
+     */
+    public static void checkConnected() throws Throwable {
+        if (session.contains("username"))
+            redirect("/");
+    }
+
+    public static void show(String username, String password) {
+        flash.put(PSEUDO, username);
+        flash.put(PASSWORD, password);
+        render();
+    }
+
+    public static void render() {
         renderTemplate("signup.html");
+    }
+
+    /**
+     * Verifies a pseudo
+     *
+     * @param pseudo        The pseudo
+     * @return              False if taken, true otherwise
+     */
+    public static boolean verifyPseudo(String pseudo) {
+        return User.findById(pseudo) == null;
     }
 
     /**
@@ -38,12 +63,13 @@ public class Signup extends Controller {
      * @param email         The email
      * @param password      The password
      * @param password2     The password verification
+     * @param avatar        The avatar (optional)
      */
-    public static void createAccount(@Required(message = "requiredPseudo") String pseudo,
-                                     @Required @Email(message = "invalidEmail") String email,
-                                     @Required @MinSize(value = 8, message = "invalidPassword") String password,
-                                     @Required @Equals(message = "passwordsMustMatch", value = "password") String password2,
-                                     @CheckWith(AvatarCheck.class) Blob avatar) {
+    public static void createAccount(@Required(message = "requiredPseudo") @MinSize(value = 6, message = "invalidPseudo") @MaxSize(value = 255, message = "invalidPseudo") String pseudo,
+                                     @Required(message = "requiredEmail") @Email(message = "invalidEmail") @MaxSize(value = 255, message = "invalidEmail") String email,
+                                     @Required(message = "requiredPassword") @MinSize(value = 8, message = "invalidPassword") String password,
+                                     @Required(message = "passwordsMustMatch") @Equals(value = "password", message = "passwordsMustMatch") String password2,
+                                     @CheckWith(value = AvatarCheck.class, message = "invalidAvatar") Blob avatar) throws Throwable {
         Logger.debug("Signup::createAccount\n"
                 + "-- pseudo: " + pseudo + "\n"
                 + "-- email: " + email + "\n"
@@ -60,7 +86,7 @@ public class Signup extends Controller {
         User user = new Gamer();
         user.setPseudo(pseudo);
 
-        if (User.findById(pseudo) != null) {
+        if (!verifyPseudo(pseudo)) {
             Logger.debug("Signup::createAccount - Pseudo taken");
             validation.addError(PSEUDO, Messages.get(PSEUDO_TAKEN));
             tryAgain(pseudo, email);
@@ -80,20 +106,19 @@ public class Signup extends Controller {
             user.save();
         } catch (Throwable e) {
             Logger.error("Signup::createAccount - Error while invoking user.save()");
-            flash.error(Messages.get(ERROR_CREATING_ACCOUNT));
             tryAgain(pseudo, email);
         }
 
         Logger.info("Signup::createAccount - User " + pseudo + " created.");
-        flash.success(Messages.get(ACCOUNT_CREATED));
-        show();
+        session.put("username", pseudo);
+        Secure.redirectToOriginalURL();
     }
 
     private static void tryAgain(String pseudo, String email) {
         flash.put(PSEUDO, pseudo);
         flash.put(EMAIL, email);
         validation.keep();
-        show();
+        render();
     }
 
     /**

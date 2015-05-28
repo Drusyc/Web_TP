@@ -25,7 +25,7 @@ public class Secure extends Controller {
         // Authent
         if(!session.contains("username")) {
             flash.put("url", "GET".equals(request.method) ? request.url : Play.ctxPath + "/"); // seems a good default
-            login();
+            renderTemplate("signup.html");
         }
         // Checks
         Check check = getActionAnnotation(Check.class);
@@ -71,19 +71,13 @@ public class Secure extends Controller {
             }
         }
         flash.keep("url");
-        renderTemplate("signup.html");
+        renderTemplate("index.html");
     }
 
     public static void authenticate(@Required String username, String password, boolean remember) throws Throwable {
         // Check tokens
         Boolean allowed = false;
-        try {
-            // This is the deprecated method name
-            allowed = (Boolean) Security.invoke("authentify", username, password);
-        } catch (UnsupportedOperationException e ) {
-            // This is the official method name
-            allowed = (Boolean) Security.invoke("authenticate", username, password);
-        }
+        allowed = (Boolean) Security.invoke("authenticate", username, password);
         if(validation.hasErrors() || !allowed) {
             flash.keep("url");
             params.flash();
