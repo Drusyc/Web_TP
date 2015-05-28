@@ -1,0 +1,21 @@
+#{extends 'main.html' /}
+#{set title:'Rechercher un jeu' /}
+#{set 'moreScripts'}
+<script src="@{'/public/javascripts/search.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+
+<main>
+    <h1>Rechercher un jeu</h1>    
+	#{form @Search.index()}
+		<input type="text" name="game" id="recherche" value="${flash.game}"/>
+		<button type="submit">GO !</button>
+	#{/form}
+
+	<ul id="game-list">
+		#{list items:games, as: 'game'}
+			<li>
+				<a href="${url[game_index - 1]}">${game.name}</a>
+			</li>
+		#{/list}
+	</ul>
+</main>

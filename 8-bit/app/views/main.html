@@ -24,24 +24,27 @@
     </head>
     <body>
         <header>
-            <a href="/"><img src="@{'/public/images/logo.png'}" class="logo" alt="8-bit"/></a>
-            <nav>
+            <nav class="header-left">
+	            <a href="/"><img src="@{'/public/images/logo.png'}" width="70px" height="35px" class="logo" alt="8-bit"/></a>
 	            <!-- TODO Navigation différente pour les providers -->
-                <ul class="toolbar-list">
-                    <li class="toolbar-item btn conf-icon"><a href="/configuration"><span>Configuration système</span></a></li>
-                    <li class="toolbar-item btn search-icon"><a href="/search"><span>Rechercher un jeu</span></a></li>
-                    <li class="toolbar-item btn gamepad-icon"><a href="/suggestions"><span>Suggestions de jeux</span></a></li>
-                </ul>
+	            <ul class="toolbar-list">
+		            <li class="toolbar-item btn conf-icon"><a href="/configuration"><span>Configuration système</span></a></li>
+		            <li class="toolbar-item btn search-icon"><a href="/search"><span>Rechercher un jeu</span></a></li>
+		            <li class="toolbar-item btn gamepad-icon"><a href="/suggestions"><span>Suggestions de jeux</span></a></li>
+	            </ul>
             </nav>
-            <div class="login-box">
-	            <!-- TODO Remplacer la login box par le profil utilisateur lorsqu'il est connecté -->
-	            #{form @Secure.authenticate()}
-		            <input type="text" name="username" class="text-input login-input" placeholder="Pseudo"/>
-		            <input type="password" name="password" class="text-input login-input" placeholder="Mot de passe"/>
-                    <input type="hidden" name="remember" value=1/>
-		            <button type="submit" class="btn login-btn">Connexion</button>
-	            #{/form}
-
+            <div class="header-right">
+				#{if user == null}
+		            #{form @Secure.authenticate()}
+			            <input type="text" name="username" class="text-input login-input" placeholder="Pseudo"/>
+			            <input type="password" name="password" class="text-input login-input" placeholder="Mot de passe"/>
+			            <input type="hidden" name="remember" value=1/>
+			            <button type="submit" class="btn login-btn">Connexion</button>
+		            #{/form}
+	            #{/if}
+	            #{else}
+	                <!-- TODO Profil utilisateur -->
+	            #{/else}
             </div>
         </header>
         #{doLayout /}

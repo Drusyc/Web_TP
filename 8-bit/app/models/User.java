@@ -13,7 +13,7 @@ import play.data.validation.Email;
 @DiscriminatorColumn(name="role", discriminatorType=DiscriminatorType.STRING)
 @Entity
 public abstract class User extends GenericModel {
-	
+
 	@Id
     private String pseudo;
 

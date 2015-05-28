@@ -15,21 +15,26 @@ import com.google.gson.reflect.TypeToken;
 @With(Secure.class)
 public class Search extends Controller {
 
-    public static void show() {
-        renderTemplate("search.html");
-    }
+    private static final String GAME = "game";
+    private static final String GAMES = "games";
+    private static final String URL = "url";
     
-    public static void findGame(String game) {
-    	/* Récupération des résultats */
-    	List<Game> games = Game.findByName(game);
-    	List<String> url = new ArrayList<String>();
-    	
-    	for (Game g : games) {
-    		url.add("/game/" + g.getName().replaceAll(" ", "+"));
-    		Logger.debug(g.getName() + " ->" + "/game/" + g.getName().replaceAll(" ", "+"));
-		}	
+    public static void index(String game) {
+        if (game != null && game.length() >= 4) {
+            /* Récupération des résultats */
+            List<Game> games = Game.findByName(game);
+            List<String> url = new ArrayList<String>();
 
-        renderTemplate("search.html", games, url);
+            for (Game g : games) {
+                url.add("/game/" + g.getName().replaceAll(" ", "+"));
+                Logger.debug("Search::index - " + g.getName() + " -> " + "/game/" + g.getName().replaceAll(" ", "+"));
+            }
+
+            flash.put(GAME, game);
+            renderArgs.put(GAMES, games);
+            renderArgs.put(URL, url);
+        }
+        render();
     }
  
     public static void findGameJSON(String game) {

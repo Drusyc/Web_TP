@@ -32,6 +32,7 @@ a:hover, a:focus, a:active {
     text-decoration: underline;
 }
 
+/* Header */
 header {
     position: fixed;
     top: 0;
@@ -48,6 +49,18 @@ header {
     border-style: solid;
 }
 
+.header-left {
+    float: left;
+    line-height: 35px;
+}
+
+.header-right {
+    float: right;
+    margin: 0 10px;
+    line-height: 35px;
+}
+
+/* Main */
 main {
     -webkit-animation: fadeIn 1.25s;
     -o-animation: fadeIn 1.25s;
@@ -105,7 +118,7 @@ input[type=file] {
 .error-tooltip {
     font-size: 11px;
     font-style: italic;
-    color: #C72C48;
+    color: #D43A57;
 }
 
 /* Animations */
@@ -124,8 +137,6 @@ input[type=file] {
 
 /* Logo */
 .logo {
-    width: 70px;
-    height: 35px;
     float: left;
     margin: 0 10px;
     position: relative;
@@ -133,7 +144,7 @@ input[type=file] {
 
 .logo:hover {
     top: 1px;
-    filter:alpha(opacity=90);
+    filter: alpha(opacity=90);
     opacity: 0.9;
 }
 
@@ -220,12 +231,6 @@ input[type=file] {
 }
 
 /* Login box */
-.login-box {
-    line-height: 35px;
-    margin: 0 10px;
-    float: right;
-}
-
 .login-input:focus {
     border: solid 1px #D43A57;
     -webkit-box-shadow: 0 0 5px 1px #C72C48;
@@ -247,8 +252,8 @@ input[type=file] {
     background: #D43A57;
 }
 
-/* Welcome box */
-.welcome-box {
+/* Front welcome */
+.front-welcome {
     width: 370px;
     font-size: 16px;
     line-height: 40px;
@@ -270,7 +275,7 @@ input[type=file] {
 }
 
 /* Sign-up form */
-.signup-box {
+.signup {
     clear: both;
 }
 
