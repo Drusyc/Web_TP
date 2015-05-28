@@ -5,7 +5,7 @@ body {
     padding: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12px;
-    background: #000000 url('/public/images/backgrounds/space_bg.jpg') center center no-repeat fixed;
+    background: #000000 url('/public/images/backgrounds/space-bg-min.jpg') center center no-repeat fixed;
     -webkit-background-size: cover;
     background-size: cover;
     color: #FFFFFF;
@@ -49,13 +49,20 @@ header {
 }
 
 main {
+    -webkit-animation: fadeIn 1.25s;
+    -o-animation: fadeIn 1.25s;
+    animation: fadeIn 1.25s;
     margin-left: 120px;
     margin-right: 80px;
     padding: 50px 0;
     display: block;
 }
 
-/* Input styles */
+/* Inputs styles */
+input[type=file] {
+    display: none;
+}
+
 .text-input {
     margin: 5px 2px;
     padding: 5px 10px;
@@ -63,11 +70,22 @@ main {
     border: thin solid #DCDCDC;
 }
 
-input[type=file] {
-    display: none;
+.valid-input {
+    -webkit-box-shadow: 0 0 5px 1px #02D470;
+    -moz-box-shadow: 0 0 5px 1px #02D470;;
+    box-shadow: 0 0 5px 1px #02D470;
 }
 
-/* Button styles */
+.invalid-input {
+    -webkit-animation: shake .5s;
+    -o-animation: shake .5s;
+    animation: shake .5s;
+    -webkit-box-shadow: 0 0 5px 1px #D43A57;
+    -moz-box-shadow: 0 0 5px 1px #D43A57;
+    box-shadow: 0 0 5px 1px #D43A57;
+}
+
+/* Buttons styles */
 .btn {
     cursor: pointer;
     color: #FFFFFF;
@@ -76,6 +94,32 @@ input[type=file] {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
+}
+
+/* Tooltips styles */
+.info-tooltip {
+    font-size: 11px;
+    font-style: italic;
+}
+
+.error-tooltip {
+    font-size: 11px;
+    font-style: italic;
+    color: #C72C48;
+}
+
+/* Animations */
+@keyframes shake {
+    0% {margin-left:8px;}
+    10% {margin-left:-8px;}
+    30% {margin-left:8px;}
+    60% {margin-left:-8px;}
+    100% {margin-left:0;}
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 /* Logo */
@@ -89,6 +133,7 @@ input[type=file] {
 
 .logo:hover {
     top: 1px;
+    filter:alpha(opacity=90);
     opacity: 0.9;
 }
 
@@ -196,9 +241,6 @@ input[type=file] {
     font-weight: 700;
     background: #C72C48;
     font-size: 12px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
 }
 
 .login-btn:hover {
@@ -245,7 +287,6 @@ input[type=file] {
 }
 
 .signup-input:focus {
-    border: solid 1px #6050DC;
     -webkit-box-shadow: 0 0 5px 1px #9683EC;
     -moz-box-shadow: 0 0 5px 1px #9683EC;
     box-shadow: 0 0 5px 1px #9683EC;

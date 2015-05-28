@@ -11,8 +11,9 @@ GET     /contact                                Contact.show
 GET     /privacy                                Privacy.show
 GET     /search                                 Search.show
 POST    /signup                                 Signup.show
-GET     /signup                                 Secure.login
+GET     /signup                                 Signup.render
 GET     /suggestions                            Suggestions.show
+GET     /verifyPseudo/{pseudo}                  Signup.verifyPseudo
 
 # Secure routes
 POST    /authenticate                           Secure.authenticate

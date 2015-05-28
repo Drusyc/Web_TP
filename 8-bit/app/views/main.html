@@ -13,15 +13,20 @@
         <meta name="application-name" content="8-bit">
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery-ui.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
-        <script src="@{'/public/javascripts/jquery-1.11.3.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+        <script src="@{'/public/javascripts/jquery.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/jquery-ui.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
+
     </head>
     <body>
         <header>
             <a href="/"><img src="@{'/public/images/logo.png'}" class="logo" alt="8-bit"/></a>
             <nav>
+	            <!-- TODO Navigation différente pour les providers -->
                 <ul class="toolbar-list">
                     <li class="toolbar-item btn conf-icon"><a href="/configuration"><span>Configuration système</span></a></li>
                     <li class="toolbar-item btn search-icon"><a href="/search"><span>Rechercher un jeu</span></a></li>
@@ -29,12 +34,14 @@
                 </ul>
             </nav>
             <div class="login-box">
+	            <!-- TODO Remplacer la login box par le profil utilisateur lorsqu'il est connecté -->
 	            #{form @Secure.authenticate()}
-	                <input type="text" name="username" class="text-input login-input" placeholder="Pseudo"/>
-	                <input type="password" name="password" class="text-input login-input" placeholder="Mot de passe"/>
-		            <input type="hidden" name="rememberme" value="true"/>
-                    <button type="submit" class="btn login-btn">Connexion</button>
+		            <input type="text" name="username" class="text-input login-input" placeholder="Pseudo"/>
+		            <input type="password" name="password" class="text-input login-input" placeholder="Mot de passe"/>
+                    <input type="hidden" name="remember" value=1/>
+		            <button type="submit" class="btn login-btn">Connexion</button>
 	            #{/form}
+
             </div>
         </header>
         #{doLayout /}

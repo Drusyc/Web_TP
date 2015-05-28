@@ -1,14 +1,15 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
-accountCreated="Votre compte est créé."
-errorCreatingAccount="Erreur lors de la création de votre compte !"
-invalidAvatar="Avatar non valide !"
-invalidEmail="Email non valide !"
-invalidPassword="Mot de passe non valide !"
-passwordsMustMatch="Les mots de passe doivent correspondre !"
-pseudoTaken="Pseudo déjà pris !"
-requiredPseudo="Pseudo requis !"
+invalidAvatar=Avatar non valide !
+invalidEmail=Email non valide !
+invalidPassword=8 caractères minimum
+invalidPseudo=6 caractères minimum
+passwordsMustMatch=Hmm...
+pseudoTaken=Pseudo déjà pris :(
+requiredEmail=Email requis !
+requiredPassword=Mot de passe requis !
+requiredPseudo=Pseudo requis !
 
 
 

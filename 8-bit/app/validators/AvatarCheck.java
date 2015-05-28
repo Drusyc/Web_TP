@@ -17,11 +17,8 @@ public class AvatarCheck extends Check {
 
     @Override
     public boolean isSatisfied(Object parent, Object image) {
-        // Customized validation message
-        setMessage("invalidAvatar");
-
         if (image == null)
-            return true; // Avatar is optional
+            return true;
 
         if (!(image instanceof Blob)) {
             return false;
