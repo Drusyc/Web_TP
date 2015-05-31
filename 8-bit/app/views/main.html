@@ -26,11 +26,17 @@
         <header>
             <nav class="header-left">
 	            <a href="/"><img src="@{'/public/images/logo.png'}" width="70px" height="35px" class="logo" alt="8-bit"/></a>
-	            <!-- TODO Navigation différente pour les providers -->
-	            <ul class="toolbar-list">
-		            <li class="toolbar-item btn conf-icon"><a href="/configuration"><span>Configuration système</span></a></li>
-		            <li class="toolbar-item btn search-icon"><a href="/search"><span>Rechercher un jeu</span></a></li>
-		            <li class="toolbar-item btn gamepad-icon"><a href="/suggestions"><span>Suggestions de jeux</span></a></li>
+                <ul class="toolbar-list">
+                    #{if !(user instanceof models.Provider)}
+	                    <li class="toolbar-item btn configuration-icon"><a href="/configuration"><span>Configuration système</span></a></li>
+		                <li class="toolbar-item btn search-icon"><a href="/search"><span>Rechercher un jeu</span></a></li>
+		                <li class="toolbar-item btn gamepad-icon"><a href="/suggestions"><span>Suggestions de jeux</span></a></li>
+					#{/if}
+	                #{else}
+	                    <li class="toolbar-item btn configuration-icon"><a href="/manage/hardware"><span>Gestion du matériel</span></a></li>
+	                    <li class="toolbar-item btn gamepad-icon"><a href="/manage/games"><span>Gestion des jeux</span></a></li>
+	                    <li class="toolbar-item btn requests-icon"><a href="/manage/requests"><span>Gestion des demandes</span></a></li>
+	                #{/else}
 	            </ul>
             </nav>
             <div class="header-right">
@@ -42,9 +48,13 @@
 			            <button type="submit" class="btn login-btn">Connexion</button>
 		            #{/form}
 	            #{/if}
-	            #{else}
-	                <!-- TODO Profil utilisateur -->
-	            #{/else}
+	            #{elseif user instanceof models.Gamer}
+		            <ul class="toolbar-list user-list">
+			            <li class="toolbar-item user-item btn profile-icon"><a href="/profile"><span>Mon profil</span></a></li>
+                        <li class="toolbar-item user-item btn messages-icon"><a href="/messages"><span>Mes messages</span></a></li>
+			            <li class="toolbar-item user-item btn logout-icon"><a href="/logout"><span>Déconnexion</span></a></li>
+		            </ul>
+	            #{/elseif}
             </div>
         </header>
         #{doLayout /}

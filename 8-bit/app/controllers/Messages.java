@@ -6,7 +6,7 @@ import validators.Check;
 
 @With(Secure.class)
 @Check("gamer")
-public class Configuration extends Controller {
+public class Messages extends Controller {
 
     public static void index() {
         render();

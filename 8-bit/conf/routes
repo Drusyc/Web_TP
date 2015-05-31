@@ -9,7 +9,13 @@ GET     /conditions                             Conditions.index
 GET     /configuration                          Configuration.index
 GET     /contact                                Contact.index
 GET		/game/{name}							Game.show
+GET     /manage                                 Manage.games
+GET     /manage/games                           Manage.games
+GET     /manage/hardware                        Manage.hardware
+GET     /manage/requests                        Manage.requests
+GET     /messages                               Messages.index
 GET     /privacy                                Privacy.index
+GET     /profile                                Profile.index
 GET     /search                                 Search.index
 GET 	/search/{game}							Search.findGameJSON
 POST    /signup                                 Signup.show
@@ -17,6 +23,8 @@ GET     /signup                                 Signup.index
 GET     /suggestions                            Suggestions.index
 GET     /verifyPseudo/{pseudo}                  Signup.verifyPseudo
 
+# Friendly routes for blobs
+GET     /public/images/avatars/{pseudo}         Application.renderAvatar
 
 # Secure routes
 POST    /authenticate                           Secure.authenticate

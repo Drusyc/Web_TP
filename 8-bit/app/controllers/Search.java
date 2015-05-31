@@ -11,13 +11,11 @@ import play.mvc.With;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import validators.Check;
 
 @With(Secure.class)
+@Check("gamer")
 public class Search extends Controller {
-
-    private static final String GAME = "game";
-    private static final String GAMES = "games";
-    private static final String URL = "url";
     
     public static void index(String game) {
         if (game != null && game.length() >= 4) {
@@ -30,9 +28,7 @@ public class Search extends Controller {
                 Logger.debug("Search::index - " + g.getName() + " -> " + "/game/" + g.getName().replaceAll(" ", "+"));
             }
 
-            flash.put(GAME, game);
-            renderArgs.put(GAMES, games);
-            renderArgs.put(URL, url);
+            render(games, url);
         }
         render();
     }

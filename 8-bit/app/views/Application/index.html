@@ -2,23 +2,32 @@
 #{set title:'Bienvenue sur 8-bit !' /}
 <main>
 	<div class="front-welcome">
-		<h1>Bienvenue sur 8-bit ${user?.pseudo }!</h1>
-		<p>Comparez votre configuration système à une base de plus de 500 jeux vidéo. Trouvez les jeux compatibles qui
-			vous correspondent le mieux. Et partagez votre expérience avec d'autres gamers.
+		<h1>Bienvenue sur 8-bit ${user?.pseudo} !</h1>
+		<p>
+			#{if !(user instanceof models.Provider)}
+				Comparez votre configuration système à une base de plus de 500 jeux vidéo. Trouvez les jeux compatibles
+				qui vous correspondent le mieux. Et partagez votre expérience avec d'autres gamers.
+			#{/if}
+			#{else}
+				Gérez le matériel utilisé dans les configurations. Ajoutez des nouveaux jeux.
+				Et répondez aux demandes de jeux proposés par les gamers.
+			#{/else}
 		</p>
 	</div>
-	<section class="recent-games">
-		<h2>Jeux récents</h2>
-		<article>Jeu 1</article>
-		<article>Jeu 2</article>
-		<article>...</article>
-	</section>
+	#{if !(user instanceof models.Provider)}
+		<section class="recent-games">
+			<h2>Jeux récents</h2>
+			<article>Jeu 1</article>
+			<article>Jeu 2</article>
+			<article>...</article>
+		</section>
+	#{/if}
 	#{if user == null}
 		<div class="signup">
 			<h2>Pas encore inscrit ?</h2>
 			#{form @Signup.show()}
-				<input type="text" name="username" class="text-input signup-input user-icon" placeholder="Pseudo" autocomplete="off"/>
-				<input type="text" name="email" class="text-input signup-input mail-icon" placeholder="Email" autocomplete="off"/>
+				<input type="text" name="username" class="text-input signup-input icon user-icon" placeholder="Pseudo" autocomplete="off"/>
+				<input type="text" name="email" class="text-input signup-input icon mail-icon" placeholder="Email" autocomplete="off"/>
 				<button type="submit" class="btn signup-btn">S'inscrire</button>
 			#{/form}
 		</div>

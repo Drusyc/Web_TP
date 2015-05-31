@@ -7,7 +7,7 @@
 <main>
     <h1>Rechercher un jeu</h1>    
 	#{form @Search.index()}
-		<input type="text" name="game" id="recherche" value="${flash.game}"/>
+		<input type="text" name="game" id="recherche" value="${params.game}"/>
 		<button type="submit">GO !</button>
 	#{/form}
 
