@@ -43,7 +43,6 @@ header {
     right: 0;
     z-index: 1;
     height: 35px;
-    overflow: hidden;
     background: rgba(255, 255, 255, 0.8);
 }
 
@@ -280,7 +279,7 @@ input[type=file] {
 
 /* Front welcome */
 .front-welcome {
-    width: 370px;
+    width: 35%;
     font-size: 16px;
     line-height: 40px;
     padding: 20px;
@@ -291,7 +290,7 @@ input[type=file] {
 .recent-games {
     float: right;
     margin-top: 30px;
-    width: 370px;
+    width: 35%;
     height: 350px;
 }
 
@@ -425,4 +424,103 @@ footer {
 .footer-item {
     float: left;
     padding: 10px;
+}
+
+/* Responsive web design */
+@media screen and (max-width:1100px) {
+    /* Reduce header and logo size */
+    header {
+        height: 30px;
+    }
+
+    .logo {
+        width: auto;
+        height: 30px;
+    }
+
+    /* Display only icons */
+    .configuration-icon a {
+        content: url('/public/images/icons/configuration.png');
+        width: 30px;
+        height: 30px;
+    }
+
+    .search-icon a {
+        content: url('/public/images/icons/search.png');
+        width: 30px;
+        height: 30px;
+    }
+
+    .gamepad-icon a {
+        content: url('/public/images/icons/gamepad.png');
+        width: 30px;
+        height: 30px;
+    }
+
+    .requests-icon a {
+        content: url('/public/images/icons/requests.png');
+        width: 30px;
+        height: 30px;
+    }
+
+    .profile-icon a {
+        content: url('/public/images/icons/user.png');
+        width: 30px;
+        height: 30px;
+    }
+
+    .messages-icon a {
+        content: url('/public/images/icons/mail.png');
+        width: 30px;
+        height: 30px;
+    }
+
+    .logout-icon a {
+        content: url('/public/images/icons/logout.png');
+        width: 30px;
+        height: 30px;
+    }
+
+    .toolbar-item:hover,
+    .toolbar-item:active,
+    .user-item:hover,
+    .user-item:active {
+        opacity: 0.8;
+    }
+
+    .login-input {
+        margin: 2px 0;
+        width: 90px;
+    }
+
+    .login-btn {
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width:800px) {
+    /* Resize the welcome elements */
+    .front-welcome {
+        float: none;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .recent-games {
+        float: none;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    /* Reduce toolbar icons padding */
+    .configuration-icon a,
+    .search-icon a,
+    .gamepad-icon a,
+    .requests-icon a,
+    .profile-icon a,
+    .messages-icon a,
+    .logout-icon a {
+        padding: 0 10px;
+    }
 }
