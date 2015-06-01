@@ -7,13 +7,13 @@
 <main>
     <h1>Rechercher un jeu</h1>    
 	#{form @Search.index()}
-		<input type="text" name="game" id="recherche" value="${params.game}"/>
-		<button type="submit">GO !</button>
+		<input type="text" id="search" name="game" class="text-input search-input" value="${params.game}" placeholder="Grand Theft Auto V, The Witcher 3: Wild Hunt..." autocomplete="off"/>
+		<button type="submit" class="search-btn">Rechercher</button>
 	#{/form}
 
-	<ul id="game-list">
+	<ul id="game-list" class="search-list">
 		#{list items:games, as: 'game'}
-			<li>
+			<li class="search-item">
 				<a href="${url[game_index - 1]}">${game.name}</a>
 			</li>
 		#{/list}

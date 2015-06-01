@@ -5,18 +5,20 @@
 $(function recherche () {
 	var url = "/search/";
 
-	$("#recherche").bind("input", function() {
-		if ($("#recherche").val().length < 4) {
+	$("#search").bind("input", function() {
+		if ($("#search").val().length < 4) {
             $("#game-list").empty();
             return;
         }
-		var game = $("#recherche").val();
+		var game = $("#search").val();
 		
 		$.getJSON(url.concat(game), function(data){
 			$("#game-list").empty();
 			$.each(data, function(key, val) {
 				var item = document.createElement("li");
 				var url = document.createElement("a");
+
+                item.setAttribute("class", "search-item");
 				
 				url.setAttribute("href", "/game/" + val.name.replace(/ /g, "+"));
 				url.innerHTML = val.name;					
