@@ -161,7 +161,7 @@ public class GameTest extends UnitTest {
 	@Test
 	public void gameConfiguration () {
 		/* Création avec seulement freeDiskSpace et RAM */
-		Configuration conf1 = new Configuration(500, 2000); conf1.save();
+		Configuration conf1 = new Configuration("maConfig", 500, 2000); conf1.save();
 
 		/* Création d'un game */
 		Game game1 = new Game("8 Trak Oiram", null); 

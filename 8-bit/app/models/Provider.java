@@ -2,6 +2,7 @@ package models;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -22,16 +23,10 @@ public class Provider extends User {
 	public Provider() {
 		super();
 	}
-	
+
 	public Provider(String pseudo, String password, String mail, Blob avatar) {
 		super(pseudo, password, mail, avatar);
 	}
-
-	public Provider(Set<Game> games) {
-		super();
-		this.games = games;
-	}
-	
 
     /* *** Getters / Setters *** */
 

@@ -1,5 +1,7 @@
 package models;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -11,7 +13,9 @@ public class OS extends Model {
     @Column(nullable=false)
     private String name;
 
-    private Double version;
+    private String version;
+    
+    private Date date;
     
     
     /* *** Constructors *** */
@@ -20,10 +24,11 @@ public class OS extends Model {
 		super();
 	}
 
-	public OS(String name, Double version) {
+	public OS(String name, String version, Date date) {
 		super();
 		this.name = name;
 		this.version = version;
+		this.date = date;
 	}
 
 	/* *** Getters / Setters *** */
@@ -36,11 +41,23 @@ public class OS extends Model {
         this.name = name;
     }
 
-    public Double getVersion() {
+    public String getVersion() {
         return version;
     }
 
-    public void setVersion(Double version) {
+    public void setVersion(String version) {
         this.version = version;
     }
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+    
+    
+    
+    
 }

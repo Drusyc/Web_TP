@@ -177,7 +177,7 @@ public class GamerTest extends UnitTest {
 		Gamer ga2 = new Gamer("Titi", "mdp", "Titi@test.com", null); ga2.save();
 		
 		/* Création d'une configuration avec seulement freeDiskSpace et RAM */
-		Configuration conf1 = new Configuration(500, 2000); conf1.save();
+		Configuration conf1 = new Configuration("maConfig", 500, 2000); conf1.save();
 		
 		/* Création d'une configuration avec freeDiskSpace, RAM, Processor / VideoCard / OS */
 			/* * Création de Processor * */
@@ -185,16 +185,16 @@ public class GamerTest extends UnitTest {
 			Set<Processor> setProc = new HashSet<Processor>(); setProc.add(proc);
 		
 			/* * Création de la VideoCard * */
-			VideoCard vidCard = new VideoCard("GeForce GT 635M", "", "NVIDIA", 900.0, "11"); vidCard.save();
+			VideoCard vidCard = new VideoCard("GeForce GT 635M", "NVIDIA", 900.0, "11"); vidCard.save();
 			Set<VideoCard> setVD = new HashSet<VideoCard>(); setVD.add(vidCard); 
 		
 			/* * Création de l'OS * */
-			OS win81 = new OS("Windows", 8.1); win81.save();
-			OS win7 = new OS("Windows", 7.0); win7.save();
+			OS win81 = new OS("Windows", "8.1", Date.valueOf("2013-10-17")); win81.save();
+			OS win7 = new OS("Windows", "7", Date.valueOf("2009-10-22")); win7.save();
 			
 			Set<OS> setOS = new HashSet<OS>(); setOS.add(win7); setOS.add(win81);
 			
-		Configuration conf2 = new Configuration(1000, 4000, setOS, setProc, setVD); conf2.save();
+		Configuration conf2 = new Configuration("maConfig", 1000, 4000, setOS, setProc, setVD); conf2.save();
 		
 		
 		/* Mapping Toto <=> conf1 */

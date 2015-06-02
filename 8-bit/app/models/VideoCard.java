@@ -11,8 +11,6 @@ public class VideoCard extends GenericModel {
 	@Id
 	private String name;
 	
-	private String chipset;
-	
 	private String manufacturer;
 	
 	/* Exprimée en MegaHertz */
@@ -27,11 +25,10 @@ public class VideoCard extends GenericModel {
 		super();
 	}
 
-	public VideoCard(String name, String chipset, String manufacturer,
+	public VideoCard(String name, String manufacturer,
 			Double memory, String versionDirectX) {
 		super();
 		this.name = name;
-		this.chipset = chipset;
 		this.manufacturer = manufacturer;
 		this.speedMemory = memory;
 		this.versionDirectX = versionDirectX;
@@ -45,14 +42,6 @@ public class VideoCard extends GenericModel {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getChipset() {
-		return chipset;
-	}
-
-	public void setChipset(String chipset) {
-		this.chipset = chipset;
 	}
 
 	public String getManufacturer() {

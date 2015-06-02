@@ -10,6 +10,9 @@ import java.util.Set;
 @Entity
 public class Configuration extends Model {
 
+	@Column(nullable=false)
+	private String name;
+	
 	/* Exprimée en GigaOctets*/
 	private Integer freeDiskSpace;
 
@@ -23,16 +26,18 @@ public class Configuration extends Model {
 		super();
 	}
 
-	public Configuration(Integer freeDiskSpace, Integer rAM) {
+	public Configuration(String name, Integer freeDiskSpace, Integer rAM) {
 		super();
+		this.name = name;
 		this.freeDiskSpace = freeDiskSpace;
 		RAM = rAM;
 	}
 
-	public Configuration(Integer freeDiskSpace, Integer rAM,
+	public Configuration(String name, Integer freeDiskSpace, Integer rAM,
 			Set<OS> operatingSystems, Set<Processor> processors,
 			Set<VideoCard> videoCards) {
 		super();
+		this.name = name;
 		this.freeDiskSpace = freeDiskSpace;
 		RAM = rAM;
 		this.operatingSystems = operatingSystems;
@@ -105,4 +110,13 @@ public class Configuration extends Model {
 	public void setVideoCards(Set<VideoCard> videoCards) {
 		this.videoCards = videoCards;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }

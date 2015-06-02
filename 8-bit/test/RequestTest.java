@@ -79,8 +79,8 @@ public class RequestTest extends UnitTest {
 	@Test
 	public void osRequest () {
 		/* * Création de l'OS * */
-		OS win81 = new OS("Windows", 8.1); win81.save();
-		OS win7 = new OS("Windows", 7.0); win7.save();
+		OS win81 = new OS("Windows", "8.1", Date.valueOf("2013-10-17")); win81.save();
+		OS win7 = new OS("Windows", "7", Date.valueOf("2009-10-22")); win7.save();
 		
 		/* Création de Request */
 		Request r1 = new Request(new Date(System.currentTimeMillis()), "r1win81", Request.Status.IN_PROGRESS);	

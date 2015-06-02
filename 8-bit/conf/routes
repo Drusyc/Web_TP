@@ -10,9 +10,8 @@ GET     /about                                  About.index
 GET     /conditions                             Conditions.index
 GET     /configuration                          Configuration.index
 GET     /contact                                Contact.index
-GET 	/game/gamerConfig						Game.gamerConfig
 GET 	/game/gamephoto							Game.gamePhoto
-GET		/game/{name}							Game.show
+GET		/game/{name}							Game.index
 GET     /manage                                 Manage.games
 GET     /manage/games                           Manage.games
 GET     /manage/hardware                        Manage.hardware

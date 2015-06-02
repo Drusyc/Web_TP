@@ -1,0 +1,124 @@
+#{extends 'main.html' /}
+#{set title:'Rechercher un jeu' /}
+#{set 'moreScripts'}
+	<script src="@{'/public/javascripts/game.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+
+<main>
+    <h1>${game.name}</h1>
+	    <div id="section">
+	    	<h2>Informations sur le jeu</h2>
+	    		
+	    	<ul id="info_game">
+	    		<li>
+	    			<strong>Developpeurs :</strong>
+	    			#{list items:game.developers, as: 'dev'}
+	    				${dev}
+	    			#{/list}
+	    		</li>
+	    		<li>
+	    		   	<strong>Modes :</strong>
+	    			#{list items:game.modes, as: 'mode'}
+	    				${mode}
+	    			#{/list}
+	    		</li>
+	    		<li>
+	    		   	<strong>Sorties :</strong>
+	    				USA : ${game.releaseDates["USA"]}
+	    				EU : ${game.releaseDates["EU"]}
+	    				JAPON : ${game.releaseDates["JAPAN"]}
+	    		</li>
+	    	</ul>
+
+    		<img src="@{gamePhoto(game.name)}"/>
+    </div>
+    
+    <div>
+    	<h2>Configuration minimale</h2>
+	    	#{set config:game.configuration /}
+	    	<ul>
+	    	    <li><strong>OS :</strong>
+	    			#{list items:config?.operatingSystems, as: 'OS'}
+	    				${OS.name}${OS.version}
+	    			#{/list}    	    	
+	    		</li>
+	    		<li><strong>RAM :</strong>
+	    			${config?.RAM}
+	    		</li>
+	    		<li><strong>Espace Mémoire :</strong>
+	    			${config?.freeDiskSpace}
+	    		</li>
+	    		<li><strong>Processeur</strong>
+	    			#{list items:config?.processors, as: 'proc'}
+	    			<ul>
+	    				<li><strong>Nom :</strong> ${proc.name} </li>
+	    				<li><strong>Fabriquant :</strong> ${proc.manufacturer} </li>
+	    				<li><strong>Vitesse (Fréquence) :</strong> ${proc.speed} </li>
+	    				<li><strong>Nombre de coeurs :</strong> ${proc.cores} </li>
+	    			</ul>
+	    			#{/list}
+	    		</li>
+	    		<li><strong>Carte vidéo</strong>
+	    			#{list items:config?.videoCards, as: 'vidCard'}
+	    			<ul>
+	    				<li><strong>Nom :</strong> ${vidCard.name} </li>
+	    				<li><strong>Fabriquant :</strong> ${vidCard.manufacturer} </li>
+	    				<li><strong>Vitesse (Fréquence) :</strong> ${vidCard.speedMemory} </li>
+	    				<li><strong>Direct X :</strong> ${vidCard.versionDirectX} </li>
+	    			
+	    			</ul>
+	    			#{/list}
+	    		</li>
+	    	</ul>
+	  </div>
+
+	<div>
+
+    	
+    	#{if user.configurations}
+    		<h2>Vos configurations : (User = ${user.pseudo})</h2>
+	 	
+
+			#{list items:user.configurations, as: 'configGamer'}
+                <ul id="config-${configGamer_index}" class="liste-config">
+		    	    <li><strong>OS :</strong>
+		    			#{list items:configGamer.operatingSystems, as: 'OS'}
+		    				${OS.name}${OS.version}
+		    			#{/list}    	    	
+		    		</li>
+		    		<li><strong>RAM :</strong>
+		    			${configGamer?.RAM}
+		    		</li>
+		    		<li><strong>Espace Mémoire :</strong>
+		    			${configGamer?.freeDiskSpace}
+		    		</li>
+		    		<li><strong>Processeurs :</strong>
+		    			${configGamer?.processors}
+		    		</li>
+		    		<li><strong>Carte Video :</strong>
+		    			${configGamer?.videoCards}
+		    		</li>
+	    		</ul>
+			#{/list}
+
+			<ul id="config-displayed"></ul>
+
+		    <select id="select-config-gamer">
+		    	#{list items:user.configurations, as: 'configGamer'}
+					#{if configGamer_index == 1}
+						<option value="${configGamer_index}" selected>${configGamer.name}</option>
+					#{/if}
+					#{else}
+                    	<option value="${configGamer_index}">${configGamer.name}</option>
+					#{/else}
+				#{/list}
+		    </select>   	
+		 	<button type="submit" >Can I run it ?</button>
+		#{/if}
+		#{else}
+	   	 	
+		#{/else}
+		 	
+		
+	</div>
+</main>

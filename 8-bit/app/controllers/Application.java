@@ -1,6 +1,6 @@
 package controllers;
 
-import models.User;
+import models.*;
 import play.Logger;
 import play.db.jpa.Blob;
 import play.mvc.Controller;
