@@ -216,19 +216,23 @@ input[type=file] {
 }
 
 .configuration-icon a:before {
-    content: url('/public/images/icons/configuration.png');
+    background: url('/public/images/icons/configuration.png') no-repeat center center;
+    content: '';
 }
 
 .search-icon a:before {
-    content: url('/public/images/icons/search.png');
+    background: url('/public/images/icons/search.png') no-repeat center center;
+    content: '';
 }
 
 .gamepad-icon a:before {
-    content: url('/public/images/icons/gamepad.png');
+    background: url('/public/images/icons/gamepad.png') no-repeat center center;
+    content: '';
 }
 
 .requests-icon a:before {
-    content: url('/public/images/icons/requests.png');
+    background: url('/public/images/icons/requests.png') no-repeat center center;
+    content: '';
 }
 
 /* Login */
@@ -266,15 +270,18 @@ input[type=file] {
 }
 
 .profile-icon a:before {
-    content: url('/public/images/icons/user.png');
+    background: url('/public/images/icons/user.png') no-repeat center center;
+    content: '';
 }
 
 .messages-icon a:before {
-    content: url('/public/images/icons/mail.png');
+    background: url('/public/images/icons/mail.png') no-repeat center center;
+    content: '';
 }
 
 .logout-icon a:before {
-    content: url('/public/images/icons/logout.png');
+    background: url('/public/images/icons/logout.png') no-repeat center center;
+    content: '';
 }
 
 /* Front welcome */
@@ -428,7 +435,7 @@ footer {
 
 /* Responsive web design */
 @media screen and (max-width:1100px) {
-    /* Reduce header and logo size */
+    /* Resize header and logo */
     header {
         height: 30px;
     }
@@ -439,55 +446,26 @@ footer {
     }
 
     /* Display only icons */
-    .configuration-icon a {
-        content: url('/public/images/icons/configuration.png');
+    .toolbar-item a {
         width: 30px;
         height: 30px;
+        line-height: 26px;
     }
 
-    .search-icon a {
-        content: url('/public/images/icons/search.png');
-        width: 30px;
-        height: 30px;
+    .toolbar-item span {
+        font-size: 0;
     }
 
-    .gamepad-icon a {
-        content: url('/public/images/icons/gamepad.png');
-        width: 30px;
-        height: 30px;
+    .toolbar-item a:before {
+        top: 0;
+        background-size: 30px 30px;
     }
 
-    .requests-icon a {
-        content: url('/public/images/icons/requests.png');
-        width: 30px;
-        height: 30px;
-    }
-
-    .profile-icon a {
-        content: url('/public/images/icons/user.png');
-        width: 30px;
-        height: 30px;
-    }
-
-    .messages-icon a {
-        content: url('/public/images/icons/mail.png');
-        width: 30px;
-        height: 30px;
-    }
-
-    .logout-icon a {
-        content: url('/public/images/icons/logout.png');
-        width: 30px;
-        height: 30px;
-    }
-
-    .toolbar-item:hover,
-    .toolbar-item:active,
-    .user-item:hover,
-    .user-item:active {
+    .toolbar-item a:hover {
         opacity: 0.8;
     }
 
+    /* Resize login inputs and button */
     .login-input {
         margin: 2px 0;
         width: 90px;
@@ -513,14 +491,15 @@ footer {
 }
 
 @media screen and (max-width:600px) {
-    /* Reduce toolbar icons padding */
-    .configuration-icon a,
-    .search-icon a,
-    .gamepad-icon a,
-    .requests-icon a,
-    .profile-icon a,
-    .messages-icon a,
-    .logout-icon a {
-        padding: 0 10px;
+    /* Reduce padding and icons */
+    .toolbar-item a {
+        width: 30px;
+        height: 30px;
+        line-height: 26px;
+        padding: 0 5px;
+    }
+
+    .toolbar-item a:before {
+        background-size: 20px 20px;
     }
 }
