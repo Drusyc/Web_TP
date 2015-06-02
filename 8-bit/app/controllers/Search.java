@@ -11,29 +11,26 @@ import play.mvc.With;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import validators.Check;
 
 @With(Secure.class)
+@Check("gamer")
 public class Search extends Controller {
-
-    public static void show() {
-        renderTemplate("search.html");
-    }
     
-    public static void findGame(String game) {
-    	if (game.length() == 0) {
-    		renderTemplate("search.html", "");
-    	}
-    	
-    	/* Récupération des résultats */
-    	List<Game> games = Game.findByName(game);
-    	List<String> url = new ArrayList<String>();
-    	
-    	for (Game g : games) {
-    		url.add("/game/" + g.getName().replaceAll(" ", "+"));
-    		Logger.debug(g.getName() + " ->" + "/game/" + g.getName().replaceAll(" ", "+"));
-		}	
+    public static void index(String game) {
+        if (game != null && game.length() >= 4) {
+            /* Récupération des résultats */
+            List<Game> games = Game.findByName(game);
+            List<String> url = new ArrayList<String>();
 
-        renderTemplate("search.html", games, url);
+            for (Game g : games) {
+                url.add("/game/" + g.getName().replaceAll(" ", "+"));
+                Logger.debug("Search::index - " + g.getName() + " -> " + "/game/" + g.getName().replaceAll(" ", "+"));
+            }
+
+            render(games, url);
+        }
+        render();
     }
  
     public static void findGameJSON(String game) {

@@ -3,22 +3,32 @@
 # ~~~~
 
 # 8-bit routes
-GET     /                                       EightBit.index
-GET     /about                                  About.show
-GET     /conditions                             Conditions.show
-GET     /configuration                          Configuration.show
-GET     /contact                                Contact.show
+
+
+GET     /                                       Application.index
+GET     /about                                  About.index
+GET     /conditions                             Conditions.index
+GET     /configuration                          Configuration.index
+GET     /contact                                Contact.index
 GET 	/game/gamerConfig						Game.gamerConfig
 GET 	/game/gamephoto							Game.gamePhoto
 GET		/game/{name}							Game.show
-GET     /privacy                                Privacy.show
-GET     /search/?                               Search.show
+GET     /manage                                 Manage.games
+GET     /manage/games                           Manage.games
+GET     /manage/hardware                        Manage.hardware
+GET     /manage/requests                        Manage.requests
+GET     /messages                               Messages.index
+GET     /privacy                                Privacy.index
+GET     /profile                                Profile.index
+GET     /search                                 Search.index
 GET 	/search/{game}							Search.findGameJSON
 POST    /signup                                 Signup.show
-GET     /signup                                 Signup.render
-GET     /suggestions                            Suggestions.show
+GET     /signup                                 Signup.index
+GET     /suggestions                            Suggestions.index
 GET     /verifyPseudo/{pseudo}                  Signup.verifyPseudo
 
+# Friendly routes for blobs
+GET     /public/images/avatars/{pseudo}         Application.renderAvatar
 
 # Secure routes
 POST    /authenticate                           Secure.authenticate

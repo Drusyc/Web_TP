@@ -2,9 +2,11 @@ package controllers;
 
 import play.mvc.Controller;
 import play.mvc.With;
+import validators.Check;
 
-@With(SecurePublic.class)
-public class About extends Controller {
+@With(Secure.class)
+@Check("gamer")
+public class Messages extends Controller {
 
     public static void index() {
         render();

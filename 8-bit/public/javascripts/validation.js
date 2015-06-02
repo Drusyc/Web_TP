@@ -4,7 +4,7 @@ var EMAIL_PATTERN = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 var PASSWORD_MINLENGTH = 8;
 
 /* Tooltips Content */
-var PSEUDO_TAKEN = "Pseudo déjà pris";
+var PSEUDO_TAKEN = "Pseudo déjà pris :(";
 var PSEUDO_TOOLTIP = "6 caractères minimum";
 var PASSWORD_TOOLTIP = "8 caractères minimum";
 var INVALID_EMAIL = "Email non valide !";
@@ -148,18 +148,6 @@ $(function validate() {
         }
     });
     // -- Password input
-    // Initial value
-    if (passwordInput.val().length > 0) {
-        if (passwordInput.val().length < PASSWORD_MINLENGTH) {
-            passwordInput.attr("title", PASSWORD_TOOLTIP);
-            passwordInput.tooltip("option", "tooltipClass", ERROR_TOOLTIP);
-            passwordInput.addClass(INVALID_INPUT);
-        } else {
-            passwordInput.attr("title", PASSWORD_TOOLTIP);
-            passwordInput.tooltip("option", "tooltipClass", INFO_TOOLTIP);
-            passwordInput.addClass(VALID_INPUT);
-        }
-    }
     passwordInput.blur(function() {
         passwordInput.removeClass(VALID_INPUT);
         passwordInput.removeClass(INVALID_INPUT);

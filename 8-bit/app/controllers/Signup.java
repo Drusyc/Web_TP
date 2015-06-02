@@ -21,7 +21,6 @@ public class Signup extends Controller {
 
     private static final String PSEUDO = "pseudo";
     private static final String EMAIL = "email";
-    private static final String PASSWORD = "password";
     private static final String PSEUDO_TAKEN = "pseudoTaken";
 
     private static final int THUMB_WIDTH = 35;
@@ -36,14 +35,14 @@ public class Signup extends Controller {
             redirect("/");
     }
 
-    public static void show(String username, String password) {
+    public static void show(String username, String email) {
         flash.put(PSEUDO, username);
-        flash.put(PASSWORD, password);
-        render();
+        flash.put(EMAIL, email);
+        index();
     }
 
-    public static void render() {
-        renderTemplate("signup.html");
+    public static void index() {
+        render();
     }
 
     /**

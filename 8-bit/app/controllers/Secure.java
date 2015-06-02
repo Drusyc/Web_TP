@@ -25,7 +25,15 @@ public class Secure extends Controller {
         // Authent
         if(!session.contains("username")) {
             flash.put("url", "GET".equals(request.method) ? request.url : Play.ctxPath + "/"); // seems a good default
-            renderTemplate("signup.html");
+            redirect("/signup");
+        }
+        else {
+            final User user = loadCurrentUser(session.get("username"));
+            if ( user == null ) {
+                // it must have been erased, redirect to home page
+                session.remove("username");
+                redirect("/");
+            }
         }
         // Checks
         Check check = getActionAnnotation(Check.class);
@@ -36,6 +44,22 @@ public class Secure extends Controller {
         if(check != null) {
             check(check);
         }
+    }
+
+    static User loadCurrentUser() {
+        String username = session.get("username");
+        final User user = username != null ? loadCurrentUser(username) : null;
+        return user;
+    }
+
+    private static User loadCurrentUser(String username) {
+        User user = User.findById(username);
+
+        if ( user != null ) {
+            // make the user available in templates
+            renderArgs.put("user", user);
+        }
+        return user;
     }
 
     private static void check(Check check) throws Throwable {
@@ -71,7 +95,7 @@ public class Secure extends Controller {
             }
         }
         flash.keep("url");
-        renderTemplate("index.html");
+        redirect("/");
     }
 
     public static void authenticate(@Required String username, String password, boolean remember) throws Throwable {
@@ -102,7 +126,7 @@ public class Secure extends Controller {
         session.clear();
         response.removeCookie("rememberme");
         Security.invoke("onDisconnected");
-        renderTemplate("index.html");
+        redirect("/");
     }
 
     // ~~~ Utils

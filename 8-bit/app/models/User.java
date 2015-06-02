@@ -6,14 +6,13 @@ import org.hibernate.annotations.DiscriminatorOptions;
 
 import play.db.jpa.Blob;
 import play.db.jpa.GenericModel;
-import play.data.validation.Email;
 
 @Inheritance
 @DiscriminatorOptions(force=true)
 @DiscriminatorColumn(name="role", discriminatorType=DiscriminatorType.STRING)
 @Entity
 public abstract class User extends GenericModel {
-	
+
 	@Id
     private String pseudo;
 
