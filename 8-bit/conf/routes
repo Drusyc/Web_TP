@@ -8,6 +8,8 @@ GET     /about                                  About.show
 GET     /conditions                             Conditions.show
 GET     /configuration                          Configuration.show
 GET     /contact                                Contact.show
+GET 	/game/gamerConfig						Game.gamerConfig
+GET 	/game/gamephoto							Game.gamePhoto
 GET		/game/{name}							Game.show
 GET     /privacy                                Privacy.show
 GET     /search/?                               Search.show

@@ -20,6 +20,10 @@ public class Search extends Controller {
     }
     
     public static void findGame(String game) {
+    	if (game.length() == 0) {
+    		renderTemplate("search.html", "");
+    	}
+    	
     	/* Récupération des résultats */
     	List<Game> games = Game.findByName(game);
     	List<String> url = new ArrayList<String>();
