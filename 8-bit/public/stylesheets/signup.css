@@ -1,0 +1,53 @@
+/* Sign-up stylesheet */
+
+.signup {
+	clear: both;
+}
+
+.signup-form {
+	width: 356px;
+}
+
+.signup-input {
+	width: 300px;
+	display: block;
+	height: 25px;
+	margin: 5px 2px;
+}
+
+.signup-input:focus {
+	-webkit-box-shadow: 0 0 5px 1px #9683EC;
+	-moz-box-shadow: 0 0 5px 1px #9683EC;
+	box-shadow: 0 0 5px 1px #9683EC;
+}
+
+.icon {
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	background-size: 20px 20px;
+	padding-left: 40px;
+}
+
+.user-icon {
+	background-image: url('/public/images/icons/user.png');
+}
+
+.mail-icon {
+	background-image: url('/public/images/icons/mail.png');
+}
+
+.pwd-icon {
+	background-image: url('/public/images/icons/password.png');
+}
+
+.signup-btn {
+	height: 35px;
+	padding: 5px 10px;
+	font-weight: 500;
+	background: #6050DC;
+	font-size: 11px;
+}
+
+.signup-btn:hover {
+	background: #9683EC;
+}

@@ -1,7 +1,10 @@
 #{extends 'main.html' /}
 #{set title:'Rechercher un jeu' /}
+#{set 'moreStyles'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/game.css'}">
+#{/set}
 #{set 'moreScripts'}
-	<script src="@{'/public/javascripts/game.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/game.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 #{/set}
 
 <main>

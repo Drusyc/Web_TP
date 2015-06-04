@@ -7,7 +7,6 @@ import models.Gamer;
 import models.Genre;
 import models.OS;
 import models.Processor;
-import models.Request;
 import models.VideoCard;
 
 import org.junit.Test;

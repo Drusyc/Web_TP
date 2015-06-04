@@ -14,7 +14,7 @@ public class OS extends Model {
     private String name;
 
     private String version;
-    
+
     private Date date;
     
     
@@ -56,8 +56,8 @@ public class OS extends Model {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-    
-    
+
+
     
     
 }

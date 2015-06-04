@@ -30,7 +30,7 @@ public class Signup extends Controller {
     /**
      * Checks if user is connected
      */
-    public static void checkConnected() throws Throwable {
+    public static void checkConnected() {
         if (session.contains("username"))
             redirect("/");
     }
@@ -117,7 +117,7 @@ public class Signup extends Controller {
         flash.put(PSEUDO, pseudo);
         flash.put(EMAIL, email);
         validation.keep();
-        render();
+        index();
     }
 
     /**

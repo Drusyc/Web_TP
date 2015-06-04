@@ -1,5 +1,9 @@
 #{extends 'main.html' /}
 #{set title:'Bienvenue sur 8-bit !' /}
+#{set 'moreStyles'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/index.css'}">
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/signup.css'}">
+#{/set}
 <main>
 	<div class="front-welcome">
 		<h1>Bienvenue sur 8-bit ${user?.pseudo} !</h1>
