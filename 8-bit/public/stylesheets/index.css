@@ -2,18 +2,14 @@
 
 /* Front welcome */
 .front-welcome {
-    width: 35%;
     font-size: 16px;
     line-height: 40px;
     padding: 20px;
-    float: left;
 }
 
 /* Recent games */
 .recent-games {
-    float: right;
     margin-top: 30px;
-    width: 35%;
     height: 350px;
 }
 
@@ -23,18 +19,4 @@
     font-weight: 400;
     line-height: 35px;
     text-align: center;
-}
-
-@media screen and (max-width:800px) {
-	/* Resize the welcome elements */
-	.front-welcome {
-		float: none;
-		width: 100%;
-		padding: 10px;
-	}
-
-	.recent-games {
-		float: none;
-		width: 100%;
-	}
 }

@@ -306,10 +306,37 @@ main {
 	display: block;
 }
 
+.col-1 {
+	width: 35%;
+	float: left;
+}
+
+.col-2 {
+	width: 35%;
+	float: right;
+}
+
+.row {
+	width: 100%;
+	clear: both;
+}
+
+@media screen and (max-width:800px) {
+	.col-1 {
+		width: 100%;
+		float: none;
+	}
+
+	.col-2 {
+		width: 100%;
+		float: none;
+	}
+}
+
 /* Footer */
 footer {
 	position: fixed;
-	z-index: -1;
+	z-index: 1;
 	right: 10px;
 	bottom: 10px;
 	font-size: 11px;

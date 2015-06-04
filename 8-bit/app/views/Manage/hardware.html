@@ -10,46 +10,78 @@
 #{/set}
 <main>
 	<h1>Gestion du matériel</h1>
-	<div id="processors-form" title="Ajouter un processeur">
-		<form>
-			<input type="text" name="name" id="name" placeholder="Nom *" class="text-input hardware-input" autocomplete="off">
-			<input type="text" name="manufacturer" id="manufacturer" placeholder="Fabricant *" class="text-input hardware-input" autocomplete="off">
-			<input type="text" name="speed" id="speed" placeholder="Vitesse (en GHz) *" class="text-input hardware-input" autocomplete="off">
-			<input type="text" name="cores" id="cores" placeholder="Nombre de cœurs *" class="text-input hardware-input" autocomplete="off">
-			<input type="submit" class="keyboard-submit">
-		</form>
+	<div class="col-1">
+	<div id="processors-form" title="Ajouter un processeur ↵">
+			<form>
+				<input type="text" name="processor-name" id="processor-name" placeholder="Nom *" class="text-input hardware-input" autocomplete="off">
+				<input type="text" name="processor-manufacturer" id="processor-manufacturer" placeholder="Fabricant *" class="text-input hardware-input" autocomplete="off">
+				<input type="text" name="processor-speed" id="processor-speed" placeholder="Vitesse (en GHz) *" class="text-input hardware-input" autocomplete="off">
+				<input type="text" name="cores" id="cores" placeholder="Nombre de cœurs *" class="text-input hardware-input" autocomplete="off">
+				<input type="submit" class="keyboard-submit">
+			</form>
+		</div>
+		<h2>Processeurs</h2>
+		<table id="processors">
+			<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Fabricant</th>
+				<th>Vitesse</th>
+				<th>Cœurs</th>
+			</tr>
+			</thead>
+			<tbody>
+			#{list items:processorList, as:'processor'}
+			<tr>
+				<td>${processor.name}</td>
+				<td>${processor.manufacturer}</td>
+				<td>${processor.speed}</td>
+				<td>${processor.cores}</td>
+			</tr>
+			#{/list}
+			</tbody>
+			<tfoot>
+			<tr>
+				<td colspan="4"><button id="add-processor" class="btn add-btn">Ajouter un processeur</button></td>
+			</tr>
+			</tfoot>
+		</table>
 	</div>
-	<h2>Processeurs</h2>
-	<table id="processors">
-		<thead>
-		<tr>
-			<th>Nom</th>
-			<th>Fabricant</th>
-			<th>Vitesse</th>
-			<th>Cœurs</th>
-		</tr>
-		</thead>
-		<tbody>
-		#{list items:processorList, as:'processor'}
-		<tr>
-			<td>${processor.name}</td>
-			<td>${processor.manufacturer}</td>
-			<td>${processor.speed}</td>
-			<td>${processor.cores}</td>
-		</tr>
-		#{/list}
-		</tbody>
-		<tfoot>
-		<tr>
-			<td colspan="4"><button id="add-processor" class="btn add-btn">Ajouter un processeur</button></td>
-		</tr>
-		</tfoot>
-	</table>
-
-	<h2>Cartes graphiques</h2>
-	<ul>
-	#{list items:videoCardList, as:'videoCard'}
-		<li>${videoCard}</li>
-	#{/list}
-	</ul>
+	<div class="col-2">
+		<div id="video-cards-form" title="Ajouter une carte graphique ↵">
+				<form>
+					<input type="text" name="video-card-name" id="video-card-name" placeholder="Nom *" class="text-input hardware-input" autocomplete="off">
+					<input type="text" name="video-card-manufacturer" id="video-card-manufacturer" placeholder="Fabricant *" class="text-input hardware-input" autocomplete="off">
+					<input type="text" name="video-card-speed" id="video-card-speed" placeholder="Vitesse (en MHz) *" class="text-input hardware-input" autocomplete="off">
+					<input type="text" name="directX" id="directX" placeholder="Version DirectX *" class="text-input hardware-input" autocomplete="off">
+					<input type="submit" class="keyboard-submit">
+				</form>
+		</div>
+		<h2>Cartes graphiques</h2>
+		<table id="video-cards">
+			<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Fabricant</th>
+				<th>Mémoire</th>
+				<th>DirectX</th>
+			</tr>
+			</thead>
+			<tbody>
+			#{list items:videoCardList, as:'videoCard'}
+			<tr>
+				<td>${videoCard.name}</td>
+				<td>${videoCard.manufacturer}</td>
+				<td>${videoCard.memory}</td>
+				<td>${videoCard.versionDirectX}</td>
+			</tr>
+			#{/list}
+			</tbody>
+			<tfoot>
+			<tr>
+				<td colspan="4"><button id="add-video-card" class="btn add-btn">Ajouter une carte graphique</button></td>
+			</tr>
+			</tfoot>
+		</table>
+	</div>
 </main>

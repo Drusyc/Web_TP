@@ -27,11 +27,16 @@ public class Manage extends Controller {
         render(processorList, videoCardList);
     }
 
-    public static boolean addProcessor(String name, String manufacturer, Double speed, Integer cores) {
+    public static void addProcessor(String name, String manufacturer, Double speed, Integer cores) {
         Processor p = new Processor(name, manufacturer, speed, cores);
         p.save();
         Logger.info("Manage::addProcessor - " + name + " " + manufacturer + " " + speed + " " + cores);
-        return true;
+    }
+
+    public static void addVideoCard(String name, String manufacturer, Double speedMemory, String versionDirectX) {
+        VideoCard v = new VideoCard(name, manufacturer, speedMemory, versionDirectX);
+        v.save();
+        Logger.info("Manage::addVideoCard - " + name + " " + manufacturer + " " + speedMemory + " " + versionDirectX);
     }
 
     public static void requests() {
