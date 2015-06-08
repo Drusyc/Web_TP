@@ -37,34 +37,34 @@
     	<h2>Configuration minimale</h2>
 	    	#{set config:game.configuration /}
 	    	<ul>
-	    	    <li><strong>OS :</strong>
+	    	    <li id="game-OS"><strong>OS :</strong>
 	    			#{list items:config?.operatingSystems, as: 'OS'}
 	    				${OS.name}${OS.version}
 	    			#{/list}    	    	
 	    		</li>
-	    		<li><strong>RAM :</strong>
+	    		<li id="game-RAM"><strong>RAM :</strong>
 	    			${config?.RAM}
 	    		</li>
-	    		<li><strong>Espace Mémoire :</strong>
+	    		<li id="game-freeDiskSpace"><strong>Espace Mémoire :</strong>
 	    			${config?.freeDiskSpace}
 	    		</li>
 	    		<li><strong>Processeur</strong>
 	    			#{list items:config?.processors, as: 'proc'}
 	    			<ul>
-	    				<li><strong>Nom :</strong> ${proc.name} </li>
-	    				<li><strong>Fabriquant :</strong> ${proc.manufacturer} </li>
-	    				<li><strong>Vitesse (Fréquence) :</strong> ${proc.speed} </li>
-	    				<li><strong>Nombre de coeurs :</strong> ${proc.cores} </li>
+	    				<li id="game-processors-name"><strong>Nom :</strong> ${proc.name} </li>
+	    				<li id="game-processors-manufacturer"><strong>Fabriquant :</strong> ${proc.manufacturer} </li>
+	    				<li id="game-processors-speed"><strong>Vitesse (Fréquence) :</strong> ${proc.speed} </li>
+	    				<li id="game-processors-cores"><strong>Nombre de coeurs :</strong> ${proc.cores} </li>
 	    			</ul>
 	    			#{/list}
 	    		</li>
 	    		<li><strong>Carte vidéo</strong>
 	    			#{list items:config?.videoCards, as: 'vidCard'}
 	    			<ul>
-	    				<li><strong>Nom :</strong> ${vidCard.name} </li>
-	    				<li><strong>Fabriquant :</strong> ${vidCard.manufacturer} </li>
-	    				<li><strong>Vitesse (Fréquence) :</strong> ${vidCard.speedMemory} </li>
-	    				<li><strong>Direct X :</strong> ${vidCard.versionDirectX} </li>
+	    				<li id="game-videoCard-name"><strong>Nom :</strong> ${vidCard.name} </li>
+	    				<li id="game-videoCard-manufacturer"><strong>Fabriquant :</strong> ${vidCard.manufacturer} </li>
+	    				<li id="game-videoCard-speed"><strong>Vitesse (Fréquence) :</strong> ${vidCard.speedMemory} </li>
+	    				<li id="game-videoCard-directX"><strong>Direct X :</strong> ${vidCard.versionDirectX} </li>
 	    			
 	    			</ul>
 	    			#{/list}
@@ -81,39 +81,63 @@
 
 			#{list items:user.configurations, as: 'configGamer'}
                 <ul id="config-${configGamer_index}" class="liste-config">
-		    	    <li><strong>OS :</strong>
+		    	    <li id="user-OS"><strong>OS :</strong>
 		    			#{list items:configGamer.operatingSystems, as: 'OS'}
 		    				${OS.name}${OS.version}
-		    			#{/list}    	    	
+		    			#{/list}
 		    		</li>
-		    		<li><strong>RAM :</strong>
+		    		<li id="user-RAM"><strong>RAM :</strong>
 		    			${configGamer?.RAM}
 		    		</li>
-		    		<li><strong>Espace Mémoire :</strong>
+		    		<li id="user-freeDiskSpace"><strong>Espace Mémoire :</strong>
 		    			${configGamer?.freeDiskSpace}
 		    		</li>
 		    		<li><strong>Processeurs :</strong>
-		    			${configGamer?.processors}
+						#{list items:configGamer?.processors, as: 'procGamer'}
+                            <ul>
+                                <li id="user-processors-name"><strong>Nom :</strong> ${procGamer.name} </li>
+                                <li id="user-processors-manufacturer"><strong>Fabriquant :</strong> ${procGamer.manufacturer} </li>
+                                <li id="user-processors-speed"><strong>Vitesse (Fréquence) :</strong> ${procGamer.speed} </li>
+                                <li id="user-processors-cores"><strong>Nombre de coeurs :</strong> ${procGamer.cores} </li>
+                            </ul>
+						#{/list}
 		    		</li>
 		    		<li><strong>Carte Video :</strong>
-		    			${configGamer?.videoCards}
+						#{list items:configGamer?.videoCards, as: 'vidCardGamer'}
+                            <ul>
+                                <li id="user-videoCard-name"><strong>Nom :</strong> ${vidCardGamer.name} </li>
+                                <li id="user-videoCard-manufacturer"><strong>Fabriquant :</strong> ${vidCardGamer.manufacturer} </li>
+                                <li id="user-videoCard-speed"><strong>Vitesse (Fréquence) :</strong> ${vidCardGamer.speedMemory} </li>
+                                <li id="user-videoCard-directX"><strong>Direct X :</strong> ${vidCardGamer.versionDirectX} </li>
+
+                            </ul>
+						#{/list}
 		    		</li>
 	    		</ul>
 			#{/list}
 
-			<ul id="config-displayed"></ul>
+            <ul id="config-displayed"></ul>
 
-		    <select id="select-config-gamer">
-		    	#{list items:user.configurations, as: 'configGamer'}
-					#{if configGamer_index == 1}
-						<option value="${configGamer_index}" selected>${configGamer.name}</option>
-					#{/if}
-					#{else}
-                    	<option value="${configGamer_index}">${configGamer.name}</option>
-					#{/else}
-				#{/list}
-		    </select>   	
-		 	<button type="submit" >Can I run it ?</button>
+			<form  method="GET" action="/Configuration/compare">
+                <select id="select-config-gamer" name="idUser">
+					#{list items:user.configurations, as: 'configGamer'}
+						#{if configGamer_index == 1}
+                            <option value="${configGamer.id}" selected>${configGamer.name}</option>
+						#{/if}
+						#{else}
+                            <option value="${configGamer.id}">${configGamer.name}</option>
+						#{/else}
+					#{/list}
+                </select>
+
+				<!-- <input type="submit" value="Compare" onclick="javascript:compareConfig('${game.name}')"/> -->
+                <input type="text" id="idGame" name="idGame" value="${game.name}" hidden>
+                <button type="submit" class="btn signup-btn">Compare</button>
+            </form>
+
+
+
+
 		#{/if}
 		#{else}
 	   	 	

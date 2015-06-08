@@ -18,14 +18,14 @@ import validators.Check;
 public class Search extends Controller {
     
     public static void index(String game) {
-        if (game != null && game.length() >= 4) {
+        if (game != null && game.length() >= 3) {
             /* Récupération des résultats */
-            List<Game> games = Game.findByName(game);
+            List<String> games = Game.findByName(game);
             List<String> url = new ArrayList<String>();
 
-            for (Game g : games) {
-                url.add("/game/" + g.getName().replaceAll(" ", "+"));
-                Logger.debug("Search::index - " + g.getName() + " -> " + "/game/" + g.getName().replaceAll(" ", "+"));
+            for (String g : games) {
+                url.add("/game/" + g.replaceAll(" ", "+"));
+                Logger.debug("Search::index - " + g + " -> " + "/game/" + g.replaceAll(" ", "+"));
             }
 
             render(games, url);
@@ -35,10 +35,10 @@ public class Search extends Controller {
  
     public static void findGameJSON(String game) {
     	/* Récupération des résultats */
-    	List<Game> games = Game.findByName(game);
+    	List<String> games = Game.findByName(game);
     	
     	/* Création du JSON et conversion des résultats */
-    	Type listType = new TypeToken<List<Game>>() {}.getType();
+    	Type listType = new TypeToken<List<String>>() {}.getType();
 
     	Gson r = new Gson();
     	String results = r.toJson(games, listType);

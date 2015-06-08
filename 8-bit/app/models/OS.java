@@ -15,7 +15,7 @@ public class OS extends Model {
 
     private String version;
     
-    private Date date;
+    private Date releaseDate;
     
     
     /* *** Constructors *** */
@@ -24,11 +24,17 @@ public class OS extends Model {
 		super();
 	}
 
+    public OS(String name, String version) {
+        super();
+        this.name = name;
+        this.version = version;
+    }
+
 	public OS(String name, String version, Date date) {
 		super();
 		this.name = name;
 		this.version = version;
-		this.date = date;
+		this.releaseDate = date;
 	}
 
 	/* *** Getters / Setters *** */
@@ -50,13 +56,13 @@ public class OS extends Model {
     }
 
 	public Date getDate() {
-		return date;
+		return releaseDate;
 	}
 
 	public void setDate(Date date) {
-		this.date = date;
+		this.releaseDate = date;
 	}
-    
+
     
     
     

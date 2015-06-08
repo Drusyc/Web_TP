@@ -6,7 +6,7 @@ $(function recherche () {
 	var url = "/search/";
 
 	$("#search").bind("input", function() {
-		if ($("#search").val().length < 4) {
+		if ($("#search").val().length < 3) {
             $("#game-list").empty();
             return;
         }
@@ -20,8 +20,8 @@ $(function recherche () {
 
                 item.setAttribute("class", "search-item");
 				
-				url.setAttribute("href", "/game/" + val.name.replace(/ /g, "+"));
-				url.innerHTML = val.name;					
+				url.setAttribute("href", "/game/" + val.replace(/ /g, "+"));
+				url.innerHTML = val;
 
 				item.appendChild(url);				
 

@@ -1,8 +1,5 @@
 import java.sql.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import models.Configuration;
 import models.Game;
@@ -11,7 +8,6 @@ import models.Genre;
 import models.OS;
 import models.Processor;
 import models.Provider;
-import models.Request;
 import models.VideoCard;
 
 import org.junit.Test;
@@ -50,12 +46,17 @@ public class ApplicationTest extends FunctionalTest {
     	/*
     	 * ******** OS ************
     	 */
-    	
+/*
 		OS win81 = new OS("Windows", "8.1", Date.valueOf("2013-10-17")); win81.save();
 		OS win7 = new OS("Windows", "7", Date.valueOf("2009-10-22")); win7.save();
 		OS winXP = new OS("Windows", "XP", Date.valueOf("2001-10-25")); winXP.save();
 		OS macOSx = new OS("OS X", "10.0", Date.valueOf("2014-10-16")); macOSx.save();
-		
+*/
+		OS win81 = new OS("Windows", "8.1"); win81.save();
+		OS win7 = new OS("Windows", "7"); win7.save();
+		OS winXP = new OS("Windows", "XP"); winXP.save();
+		OS macOSx = new OS("OS X", "10.0"); macOSx.save();
+
 		/*
 		 * ******* PROVIDER ***********
 		 */
@@ -77,9 +78,9 @@ public class ApplicationTest extends FunctionalTest {
 		Set<String> setDevGame1 = new HashSet<String>(); setDevGame1.add("Blizzard Entertainment");
 		Set<String> setModeGame1 = new HashSet<String>(); setModeGame1.add("Solo"); setModeGame1.add("Multi");
 		Map<String, Date> setReleaseGame1 = new HashMap<String, Date>();
-		setReleaseGame1.put("EU", Date.valueOf("2012-07-27"));
+		/*setReleaseGame1.put("EU", Date.valueOf("2012-07-27"));
 		setReleaseGame1.put("USA", Date.valueOf("2012-07-27"));
-		setReleaseGame1.put("JAPAN", Date.valueOf("2012-07-27"));
+		setReleaseGame1.put("JAPAN", Date.valueOf("2012-07-27"));*/
 		Set<Genre> setGenreGame1 = new HashSet<Genre>(); setGenreGame1.add(genreStrategie);
 		setGenreGame1.add(genreReflexion);
 		
@@ -110,9 +111,9 @@ public class ApplicationTest extends FunctionalTest {
 		Set<String> setDevGame2 = new HashSet<String>(); setDevGame2.add("Maxis");
 		Set<String> setModeGame2 = new HashSet<String>(); setModeGame2.add("Solo");
 		Map<String, Date> setReleaseGame2 = new HashMap<String, Date>();
-		setReleaseGame2.put("EU", Date.valueOf("2009-06-09"));
+		/*setReleaseGame2.put("EU", Date.valueOf("2009-06-09"));
 		setReleaseGame2.put("USA", Date.valueOf("2009-06-09"));
-		setReleaseGame2.put("JAPAN", Date.valueOf("2009-06-09"));
+		setReleaseGame2.put("JAPAN", Date.valueOf("2009-06-09"));*/
 
 		Set<Genre> setGenreGame2 = new HashSet<Genre>(); setGenreGame2.add(genreReflexion);
 		
@@ -189,10 +190,11 @@ public class ApplicationTest extends FunctionalTest {
 		/*
 		 * ******** REQUEST *************
 		 */
-		
-		Request r1 = new Request(new Date(System.currentTimeMillis()), "Diablo 3", Request.Status.IN_PROGRESS);
+	/*
+		Request r1 = new Request(new Date(Calendar.getInstance().getTime().getTime()), "Diablo 3", Request.Status.IN_PROGRESS);
 		r1.setOS(win81);
 		r1.setRequester(gamer1);r1.save();
+	*/
     }
     
 }

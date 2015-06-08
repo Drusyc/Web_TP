@@ -6,6 +6,7 @@ import play.db.jpa.Model;
 import javax.persistence.*;
 
 import java.util.Set;
+import play.Logger;
 
 @Entity
 public class Configuration extends Model {
@@ -118,5 +119,5 @@ public class Configuration extends Model {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 }

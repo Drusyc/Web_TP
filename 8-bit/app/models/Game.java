@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import play.Logger;
 import play.db.jpa.Blob;
 import play.db.jpa.GenericModel;
 
@@ -31,7 +32,7 @@ public class Game extends GenericModel {
     @ElementCollection
     @MapKeyColumn(name="country")
     @CollectionTable(joinColumns=@JoinColumn(name="game_name"))
-    @Column(name="date")
+    @Column(name="release_date")
     private Map<String, Date> releaseDates;
     
     /* *** Constructors *** */
@@ -158,19 +159,17 @@ public class Game extends GenericModel {
     
     /* Methods */
 
-    public static List<Game> findByName (String name) {
+    public static List<String> findByName (String name) {
     	String NAME = "name";
-    	String GAME_REQUEST = "SELECT * FROM GAME "
+    	String GAME_REQUEST = "SELECT NAME FROM GAME "
     			+ "WHERE LOWER(NAME) LIKE LOWER(" + ":" + NAME + ") ORDER BY NAME;";
     	
     	EntityManager m = Game.em();
 
     	/* Création de la requête */
-    	Query q = m.createNativeQuery(GAME_REQUEST, Game.class);
+    	Query q = m.createNativeQuery(GAME_REQUEST);
     	q.setParameter(NAME, "%" + name.toUpperCase() + "%");
     	
     	return q.getResultList();
     }
-    
-    
 }

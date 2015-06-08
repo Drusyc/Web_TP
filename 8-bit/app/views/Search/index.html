@@ -14,8 +14,9 @@
 	<ul id="game-list" class="search-list">
 		#{list items:games, as: 'game'}
 			<li class="search-item">
-				<a href="${url[game_index - 1]}">${game.name}</a>
+				<a href="${url[game_index - 1]}">${game}</a>
 			</li>
 		#{/list}
 	</ul>
+
 </main>
