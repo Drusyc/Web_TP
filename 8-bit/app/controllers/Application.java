@@ -27,10 +27,9 @@ public class Application extends Controller {
         } else {
             // Default avatar
             File file = new File("public/images/avatars/default.png");
-            FileInputStream fis = null;
 
             try {
-                fis = new FileInputStream(file);
+                FileInputStream fis = new FileInputStream(file);
                 response.setContentTypeIfNotSet("image/png");
                 renderBinary(fis);
             } catch (IOException e) {

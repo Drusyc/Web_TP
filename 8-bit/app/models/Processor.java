@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import play.db.jpa.GenericModel;
 
 @Entity
-public class Processor extends GenericModel{
+public class Processor extends GenericModel {
 
 	@Id
 	private String name;

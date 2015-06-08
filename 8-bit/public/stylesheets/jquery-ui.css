@@ -215,6 +215,7 @@
 	vertical-align: middle;
 	text-align: center;
 	overflow: visible; /* removes extra width in IE */
+	outline: none;
 }
 .ui-button,
 .ui-button:link,
@@ -830,7 +831,6 @@ body .ui-tooltip {
 /* Component containers
 ----------------------------------*/
 .ui-widget {
-	font-family: Segoe UI,Arial,sans-serif;
 	font-size: 1.1em;
 }
 .ui-widget .ui-widget {
@@ -840,22 +840,20 @@ body .ui-tooltip {
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {
-	font-family: Segoe UI,Arial,sans-serif;
 	font-size: 1em;
 }
 .ui-widget-content {
-	border: 1px solid #666666;
-	background: #000000 url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-bg_inset-soft_25_000000_1x100.png") 50% bottom repeat-x;
+	border: 1px solid rgb(0, 51, 102);
+	background: rgba(0, 51, 102, 0.5);
 	color: #ffffff;
 }
 .ui-widget-content a {
 	color: #ffffff;
 }
 .ui-widget-header {
-	border: 1px solid #333333;
-	background: #333333 url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-bg_gloss-wave_25_333333_500x100.png") 50% 50% repeat-x;
 	color: #ffffff;
 	font-weight: bold;
+	letter-spacing: 1px;
 }
 .ui-widget-header a {
 	color: #ffffff;
@@ -866,8 +864,8 @@ body .ui-tooltip {
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
-	border: 1px solid #666666;
-	background: #555555 url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-bg_glass_20_555555_1x400.png") 50% 50% repeat-x;
+	border: 1px solid rgb(0, 51, 102);
+	background: rgba(0, 51, 102, 0.5);
 	font-weight: bold;
 	color: #eeeeee;
 }
@@ -883,8 +881,8 @@ body .ui-tooltip {
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-	border: 1px solid #59b4d4;
-	background: #0078a3 url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-bg_glass_40_0078a3_1x400.png") 50% 50% repeat-x;
+	border: 1px solid rgb(0, 51, 102);
+	background: rgba(0, 51, 102, 0.5);
 	font-weight: bold;
 	color: #ffffff;
 }
@@ -902,8 +900,6 @@ body .ui-tooltip {
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-	border: 1px solid #ffaf0f;
-	background: #f58400 url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-bg_inset-soft_30_f58400_1x100.png") 50% 50% repeat-x;
 	font-weight: bold;
 	color: #ffffff;
 }
@@ -920,7 +916,7 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
 	border: 1px solid #cccccc;
-	background: #eeeeee url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-bg_highlight-soft_80_eeeeee_1x100.png") 50% top repeat-x;
+	background: #eeeeee;
 	color: #2e7db2;
 }
 .ui-state-highlight a,
@@ -932,7 +928,7 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-error,
 .ui-widget-header .ui-state-error {
 	border: 1px solid #ffb73d;
-	background: #ffc73d url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-bg_glass_40_ffc73d_1x400.png") 50% 50% repeat-x;
+	background: #ffc73d;
 	color: #111111;
 }
 .ui-state-error a,
@@ -953,8 +949,6 @@ body .ui-tooltip {
 .ui-priority-secondary,
 .ui-widget-content .ui-priority-secondary,
 .ui-widget-header .ui-priority-secondary {
-	opacity: .7;
-	filter:Alpha(Opacity=70); /* support: IE8 */
 	font-weight: normal;
 }
 .ui-state-disabled,
@@ -975,30 +969,6 @@ body .ui-tooltip {
 .ui-icon {
 	width: 16px;
 	height: 16px;
-}
-.ui-icon,
-.ui-widget-content .ui-icon {
-	background-image: url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-icons_cccccc_256x240.png");
-}
-.ui-widget-header .ui-icon {
-	background-image: url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-icons_ffffff_256x240.png");
-}
-.ui-state-default .ui-icon {
-	background-image: url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-icons_cccccc_256x240.png");
-}
-.ui-state-hover .ui-icon,
-.ui-state-focus .ui-icon {
-	background-image: url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-icons_ffffff_256x240.png");
-}
-.ui-state-active .ui-icon {
-	background-image: url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-icons_222222_256x240.png");
-}
-.ui-state-highlight .ui-icon {
-	background-image: url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-icons_4b8e0b_256x240.png");
-}
-.ui-state-error .ui-icon,
-.ui-state-error-text .ui-icon {
-	background-image: url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-icons_a83300_256x240.png");
 }
 
 /* positioning */
@@ -1179,47 +1149,16 @@ body .ui-tooltip {
 .ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
 .ui-icon-grip-diagonal-se { background-position: -80px -224px; }
 
-
-/* Misc visuals
-----------------------------------*/
-
-/* Corner radius */
-.ui-corner-all,
-.ui-corner-top,
-.ui-corner-left,
-.ui-corner-tl {
-	border-top-left-radius: 6px;
-}
-.ui-corner-all,
-.ui-corner-top,
-.ui-corner-right,
-.ui-corner-tr {
-	border-top-right-radius: 6px;
-}
-.ui-corner-all,
-.ui-corner-bottom,
-.ui-corner-left,
-.ui-corner-bl {
-	border-bottom-left-radius: 6px;
-}
-.ui-corner-all,
-.ui-corner-bottom,
-.ui-corner-right,
-.ui-corner-br {
-	border-bottom-right-radius: 6px;
-}
-
 /* Overlays */
 .ui-widget-overlay {
-	background: #5c5c5c url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-bg_flat_50_5c5c5c_40x100.png") 50% 50% repeat-x;
+	background: #5c5c5c;
 	opacity: .8;
 	filter: Alpha(Opacity=80); /* support: IE8 */
 }
 .ui-widget-shadow {
 	margin: -7px 0 0 -7px;
 	padding: 7px;
-	background: #cccccc url("../../../../../../../Downloads/jquery-ui-1.11.4.custom%202/images/ui-bg_flat_30_cccccc_40x100.png") 50% 50% repeat-x;
+	background: #cccccc;
 	opacity: .6;
 	filter: Alpha(Opacity=60); /* support: IE8 */
-	border-radius: 8px;
 }

@@ -1,7 +1,10 @@
 #{extends 'main.html' /}
 #{set title:'S\'inscrire sur 8-bit' /}
+#{set 'moreStyles'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/signup.css'}">
+#{/set}
 #{set 'moreScripts'}
-<script src="@{'/public/javascripts/validation.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/signup.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 #{/set}
 <main>
 	<h1>S'inscrire sur 8-bit</h1>

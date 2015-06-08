@@ -16,7 +16,7 @@ public class OS extends Model {
     private String version;
     
     private Date releaseDate;
-    
+
     
     /* *** Constructors *** */
     
@@ -63,7 +63,4 @@ public class OS extends Model {
 		this.releaseDate = date;
 	}
 
-    
-    
-    
 }

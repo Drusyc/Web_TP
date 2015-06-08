@@ -12,8 +12,8 @@ public class Request extends Model {
 	public enum Status {
 		OK,
 		NOK,
-		IN_PROGRESS;
-	}
+		IN_PROGRESS
+    }
 	
 	@Column(nullable=false)
 	private Date date;

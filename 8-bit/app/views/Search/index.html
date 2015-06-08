@@ -1,14 +1,17 @@
 #{extends 'main.html' /}
 #{set title:'Rechercher un jeu' /}
+#{set 'moreStyles'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/search.css'}">
+#{/set}
 #{set 'moreScripts'}
 <script src="@{'/public/javascripts/search.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 #{/set}
 
 <main>
-    <h1>Rechercher un jeu</h1>    
+    <h1>Rechercher un jeu</h1>
 	#{form @Search.index()}
 		<input type="text" id="search" name="game" class="text-input search-input" value="${params.game}" placeholder="Grand Theft Auto V, The Witcher 3: Wild Hunt..." autocomplete="off"/>
-		<button type="submit" class="search-btn">Rechercher</button>
+		<input type="submit" class="keyboard-submit"/>
 	#{/form}
 
 	<ul id="game-list" class="search-list">

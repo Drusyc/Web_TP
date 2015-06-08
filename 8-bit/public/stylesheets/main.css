@@ -35,6 +35,95 @@ a:hover, a:focus, a:active {
     text-decoration: underline;
 }
 
+/* Inputs styles */
+.text-input {
+	background: rgba(0, 0, 0, 0.4);
+	color: #FFFFFF;
+	padding: 5px 0;
+	text-indent: 10px;
+	outline: none;
+	border: thin solid #DCDCDC;
+}
+
+.valid-input {
+	-webkit-box-shadow: 0 0 5px 1px #02D470;
+	-moz-box-shadow: 0 0 5px 1px #02D470;
+	box-shadow: 0 0 5px 1px #02D470;
+}
+
+.invalid-input {
+	-webkit-animation: shake .5s;
+	-o-animation: shake .5s;
+	animation: shake .5s;
+	-webkit-box-shadow: 0 0 5px 1px #D43A57;
+	-moz-box-shadow: 0 0 5px 1px #D43A57;
+	box-shadow: 0 0 5px 1px #D43A57;
+}
+
+.keyboard-submit {
+	position: absolute;
+	visibility: hidden;
+}
+
+/* Buttons styles */
+.btn {
+	background: transparent;
+	cursor: pointer;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	border: none;
+	outline: none;
+}
+
+/* Tooltips styles */
+.info-tooltip {
+	font-size: 11px;
+	font-style: italic;
+}
+
+.error-tooltip {
+	font-size: 11px;
+	font-style: italic;
+	color: #D43A57;
+}
+
+/* Table styles */
+table {
+	border-collapse: collapse;
+}
+
+thead {
+	background: rgba(0, 51, 102, 0.4);
+}
+
+tbody {
+	background: rgba(0, 51, 102, 0.2);
+}
+
+thead th, tbody td {
+	border: 1px solid #FFF;
+	padding: 5px 0;
+	text-align: center;
+}
+
+/* Animations */
+@keyframes shake {
+	0% {margin-left:8px;}
+	10% {margin-left:-8px;}
+	30% {margin-left:8px;}
+	60% {margin-left:-8px;}
+	100% {margin-left:0;}
+}
+
+@keyframes fadeIn {
+	0% {filter: alpha(opacity=0); opacity: 0;}
+	100% {filter: alpha(opacity=100); opacity: 1;}
+}
+
 /* Header */
 header {
     position: fixed;
@@ -54,84 +143,6 @@ header {
 .header-right {
     float: right;
     height: 100%;
-}
-
-/* Main */
-main {
-    -webkit-animation: fadeIn 1.5s;
-    -o-animation: fadeIn 1.5s;
-    animation: fadeIn 1.5s;
-    margin: 0 8%;
-    padding: 50px 0;
-    display: block;
-}
-
-/* Inputs styles */
-input[type=file] {
-    display: none;
-}
-
-.text-input {
-    color: #FFFFFF;
-    padding: 5px 0;
-    text-indent: 10px;
-    outline: none;
-    border: thin solid #DCDCDC;
-}
-
-.valid-input {
-    -webkit-box-shadow: 0 0 5px 1px #02D470;
-    -moz-box-shadow: 0 0 5px 1px #02D470;;
-    box-shadow: 0 0 5px 1px #02D470;
-}
-
-.invalid-input {
-    -webkit-animation: shake .5s;
-    -o-animation: shake .5s;
-    animation: shake .5s;
-    -webkit-box-shadow: 0 0 5px 1px #D43A57;
-    -moz-box-shadow: 0 0 5px 1px #D43A57;
-    box-shadow: 0 0 5px 1px #D43A57;
-}
-
-/* Buttons styles */
-.btn {
-    background: transparent;
-    cursor: pointer;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    border: none;
-    outline: none;
-}
-
-/* Tooltips styles */
-.info-tooltip {
-    font-size: 11px;
-    font-style: italic;
-}
-
-.error-tooltip {
-    font-size: 11px;
-    font-style: italic;
-    color: #D43A57;
-}
-
-/* Animations */
-@keyframes shake {
-    0% {margin-left:8px;}
-    10% {margin-left:-8px;}
-    30% {margin-left:8px;}
-    60% {margin-left:-8px;}
-    100% {margin-left:0;}
-}
-
-@keyframes fadeIn {
-    0% {filter: alpha(opacity=0); opacity: 0;}
-    100% {filter: alpha(opacity=100); opacity: 1;}
 }
 
 /* Logo */
@@ -237,7 +248,8 @@ input[type=file] {
 
 /* Login */
 .login-input {
-    color: #000000;
+	background: #FFFFFF;
+	color: #000000;
     margin: 5px 2px;
 }
 
@@ -262,248 +274,133 @@ input[type=file] {
 
 /* User */
 .user-list {
-    float: right;
+	float: right;
 }
 
 .user-item a {
-    background: #660099;
+	background: #660099;
 }
 
 .profile-icon a:before {
-    background: url('/public/images/icons/user.png') no-repeat center center;
-    content: '';
+	background: url('/public/images/icons/user.png') no-repeat center center;
+	content: '';
 }
 
 .messages-icon a:before {
-    background: url('/public/images/icons/mail.png') no-repeat center center;
-    content: '';
+	background: url('/public/images/icons/mail.png') no-repeat center center;
+	content: '';
 }
 
 .logout-icon a:before {
-    background: url('/public/images/icons/logout.png') no-repeat center center;
-    content: '';
+	background: url('/public/images/icons/logout.png') no-repeat center center;
+	content: '';
 }
 
-/* Front welcome */
-.front-welcome {
-    width: 35%;
-    font-size: 16px;
-    line-height: 40px;
-    padding: 20px;
-    float: left;
+/* Main */
+main {
+	-webkit-animation: fadeIn 1.5s;
+	-o-animation: fadeIn 1.5s;
+	animation: fadeIn 1.5s;
+	margin: 0 8%;
+	padding: 50px 0;
+	display: block;
 }
 
-/* Recent games */
-.recent-games {
-    float: right;
-    margin-top: 30px;
-    width: 35%;
-    height: 350px;
+.col-1 {
+	width: 35%;
+	float: left;
 }
 
-.recent-games h2 {
-    margin: 0;
-    background: rgba(0, 51, 102, 0.4);
-    font-weight: 400;
-    line-height: 35px;
-    text-align: center;
+.col-2 {
+	width: 35%;
+	float: right;
 }
 
-/* Sign-up */
-.signup {
-    clear: both;
+.row {
+	width: 100%;
+	clear: both;
 }
 
-.signup-form {
-    width: 356px;
-}
+@media screen and (max-width:800px) {
+	.col-1 {
+		width: 100%;
+		float: none;
+	}
 
-.signup-input {
-    background: rgba(0, 0, 0, 0.4);
-    width: 300px;
-    display: block;
-    height: 25px;
-    margin: 5px 2px;
-}
-
-.signup-input:focus {
-    -webkit-box-shadow: 0 0 5px 1px #9683EC;
-    -moz-box-shadow: 0 0 5px 1px #9683EC;
-    box-shadow: 0 0 5px 1px #9683EC;
-}
-
-.icon {
-    background-repeat: no-repeat;
-    background-position: 10px center;
-    background-size: 20px 20px;
-    padding-left: 40px;
-}
-
-.user-icon {
-    background-image: url('/public/images/icons/user.png');
-}
-
-.mail-icon {
-    background-image: url('/public/images/icons/mail.png');
-}
-
-.pwd-icon {
-    background-image: url('/public/images/icons/password.png');
-}
-
-.signup-btn {
-    height: 35px;
-    padding: 5px 10px;
-    font-weight: 500;
-    background: #6050DC;
-    font-size: 11px;
-}
-
-.signup-btn:hover {
-    background: #9683EC;
-}
-
-/* Search */
-.search-input {
-    background: rgba(0, 51, 102, 0.4);
-    width: 100%;
-    height: 30px;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.search-input::-webkit-input-placeholder {
-    font-style: italic;
-}
-
-.search-input::-moz-placeholder {
-    font-style: italic;
-}
-
-.search-input:-ms-input-placeholder {
-    font-style: italic;
-}
-
-.search-btn {
-    position: absolute;
-    visibility: hidden;
-}
-
-.search-list {
-    width: 100%;
-    list-style-type: none;
-    background: rgba(0, 51, 102, 0.2)
-}
-
-.search-item {
-    line-height: 35px;
-    text-indent: 15px;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.search-item:hover {
-    background: rgba(0, 51, 102, 0.3);
-}
-
-.search-item a {
-    display: block;
-    height: 100%;
-}
-
-.search-item a:hover {
-    text-decoration: none;
+	.col-2 {
+		width: 100%;
+		float: none;
+	}
 }
 
 /* Footer */
 footer {
-    position: fixed;
-    z-index: -1;
-    right: 10px;
-    bottom: 10px;
-    font-size: 11px;
+	position: fixed;
+	z-index: 1;
+	right: 10px;
+	bottom: 10px;
+	font-size: 11px;
 }
 
 .footer-list {
-    list-style-type: none;
+	list-style-type: none;
 }
 
 .footer-item {
-    float: left;
-    padding: 10px;
-}
-
-.liste-config {
-    display: none;
+	float: left;
+	padding: 10px;
 }
 
 /* Responsive web design */
 @media screen and (max-width:1100px) {
-    /* Resize header and logo */
-    header {
-        height: 30px;
-    }
+	/* Resize header and logo */
+	header {
+		height: 30px;
+	}
 
-    .logo {
-        width: auto;
-        height: 30px;
-    }
+	.logo {
+		width: auto;
+		height: 30px;
+	}
 
-    /* Display only icons */
-    .toolbar-item a {
-        width: 30px;
-        height: 30px;
-        line-height: 26px;
-    }
+	/* Display only icons */
+	.toolbar-item a {
+		width: 30px;
+		height: 30px;
+		line-height: 26px;
+	}
 
-    .toolbar-item span {
-        font-size: 0;
-    }
+	.toolbar-item span {
+		font-size: 0;
+	}
 
-    .toolbar-item a:before {
-        top: 0;
-        background-size: 30px 30px;
-    }
+	.toolbar-item a:before {
+		top: 0;
+		background-size: 30px 30px;
+	}
 
-    .toolbar-item a:hover {
-        opacity: 0.8;
-    }
+	.toolbar-item a:hover {
+		opacity: 0.8;
+	}
 
-    /* Resize login inputs and button */
-    .login-input {
-        margin: 2px 0;
-        width: 90px;
-    }
+	/* Resize login inputs and button */
+	.login-input {
+		margin: 2px 0;
+		width: 90px;
+	}
 
-    .login-btn {
-        font-size: 11px;
-    }
-}
-
-@media screen and (max-width:800px) {
-    /* Resize the welcome elements */
-    .front-welcome {
-        float: none;
-        width: 100%;
-        padding: 10px;
-    }
-
-    .recent-games {
-        float: none;
-        width: 100%;
-    }
+	.login-btn {
+		font-size: 11px;
+	}
 }
 
 @media screen and (max-width:600px) {
-    /* Reduce padding and icons */
-    .toolbar-item a {
-        width: 30px;
-        height: 30px;
-        line-height: 26px;
-        padding: 0 5px;
-    }
+	/* Reduce padding and icons */
+	.toolbar-item a {
+		padding: 0 5px;
+	}
 
-    .toolbar-item a:before {
-        background-size: 20px 20px;
-    }
+	.toolbar-item a:before {
+		background-size: 20px 20px;
+	}
 }

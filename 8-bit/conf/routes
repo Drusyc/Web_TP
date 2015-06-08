@@ -4,15 +4,16 @@
 
 # 8-bit routes
 
-
 GET     /                                       Application.index
 GET     /about                                  About.index
+POST    /addProcessor                           Manage.addProcessor
+POST    /addVideoCard                           Manage.addVideoCard
 GET     /conditions                             Conditions.index
 GET     /configuration                          Configuration.index
 GET     /contact                                Contact.index
 GET 	/game/gamephoto							Game.gamePhoto
 GET		/game/{name}							Game.index
-GET     /manage                                 Manage.games
+GET     /manage                                 Manage.hardware
 GET     /manage/games                           Manage.games
 GET     /manage/hardware                        Manage.hardware
 GET     /manage/requests                        Manage.requests
@@ -25,9 +26,6 @@ POST    /signup                                 Signup.show
 GET     /signup                                 Signup.index
 GET     /suggestions                            Suggestions.index
 GET     /verifyPseudo/{pseudo}                  Signup.verifyPseudo
-
-# Friendly routes for blobs
-GET     /public/images/avatars/{pseudo}         Application.renderAvatar
 
 # Secure routes
 POST    /authenticate                           Secure.authenticate
