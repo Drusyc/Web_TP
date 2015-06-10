@@ -23,8 +23,8 @@ public class ConfigurationTest extends UnitTest {
 	@Test
 	public void createConf () {
 		/* Création avec seulement freeDiskSpace et RAM */
-		Configuration conf1 = new Configuration("maConfig",500, 2000); conf1.save();
-		
+		Configuration conf1 = new Configuration("maConfig",0.5, 2.0); conf1.save();
+
 		/* Création avec freeDiskSpace, RAM, Processor / VideoCard / OS */
 			/* * Création de Processor * */
 			Processor proc = new Processor("i7-3517u", "Intel", 1900.0, 2); proc.save();
@@ -40,7 +40,7 @@ public class ConfigurationTest extends UnitTest {
 			
 			Set<OS> setOS = new HashSet<OS>(); setOS.add(win7); setOS.add(win81);
 			
-		Configuration conf2 = new Configuration("maConfig",1000, 4000, setOS, setProc, setVD); conf2.save();
+		Configuration conf2 = new Configuration("maConfig",0.1, 4.0, setOS, setProc, setVD); conf2.save();
 		
 		/* ASSERT */
 		Configuration found = Configuration.findById(conf1.getId());
@@ -76,7 +76,7 @@ public class ConfigurationTest extends UnitTest {
 	@Test
 	public void deleteConf () {
 		/* Création avec seulement freeDiskSpace et RAM */
-		Configuration conf1 = new Configuration("maConfig",500, 2000); conf1.save();
+		Configuration conf1 = new Configuration("maConfig",0.5, 2.0); conf1.save();
 		
 		Configuration found = Configuration.findById(conf1.getId());
 		assertEquals(conf1,found);
@@ -93,7 +93,7 @@ public class ConfigurationTest extends UnitTest {
 	@Test
 	public void updateConf () {
 		/* Création avec seulement freeDiskSpace et RAM */
-		Configuration conf1 = new Configuration("maConfig",500, 2000); conf1.save();
+		Configuration conf1 = new Configuration("maConfig",0.5, 2.0); conf1.save();
 		
 		/* Création avec freeDiskSpace, RAM, Processor / VideoCard / OS */
 			/* * Création de Processor * */

@@ -6,7 +6,6 @@ import play.db.jpa.Model;
 import javax.persistence.*;
 
 import java.util.Set;
-import play.Logger;
 
 @Entity
 public class Configuration extends Model {
@@ -15,10 +14,10 @@ public class Configuration extends Model {
 	private String name;
 	
 	/* Exprimée en GigaOctets*/
-	private Integer freeDiskSpace;
+	private Double freeDiskSpace;
 
-	/* Exprimée en MegaOctets */
-	private Integer RAM;
+	/* Exprimée en Giga */
+	private Double RAM;
 	
 	
 	/* *** Constructors *** */	
@@ -27,14 +26,14 @@ public class Configuration extends Model {
 		super();
 	}
 
-	public Configuration(String name, Integer freeDiskSpace, Integer rAM) {
+	public Configuration(String name, Double freeDiskSpace, Double rAM) {
 		super();
 		this.name = name;
 		this.freeDiskSpace = freeDiskSpace;
 		RAM = rAM;
 	}
 
-	public Configuration(String name, Integer freeDiskSpace, Integer rAM,
+	public Configuration(String name, Double freeDiskSpace, Double rAM,
 			Set<OS> operatingSystems, Set<Processor> processors,
 			Set<VideoCard> videoCards) {
 		super();
@@ -80,19 +79,19 @@ public class Configuration extends Model {
 		this.operatingSystems = operatingSystems;
 	}
 
-	public Integer getFreeDiskSpace() {
+	public Double getFreeDiskSpace() {
 		return freeDiskSpace;
 	}
 
-	public void setFreeDiskSpace(Integer freeDiskSpace) {
+	public void setFreeDiskSpace(Double freeDiskSpace) {
 		this.freeDiskSpace = freeDiskSpace;
 	}
 
-	public Integer getRAM() {
+	public Double getRAM() {
 		return RAM;
 	}
 
-	public void setRAM(Integer RAM) {
+	public void setRAM(Double RAM) {
 		this.RAM = RAM;
 	}
 

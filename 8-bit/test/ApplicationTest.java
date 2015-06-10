@@ -95,7 +95,7 @@ public class ApplicationTest extends FunctionalTest {
 	
 		Set<OS> setOSGame1 = new HashSet<OS>(); setOSGame1.add(win7); setOSGame1.add(win81); setOSGame1.add(winXP);
 		
-		Configuration confGame1 = new Configuration("conf-Starcraft2", 1500, 20000, setOSGame1, setProcGame1, setVDGame1);
+		Configuration confGame1 = new Configuration("conf-Starcraft2", 1.5, 20.0, setOSGame1, setProcGame1, setVDGame1);
 		confGame1.save();
 		
 		game1.setReleaseDates(setReleaseGame1); game1.setDevelopers(setDevGame1); game1.setModes(setModeGame1);
@@ -127,7 +127,7 @@ public class ApplicationTest extends FunctionalTest {
 		Set<VideoCard> setVDGame2 = new HashSet<VideoCard>(); setVDGame2.add(vidCardGame2);
 		Set<OS> setOSGame2 = new HashSet<OS>();	setOSGame2.add(win7); setOSGame2.add(win81); setOSGame2.add(winXP);
 		
-		Configuration confGame2 = new Configuration("conf-Sims3", 500, 7100, setOSGame2, setProcGame2, setVDGame2);
+		Configuration confGame2 = new Configuration("conf-Sims3", 0.5, 7.1, setOSGame2, setProcGame2, setVDGame2);
 		confGame2.save();
 		
 		game2.setReleaseDates(setReleaseGame2); game2.setDevelopers(setDevGame2); game2.setModes(setModeGame2);
@@ -149,7 +149,7 @@ public class ApplicationTest extends FunctionalTest {
 		VideoCard vdCard1Gamer1 = new VideoCard("GeForce GTX 970M", "NVIDIA", 7000.0, "12"); vdCard1Gamer1.save();
 		Set<VideoCard> setVidCard1Gamer1 = new HashSet<VideoCard>(); setVidCard1Gamer1.add(vdCard1Gamer1);
 		Set<OS> setOS1Gamer1 = new HashSet<OS>(); setOS1Gamer1.add(win81);
-		Configuration conf1Gamer1 = new Configuration("conf-Thomas-msi", 1256, 16000, setOS1Gamer1, setProc1Gamer1, setVidCard1Gamer1);
+		Configuration conf1Gamer1 = new Configuration("conf-Thomas-msi", 500.0, 16.0, setOS1Gamer1, setProc1Gamer1, setVidCard1Gamer1);
 		conf1Gamer1.save();
 
 		Processor proc2Gamer1 = new Processor("i7-3517u", "Intel", 1900.0, 2); proc2Gamer1.save();
@@ -157,7 +157,7 @@ public class ApplicationTest extends FunctionalTest {
 		VideoCard vdCard2Gamer1 = new VideoCard("GeForce GT 635M", "NVIDIA", 900.0, "11"); vdCard2Gamer1.save();
 		Set<VideoCard> setVidCard2Gamer1 = new HashSet<VideoCard>(); setVidCard2Gamer1.add(vdCard2Gamer1);
 		Set<OS> setOS2Gamer1 = new HashSet<OS>(); setOS2Gamer1.add(win81);
-		Configuration conf2Gamer1 = new Configuration("conf-Thomas-asus", 1000, 4000, setOS2Gamer1, setProc2Gamer1, setVidCard2Gamer1);
+		Configuration conf2Gamer1 = new Configuration("conf-Thomas-asus", 500.0, 4.0, setOS2Gamer1, setProc2Gamer1, setVidCard2Gamer1);
 		conf2Gamer1.save();
 
 
@@ -178,7 +178,7 @@ public class ApplicationTest extends FunctionalTest {
 		VideoCard vdCardGamer2 = new VideoCard("GeForce 320M", "NVIDIA", 790.0, "10.1"); vdCardGamer2.save();
 		Set<VideoCard> setVidCardGamer2 = new HashSet<VideoCard>(); setVidCardGamer2.add(vdCardGamer2);
 		Set<OS> setOSGamer2 = new HashSet<OS>(); setOSGamer2.add(macOSx);
-		Configuration confGamer2 = new Configuration("conf-Steven", 250, 4000, setOSGamer2, setProcGamer2, setVidCardGamer2);
+		Configuration confGamer2 = new Configuration("conf-Steven", 0.25, 4.0, setOSGamer2, setProcGamer2, setVidCardGamer2);
 		confGamer2.save();
 
 		Set<Configuration> setConfGamer2 = new HashSet<Configuration>();

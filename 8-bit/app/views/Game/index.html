@@ -78,12 +78,11 @@
 	<div>
 
     	
-    	#{if user.configurations}
+    	#{if !user.configurations.empty}
     		<h2>Vos configurations : (User = ${user.pseudo})</h2>
-	 	
 
 			#{list items:user.configurations, as: 'configGamer'}
-                <ul id="config-${configGamer_index}" class="liste-config">
+                <ul id="config-${configGamer.id}" class="liste-config">
 		    	    <li id="user-OS"><strong>OS :</strong>
 		    			#{list items:configGamer.operatingSystems, as: 'OS'}
 		    				${OS.name}${OS.version}
@@ -137,9 +136,6 @@
                 <input type="text" id="idGame" name="idGame" value="${game.name}" hidden>
                 <button type="submit" class="btn signup-btn">Compare</button>
             </form>
-
-
-
 
 		#{/if}
 		#{else}

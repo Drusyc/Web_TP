@@ -176,7 +176,7 @@ public class GamerTest extends UnitTest {
 		Gamer ga2 = new Gamer("Titi", "mdp", "Titi@test.com", null); ga2.save();
 		
 		/* Création d'une configuration avec seulement freeDiskSpace et RAM */
-		Configuration conf1 = new Configuration("maConfig", 500, 2000); conf1.save();
+		Configuration conf1 = new Configuration("maConfig", 0.5, 2.0); conf1.save();
 		
 		/* Création d'une configuration avec freeDiskSpace, RAM, Processor / VideoCard / OS */
 			/* * Création de Processor * */
@@ -193,7 +193,7 @@ public class GamerTest extends UnitTest {
 			
 			Set<OS> setOS = new HashSet<OS>(); setOS.add(win7); setOS.add(win81);
 			
-		Configuration conf2 = new Configuration("maConfig", 1000, 4000, setOS, setProc, setVD); conf2.save();
+		Configuration conf2 = new Configuration("maConfig", 0.1, 4.0, setOS, setProc, setVD); conf2.save();
 		
 		
 		/* Mapping Toto <=> conf1 */
