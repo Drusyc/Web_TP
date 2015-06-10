@@ -157,7 +157,7 @@ public class Game extends GenericModel {
         this.photo = photo;
     }
     
-    /* Methods */
+    /* *** Methods *** */
 
     public static List<String> findByName (String name) {
     	String NAME = "name";
@@ -172,4 +172,10 @@ public class Game extends GenericModel {
     	
     	return q.getResultList();
     }
+
+    public static List<Game> getAll() {
+        Query q = Game.em().createNativeQuery("select * from Game order by name", Game.class);
+        return q.getResultList();
+    }
+
 }

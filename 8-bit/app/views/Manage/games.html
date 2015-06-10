@@ -2,4 +2,55 @@
 #{set title:'Gestion des jeux' /}
 <main>
     <h1>Gestion des jeux</h1>
+	<div id="game-form" title="Ajouter un jeu">
+	<form>
+		<input type="text" name="game-name" id="game-name" class="text-input form-input" autocomplete="off">
+		<input type="text" name="game-developers" id="game-developers" class="text-input form-input" placeholder="Développeur 1, Développeur 2..." class="text-input" autocomplete="off">
+		<input type="date" name="game-EU-date" id="game-EU-date" class="form-input">
+		<input type="date" name="game-US-date" id="game-US-date" class="form-input">
+		<input type="date" name="game-JPN-date" id="game-JPN-date" class="form-input">
+		<input type="file" name="game-photo" id="game-photo" class="form-input">
+		<input type="submit" class="keyboard-submit">
+	</form>
+	</div>
+	<button id="add-game" class="btn">Ajouter un jeu</button>
+	<table id="games">
+		<thead>
+		<tr>
+			<th>Nom</th>
+			<th>Développeurs</th>
+			<th>Date de sortie</th>
+			<th>Genres</th>
+			<th>Modes</th>
+		</tr>
+		</thead>
+		<tbody>
+		#{list items:gameList, as:'game'}
+		<tr>
+			<td>${game.name}</td>
+			<td>
+				#{list items:game.developers, as: 'developer'}
+	    		    ${developer}#{if !developer_isLast}, #{/if}
+	    		#{/list}
+			</td>
+			<td>
+				${game.releaseDates["EU"]}
+			</td>
+			<td>
+				#{list items:game.genres, as: 'genre'}
+					${genre.name}#{if !genre_isLast}, #{/if}
+				#{/list}
+			</td>
+			<td>
+				#{list items:game.modes, as: 'mode'}
+					${mode}#{if !mode_isLast}, #{/if}
+				#{/list}
+			</td>
+			<td>
+				<a href="/game/${game.name}">+</a>
+			</td>
+		</tr>
+		#{/list}
+		</tbody>
+	</table>
 </main>

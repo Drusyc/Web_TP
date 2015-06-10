@@ -2,61 +2,64 @@
 #{set title:'Configuration système' /}
 <main>
     <h1>Comparaison de configs</h1>
-
-    <table border="1">
-        <tr>
-            <th></th>
-            <th>${game.name}</th>
-            <th>${configUser.name}</th>
-            <th>Evaluation</th>
-        </tr>
-        <tr>
-            <td><strong>Espace Mémoire (GigaOctets)</strong></td>
-            <td>${configGame.freeDiskSpace}</td>
-            <td>${configUser.freeDiskSpace}</td>
-            <td>${eval.get("EspaceMemoire")}</td>
-        </tr>
-        <tr>
-            <td><strong>RAM (Giga)</strong></td>
-            <td>${configGame.RAM}</td>
-            <td>${configUser.RAM}</td>
-            <td>${eval.get("RAM")}</td>
-        </tr>
-        <tr>
-            <td><strong>Processeur</strong></td>
-            <td>${minProcGame.name}</td>
-            <td>${maxProcUser.name}</td>
-            <td>${eval.get("Processeur")}</td>
-        </tr>
-        <tr>
-            <td><strong>Vitesse du Processeur</strong></td>
-            <td>${minProcGame.speed}</td>
-            <td>${maxProcUser.speed}</td>
-            <td>${eval.get("VitesseProcesseur")}</td>
-        </tr>
-        <tr>
-            <td><strong>Nombre de coeurs</strong></td>
-            <td>${minProcGame.cores}</td>
-            <td>${maxProcUser.cores}</td>
-            <td>${eval.get("NombreDeCoeurs")}</td>
-        </tr>
-        <tr>
-            <td><strong>Carte Vidéo</strong></td>
-            <td>${minVdCard.name}</td>
-            <td>${maxVDUser.name}</td>
-            <td>${eval.get("CarteVideo")}</td>
-        </tr>
-        <tr>
-            <td><strong>Vitesse de la Carte Vidéo</strong></td>
-            <td>${minVdCard.memory}</td>
-            <td>${maxVDUser.memory}</td>
-            <td>${eval.get("VitesseCarteVideo")}</td>
-        </tr>
-        <tr>
-            <td><strong>Version DirectX</strong></td>
-            <td>${minVdCard.versionDirectX}</td>
-            <td>${maxVDUser.versionDirectX}</td>
-            <td>${eval.get("DirectX")}</td>
-        </tr>
+    <table>
+	    <thead>
+	        <tr>
+	            <th></th>
+	            <th>${game.name}</th>
+	            <th>${configUser.name}</th>
+	            <th>Evaluation</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><strong>Espace Mémoire (GigaOctets)</strong></td>
+	            <td>${configGame.freeDiskSpace}</td>
+	            <td>${configUser.freeDiskSpace}</td>
+	            <td>${eval.get("EspaceMemoire")}</td>
+	        </tr>
+	        <tr>
+	            <td><strong>RAM (Giga)</strong></td>
+	            <td>${configGame.RAM}</td>
+	            <td>${configUser.RAM}</td>
+	            <td>${eval.get("RAM")}</td>
+	        </tr>
+	        <tr>
+	            <td><strong>Processeur</strong></td>
+	            <td>${minProcGame.name}</td>
+	            <td>${maxProcUser.name}</td>
+	            <td>${eval.get("Processeur")}</td>
+	        </tr>
+	        <tr>
+	            <td><strong>Vitesse du Processeur</strong></td>
+	            <td>${minProcGame.speed}</td>
+	            <td>${maxProcUser.speed}</td>
+	            <td>${eval.get("VitesseProcesseur")}</td>
+	        </tr>
+	        <tr>
+	            <td><strong>Nombre de coeurs</strong></td>
+	            <td>${minProcGame.cores}</td>
+	            <td>${maxProcUser.cores}</td>
+	            <td>${eval.get("NombreDeCoeurs")}</td>
+	        </tr>
+	        <tr>
+	            <td><strong>Carte Vidéo</strong></td>
+	            <td>${minVdCard.name}</td>
+	            <td>${maxVDUser.name}</td>
+	            <td>${eval.get("CarteVideo")}</td>
+	        </tr>
+	        <tr>
+	            <td><strong>Vitesse de la Carte Vidéo</strong></td>
+	            <td>${minVdCard.speed}</td>
+	            <td>${maxVDUser.speed}</td>
+	            <td>${eval.get("VitesseCarteVideo")}</td>
+	        </tr>
+	        <tr>
+	            <td><strong>Version DirectX</strong></td>
+	            <td>${minVdCard.versionDirectX}</td>
+	            <td>${maxVDUser.versionDirectX}</td>
+	            <td>${eval.get("DirectX")}</td>
+	        </tr>
+	    </tbody>
     </table>
 </main>

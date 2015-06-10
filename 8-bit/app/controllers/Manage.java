@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Game;
 import models.Processor;
 import models.VideoCard;
 import play.Logger;
@@ -14,15 +15,18 @@ import java.util.List;
 public class Manage extends Controller {
 
     public static void games() {
-        render();
+        /* Games */
+        List<Game> gameList = Game.getAll();
+
+        render(gameList);
     }
 
     public static void hardware() {
         /* Processors */
-        List<Processor> processorList = Processor.findAll();
+        List<Processor> processorList = Processor.getAll();
 
         /* Video cards */
-        List<VideoCard> videoCardList = VideoCard.findAll();
+        List<VideoCard> videoCardList = VideoCard.getAll();
 
         render(processorList, videoCardList);
     }
@@ -33,10 +37,10 @@ public class Manage extends Controller {
         Logger.info("Manage::addProcessor - " + name + " " + manufacturer + " " + speed + " " + cores);
     }
 
-    public static void addVideoCard(String name, String manufacturer, Double speedMemory, String versionDirectX) {
-        VideoCard v = new VideoCard(name, manufacturer, speedMemory, versionDirectX);
+    public static void addVideoCard(String name, String manufacturer, Integer speed, String versionDirectX) {
+        VideoCard v = new VideoCard(name, manufacturer, speed, versionDirectX);
         v.save();
-        Logger.info("Manage::addVideoCard - " + name + " " + manufacturer + " " + speedMemory + " " + versionDirectX);
+        Logger.info("Manage::addVideoCard - " + name + " " + manufacturer + " " + speed + " " + versionDirectX);
     }
 
     public static void requests() {

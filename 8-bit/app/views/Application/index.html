@@ -1,27 +1,25 @@
 #{extends 'main.html' /}
 #{set title:'Bienvenue sur 8-bit !' /}
 #{set 'moreStyles'}
-<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/index.css'}">
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/signup.css'}">
 #{/set}
 <main>
-	<div class="col-1 front-welcome">
+	<div class="col-1 info-txt">
 		<h1>Bienvenue sur 8-bit ${user?.pseudo} !</h1>
 		<p>
-			#{if !(user instanceof models.Provider)}
-				Comparez votre configuration système à une base de plus de 500 jeux vidéo. Trouvez les jeux compatibles
-				qui vous correspondent le mieux. Et partagez votre expérience avec d'autres gamers.
-			#{/if}
-			#{else}
-				Gérez le matériel utilisé dans les configurations. Ajoutez des nouveaux jeux.
-				Et répondez aux demandes de jeux proposés par les gamers.
-			#{/else}
+		#{if !(user instanceof models.Provider)}
+			Comparez votre configuration système à une base de plus de 500 jeux vidéo. Trouvez les jeux compatibles
+			qui vous correspondent le mieux. Et partagez votre expérience avec d'autres gamers.
+		#{/if}
+		#{else}
+			Gérez le matériel utilisé dans les configurations. Ajoutez des nouveaux jeux.
+			Et répondez aux demandes de jeux proposés par les gamers.
+		#{/else}
 		</p>
 	</div>
-	<section class="col-2 recent-games">
+	<aside class="col-2">
 		<h2>Jeux ajoutés</h2>
-		<article></article>
-	</section>
+	</aside>
 	#{if user == null}
 		<div class="row">
 			<h2>Pas encore inscrit ?</h2>

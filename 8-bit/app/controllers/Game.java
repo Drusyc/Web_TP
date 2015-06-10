@@ -8,7 +8,6 @@ import play.mvc.With;
 import validators.Check;
 
 @With(Secure.class)
-@Check("gamer")
 public class Game extends Controller {
 	
 	/* */

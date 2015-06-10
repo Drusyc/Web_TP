@@ -2,8 +2,11 @@ package models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Query;
 
 import play.db.jpa.GenericModel;
+
+import java.util.List;
 
 @Entity
 public class Processor extends GenericModel {
@@ -67,4 +70,12 @@ public class Processor extends GenericModel {
 	public void setCores(Integer cores) {
 		this.cores = cores;
 	}
+
+    /* *** Methods *** */
+
+    public static List<Processor> getAll() {
+        Query q = Processor.em().createNativeQuery("select * from Processor order by manufacturer, name", Processor.class);
+        return q.getResultList();
+    }
+
 }

@@ -20,7 +20,6 @@ public class Configuration extends Controller {
         render();
     }
 
-
     public static void compare (String idUser, String idGame) {
 
         /* Récupération de l'utilisateur */
@@ -93,24 +92,24 @@ public class Configuration extends Controller {
 
         Set<VideoCard> vidCardGame = configGame.getVideoCards();
         /* Récupération de la carte vidéo la "moins" puissante du jeu, comparant les vitesses */
-        minSpeed = Double.MAX_VALUE;
+        Integer minVSpeed = Integer.MAX_VALUE;
         VideoCard minVdCard = null;
         for (VideoCard vd : vidCardGame) {
-            if (vd.getMemory() < minSpeed) {
+            if (vd.getSpeed() < minVSpeed) {
                 minVdCard = vd;
-                minSpeed = vd.getMemory();
+                minVSpeed = vd.getSpeed();
             }
         }
 
 
         Set<VideoCard> vidCardUser = configUser.getVideoCards();
         /* Récupération de la carte vidéo la "moins" puissante du user, comparant les vitesses */
-        maxSpeed = Double.MIN_VALUE;
+        Integer maxVSpeed = Integer.MIN_VALUE;
         VideoCard maxVDUser = null;
         for (VideoCard vd : vidCardGame) {
-            if (vd.getMemory() > maxSpeed) {
+            if (vd.getSpeed() > maxVSpeed) {
                 maxVDUser = vd;
-                maxSpeed = vd.getMemory();
+                maxVSpeed = vd.getSpeed();
             }
         }
 
@@ -118,7 +117,7 @@ public class Configuration extends Controller {
 
         /* Comparaison des cartes vidéos */
             /* Comparaison de la vitesse */
-        if (maxSpeed <= minSpeed)  {
+        if (maxVSpeed <= minVSpeed)  {
             /* Si "vitesse du proc requis" <= "vitesse du proc disponibles" */
             eval.put("VitesseCarteVideo", "OK");
         }

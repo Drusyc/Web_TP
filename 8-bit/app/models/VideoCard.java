@@ -2,8 +2,11 @@ package models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Query;
 
 import play.db.jpa.GenericModel;
+
+import java.util.List;
 
 @Entity
 public class VideoCard extends GenericModel {
@@ -14,7 +17,7 @@ public class VideoCard extends GenericModel {
 	private String manufacturer;
 	
 	/* Exprimée en MegaHertz */
-	private Double speedMemory;
+	private Integer speed;
 	
 	private String versionDirectX;
 	
@@ -26,11 +29,11 @@ public class VideoCard extends GenericModel {
 	}
 
 	public VideoCard(String name, String manufacturer,
-			Double memory, String versionDirectX) {
+			Integer speed, String versionDirectX) {
 		super();
 		this.name = name;
 		this.manufacturer = manufacturer;
-		this.speedMemory = memory;
+		this.speed = speed;
 		this.versionDirectX = versionDirectX;
 	}
 
@@ -52,12 +55,12 @@ public class VideoCard extends GenericModel {
 		this.manufacturer = manufacturer;
 	}
 
-	public Double getMemory() {
-		return speedMemory;
+	public Integer getSpeed() {
+		return speed;
 	}
 
-	public void setMemory(Double memory) {
-		this.speedMemory = memory;
+	public void setSpeed(Integer speed) {
+		this.speed = speed;
 	}
 
 	public String getVersionDirectX() {
@@ -67,4 +70,11 @@ public class VideoCard extends GenericModel {
 	public void setVersionDirectX(String versionDirectX) {
 		this.versionDirectX = versionDirectX;
 	}
+
+    /* *** Methods *** */
+
+    public static List<VideoCard> getAll() {
+        Query q = Processor.em().createNativeQuery("select * from VideoCard order by manufacturer, name", VideoCard.class);
+        return q.getResultList();
+    }
 }

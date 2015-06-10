@@ -66,7 +66,7 @@
 	    			<ul>
 	    				<li id="game-videoCard-name"><strong>Nom :</strong> ${vidCard.name} </li>
 	    				<li id="game-videoCard-manufacturer"><strong>Fabriquant :</strong> ${vidCard.manufacturer} </li>
-	    				<li id="game-videoCard-speed"><strong>Vitesse (Fréquence) :</strong> ${vidCard.speedMemory} </li>
+	    				<li id="game-videoCard-speed"><strong>Vitesse (Fréquence) :</strong> ${vidCard.speed} </li>
 	    				<li id="game-videoCard-directX"><strong>Direct X :</strong> ${vidCard.versionDirectX} </li>
 	    			
 	    			</ul>
@@ -78,14 +78,14 @@
 	<div>
 
     	
-    	#{if !user.configurations.empty}
+    	#{if user instanceof models.Gamer && !user.configurations.empty}
     		<h2>Vos configurations : (User = ${user.pseudo})</h2>
 
 			#{list items:user.configurations, as: 'configGamer'}
                 <ul id="config-${configGamer.id}" class="liste-config">
 		    	    <li id="user-OS"><strong>OS :</strong>
 		    			#{list items:configGamer.operatingSystems, as: 'OS'}
-		    				${OS.name}${OS.version}
+		    				${OS.name} ${OS.version}
 		    			#{/list}
 		    		</li>
 		    		<li id="user-RAM"><strong>RAM :</strong>
@@ -109,7 +109,7 @@
                             <ul>
                                 <li id="user-videoCard-name"><strong>Nom :</strong> ${vidCardGamer.name} </li>
                                 <li id="user-videoCard-manufacturer"><strong>Fabriquant :</strong> ${vidCardGamer.manufacturer} </li>
-                                <li id="user-videoCard-speed"><strong>Vitesse (Fréquence) :</strong> ${vidCardGamer.speedMemory} </li>
+                                <li id="user-videoCard-speed"><strong>Vitesse (Fréquence) :</strong> ${vidCardGamer.speed} </li>
                                 <li id="user-videoCard-directX"><strong>Direct X :</strong> ${vidCardGamer.versionDirectX} </li>
 
                             </ul>

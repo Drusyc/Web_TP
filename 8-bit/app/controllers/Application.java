@@ -15,26 +15,4 @@ public class Application extends Controller {
     public static void index() {
         render();
     }
-
-    public static void renderAvatar(String pseudo) {
-        User user = User.findById(pseudo);
-        notFoundIfNull(user);
-
-        Blob avatar = user.getAvatar();
-        if (avatar.exists()) {
-            response.setContentTypeIfNotSet(avatar.type());
-            renderBinary(avatar.get());
-        } else {
-            // Default avatar
-            File file = new File("public/images/avatars/default.png");
-
-            try {
-                FileInputStream fis = new FileInputStream(file);
-                response.setContentTypeIfNotSet("image/png");
-                renderBinary(fis);
-            } catch (IOException e) {
-                Logger.error("Application::renderAvatar - " + e);
-            }
-        }
-    }
 }

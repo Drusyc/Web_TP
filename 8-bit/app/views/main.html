@@ -28,14 +28,14 @@
 	            <a href="/"><img src="@{'/public/images/logo.png'}" width="70px" height="35px" class="logo" alt="8-bit"/></a>
                 <ul class="toolbar-list">
                     #{if !(user instanceof models.Provider)}
-	                    <li class="toolbar-item btn configuration-icon"><a href="@{Configuration.index}"><span>Configuration système</span></a></li>
-		                <li class="toolbar-item btn search-icon"><a href="@{Search.index}"><span>Rechercher un jeu</span></a></li>
-		                <li class="toolbar-item btn gamepad-icon"><a href="@{Suggestions.index}"><span>Suggestions de jeux</span></a></li>
+	                    <li class="toolbar-item configuration-icon"><a href="@{Configuration.index}"><span>Configuration système</span></a></li>
+		                <li class="toolbar-item search-icon"><a href="@{Search.index}"><span>Rechercher un jeu</span></a></li>
+		                <li class="toolbar-item gamepad-icon"><a href="@{Suggestions.index}"><span>Suggestions de jeux</span></a></li>
 					#{/if}
 	                #{else}
-	                    <li class="toolbar-item btn configuration-icon"><a href="@{Manage.hardware}"><span>Gestion du matériel</span></a></li>
-	                    <li class="toolbar-item btn gamepad-icon"><a href="@{Manage.games}"><span>Gestion des jeux</span></a></li>
-	                    <li class="toolbar-item btn requests-icon"><a href="@{Manage.requests}"><span>Gestion des demandes</span></a></li>
+	                    <li class="toolbar-item configuration-icon"><a href="@{Manage.hardware}"><span>Gestion du matériel</span></a></li>
+	                    <li class="toolbar-item gamepad-icon"><a href="@{Manage.games}"><span>Gestion des jeux</span></a></li>
+	                    <li class="toolbar-item requests-icon"><a href="@{Manage.requests}"><span>Gestion des demandes</span></a></li>
 	                #{/else}
 	            </ul>
             </nav>
@@ -50,11 +50,11 @@
 	            #{/if}
                 <ul class="toolbar-list user-list">
                     #{if user instanceof models.Gamer}
-	                   <li class="toolbar-item user-item btn profile-icon"><a href="@{Profile.index}"><span>Mon profil</span></a></li>
-	                   <li class="toolbar-item user-item btn messages-icon"><a href="@{Messages.index}"><span>Mes messages</span></a></li>
+	                   <li class="toolbar-item user-item profile-icon"><a href="@{Profile.index}"><span>Mon profil</span></a></li>
+	                   <li class="toolbar-item user-item messages-icon"><a href="@{Messages.index}"><span>Mes messages</span></a></li>
                     #{/if}
                     #{if user != null}
-	                    <li class="toolbar-item user-item btn logout-icon"><a href="@{Secure.logout}"><span>Déconnexion</span></a></li>
+	                    <li class="toolbar-item user-item logout-icon"><a href="@{Secure.logout}"><span>Déconnexion</span></a></li>
 					#{/if}
                 </ul>
             </div>

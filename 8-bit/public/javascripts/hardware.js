@@ -1,4 +1,7 @@
-$(function() {
+/*
+ * Sets dialog forms
+ */
+$(function setDialogForms() {
     var processorDialog, processorForm,
         videoCardDialog, videoCardForm,
 
@@ -52,7 +55,7 @@ $(function() {
         valid = valid && checkRegexp( cores, coresRegex );
 
         if ( valid ) {
-            /* Ajax request */
+            /* Ajax request to add the processor */
             $.post("/addProcessor",
                 {
                     name: processorName.val(),
@@ -68,6 +71,7 @@ $(function() {
                                 "<td>" + cores.val() + "</td>" +
                                 "</tr>" );
                         processorDialog.dialog( "close" );
+                        /* Displays a success pop-up */
                         swal({
                             title: ":)",
                             text: "Le processeur a été ajouté.",
@@ -78,6 +82,7 @@ $(function() {
                     }
             ).fail(function () {
                     processorDialog.dialog( "close" );
+                        /* Displays an error pop-up */
                         swal({
                             title: "Oops...",
                             text: "Le processeur existe déjà !",
@@ -122,6 +127,75 @@ $(function() {
 
         if ( valid ) {
             /* Ajax request */
+            $.post("/addVideoCard",
+                {
+                    name: videoCardName.val(),
+                    manufacturer: videoCardManufacturer.val(),
+                    speed: videoCardSpeed.val(),
+                    versionDirectX: directX.val()
+                }
+            ).done(function() {
+                    $( "#video-cards tbody" ).append( "<tr>" +
+                        "<td>" + videoCardName.val() + "</td>" +
+                        "<td>" + videoCardManufacturer.val() + "</td>" +
+                        "<td>" + videoCardSpeed.val() + "</td>" +
+                        "<td>" + directX.val() + "</td>" +
+                        "</tr>" );
+                    videoCardDialog.dialog( "close" );
+                    swal({
+                        title: ":)",
+                        text: "La carte graphique a été ajoutée.",
+                        type: "success",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                }
+            ).fail(function () {
+                    videoCardDialog.dialog( "close" );
+                    swal({
+                        title: "Oops...",
+                        text: "La carte graphique existe déjà !",
+                        type: "error",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                });
+        }
+        return valid;
+    }
+
+    videoCardDialog = $( "#video-cards-form" ).dialog({
+        autoOpen: false,
+        modal: true,
+        closeText: "Fermer",
+        close: function() {
+            videoCardForm[ 0 ].reset();
+            videoCardAllFields.removeClass( "valid-input ");
+            videoCardAllFields.removeClass( "invalid-input" );
+        }
+    });
+
+    videoCardForm = videoCardDialog.find( "form" ).on( "submit", function( event ) {
+        event.preventDefault();
+        addVideoCard();
+    });
+
+    $( "#add-video-card" ).on( "click", function() {
+        videoCardDialog.dialog( "open" );
+    });
+
+    /* Game dialog form */
+    /*function addGame() {
+        var valid = true;
+        videoCardAllFields.removeClass("valid-input");
+        videoCardAllFields.removeClass( "invalid-input");
+
+        valid = valid && checkLength( videoCardName, 1, 255 );
+        valid = valid && checkLength( videoCardManufacturer, 1, 255 );
+        valid = valid && checkRegexp( videoCardSpeed, speedRegexI );
+
+        if ( valid ) {
+            /* Ajax request
             $.post("/addVideoCard",
                 {
                     name: videoCardName.val(),
@@ -177,5 +251,5 @@ $(function() {
 
     $( "#add-video-card" ).on( "click", function() {
         videoCardDialog.dialog( "open" );
-    });
+    });*/
 });

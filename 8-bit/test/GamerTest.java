@@ -184,7 +184,7 @@ public class GamerTest extends UnitTest {
 			Set<Processor> setProc = new HashSet<Processor>(); setProc.add(proc);
 		
 			/* * Création de la VideoCard * */
-			VideoCard vidCard = new VideoCard("GeForce GT 635M", "NVIDIA", 900.0, "11"); vidCard.save();
+			VideoCard vidCard = new VideoCard("GeForce GT 635M", "NVIDIA", 900, "11"); vidCard.save();
 			Set<VideoCard> setVD = new HashSet<VideoCard>(); setVD.add(vidCard); 
 		
 			/* * Création de l'OS * */
