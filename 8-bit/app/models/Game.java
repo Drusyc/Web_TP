@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import play.Logger;
 import play.db.jpa.Blob;
 import play.db.jpa.GenericModel;
 
@@ -16,8 +15,6 @@ public class Game extends GenericModel {
 
 	@Id
     private String name;
-
-	private Blob photo;
 	
     @ElementCollection
     @CollectionTable(joinColumns=@JoinColumn(name="game_name"))
@@ -42,17 +39,15 @@ public class Game extends GenericModel {
 		super();
 	}
     
-	public Game(String name, Blob photo) {
+	public Game(String name) {
 		super();
 		this.name = name;
-		this.photo = photo;
 	}
 	
-	public Game(String name, Blob photo, Set<String> developers,
+	public Game(String name, Set<String> developers,
 			Set<String> modes, Map<String, Date> releaseDates) {
 		super();
 		this.name = name;
-		this.photo = photo;
 		this.developers = developers;
 		this.modes = modes;
 		this.releaseDates = releaseDates;
@@ -66,7 +61,6 @@ public class Game extends GenericModel {
 		this.developers = developers;
 		this.modes = modes;
 		this.releaseDates = releaseDates;
-		this.photo = photo;
 		this.genres = genres;
 		this.provider = provider;
 		this.configuration = configuration;
@@ -147,14 +141,6 @@ public class Game extends GenericModel {
 
     public void setReleaseDates(Map<String, Date> releaseDates) {
         this.releaseDates = releaseDates;
-    }
-
-    public Blob getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(Blob photo) {
-        this.photo = photo;
     }
     
     /* *** Methods *** */

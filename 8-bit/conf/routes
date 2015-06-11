@@ -6,6 +6,7 @@
 
 GET     /                                       Application.index
 GET     /about                                  About.index
+POST    /addGame                                Manage.addGame
 POST    /addProcessor                           Manage.addProcessor
 POST    /addVideoCard                           Manage.addVideoCard
 GET     /conditions                             Conditions.index

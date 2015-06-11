@@ -1,17 +1,82 @@
 #{extends 'main.html' /}
 #{set title:'Gestion des jeux' /}
+#{set 'moreScripts'}
+	<script src="@{'/public/javascripts/sweetalert.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+	<script src="@{'/public/javascripts/hardware.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
 <main>
     <h1>Gestion des jeux</h1>
-	<div id="game-form" title="Ajouter un jeu">
-	<form>
-		<input type="text" name="game-name" id="game-name" class="text-input form-input" autocomplete="off">
-		<input type="text" name="game-developers" id="game-developers" class="text-input form-input" placeholder="Développeur 1, Développeur 2..." class="text-input" autocomplete="off">
-		<input type="date" name="game-EU-date" id="game-EU-date" class="form-input">
-		<input type="date" name="game-US-date" id="game-US-date" class="form-input">
-		<input type="date" name="game-JPN-date" id="game-JPN-date" class="form-input">
-		<input type="file" name="game-photo" id="game-photo" class="form-input">
+	<div id="games-form">
+	#{form @Manage.addGame()}
+		<h2>Ajouter un jeu</h2>
+		<h3>Informations générales</h3>
+		<input type="text" name="name" id="game-name" class="text-input form-input" placeholder="Nom *" autocomplete="off">
+		<input type="text" name="developers" id="game-developers" class="text-input form-input" placeholder="Développeur 1, Développeur 2, ..." autocomplete="off">
+		<input type="text" name="modes" id="game-modes" class="text-input form-input" placeholder="Mode 1, Mode 2, ..." autocomplete="off">
+
+		<h3>Dates de sortie</h3>
+		<input type="text" name="euDate" id="game-EU-date" class="text-input form-input" placeholder="EU (yyyy-mm-dd)" autocomplete="off">
+		<input type="text" name="usDate" id="game-US-date" class="text-input form-input" placeholder="USA (yyyy-mm-dd)" autocomplete="off">
+		<input type="text" name="japanDate" id="game-JPN-date" class="text-input form-input" placeholder="JAPON (yyyy-mm-dd)" autocomplete="off">
+
+		<h3>Genre(s)</h3>
+		<select name="genre1" id="game-genre-1">
+			<option value=""></option>
+			#{list items:genreList, as:'genre'}
+				<option value="${genre.name}">${genre.name}</option>
+			#{/list}
+		</select>
+		<select name="genre2" id="game-genre-2">
+			<option value=""></option>
+			#{list items:genreList, as:'genre'}
+				<option value="${genre.name}">${genre.name}</option>
+			#{/list}
+		</select>
+
+		<h3>Configuration requise</h3>
+		<input type="text" name="configurationSpace" id="configuration-space" class="text-input form-input" placeholder="Espace disque (en Go) *" autocomplete="off">
+		<input type="text" name="configurationRam" id="configuration-ram" class="text-input form-input" placeholder="RAM (en Go) *" autocomplete="off">
+		<h4>Système(s) d'exploitation *</h4>
+		<select name="configurationOs1" id="configuration-os-1">
+			<option value=""></option>
+			#{list items:osList, as:'os'}
+				<option value="${os.id}">${os.name} ${os.version}</option>
+			#{/list}
+		</select>
+		<select name="configurationOs2" id="configuration-os-2">
+			<option value=""></option>
+			#{list items:osList, as:'os'}
+				<option value="${os.id}">${os.name} ${os.version}</option>
+			#{/list}
+		</select>
+		<h4>Processeur(s) *</h4>
+		<select name="configurationProcessor1" id="configuration-processor-1">
+			<option value=""></option>
+			#{list items:processorList, as:'processor'}
+				<option value="${processor.name}">${processor.manufacturer} ${processor.name}</option>
+			#{/list}
+		</select>
+		<select name="configurationProcessor2" id="configuration-processor-2">
+			<option value=""></option>
+			#{list items:processorList, as:'processor'}
+				<option value="${processor.name}">${processor.manufacturer} ${processor.name}</option>
+			#{/list}
+		</select>
+		<h4>Carte(s) graphique(s) *</h4>
+		<select name="configurationVideoCard1" id="configuration-video-card-1">
+			<option value=""></option>
+			#{list items:videoCardList, as:'videoCard'}
+				<option value="${videoCard.name}">${videoCard.manufacturer} ${videoCard.name}</option>
+			#{/list}
+		</select>
+		<select name="configurationVideoCard2" id="configuration-video-card-2">
+			<option value=""></option>
+			#{list items:videoCardList, as:'videoCard'}
+				<option value="${videoCard.name}">${videoCard.manufacturer} ${videoCard.name}</option>
+			#{/list}
+		</select>
 		<input type="submit" class="keyboard-submit">
-	</form>
+	#{/form}
 	</div>
 	<button id="add-game" class="btn">Ajouter un jeu</button>
 	<table id="games">
@@ -19,7 +84,7 @@
 		<tr>
 			<th>Nom</th>
 			<th>Développeurs</th>
-			<th>Date de sortie</th>
+			<th>Sortie EU</th>
 			<th>Genres</th>
 			<th>Modes</th>
 		</tr>
@@ -34,7 +99,7 @@
 	    		#{/list}
 			</td>
 			<td>
-				${game.releaseDates["EU"]}
+				${game.releaseDates["EU"]?.format()}
 			</td>
 			<td>
 				#{list items:game.genres, as: 'genre'}

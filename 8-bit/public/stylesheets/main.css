@@ -26,6 +26,18 @@ h2 {
     letter-spacing: 1px;
 }
 
+h3 {
+	margin: 8px 0;
+	font-weight: 200;
+	text-decoration:underline;
+}
+
+h4 {
+	margin: 4px 0;
+	font-weight: 100;
+	font-style: italic;
+}
+
 a {
     color: #FFFFFF;
     text-decoration: none;
@@ -68,6 +80,12 @@ a:hover, a:focus, a:active {
 .keyboard-submit {
 	position: absolute;
 	top: -1000px;
+}
+
+select {
+	background: rgba(0, 0, 0, 0.4);
+	color: #FFFFFF;
+	border: thin solid #DCDCDC;
 }
 
 /* Buttons styles */
@@ -365,7 +383,6 @@ aside h2 {
 	line-height: 35px;
 	text-align: center;
 }
-
 
 /* Footer */
 footer {

@@ -5,7 +5,9 @@ import play.db.jpa.GenericModel;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Query;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -53,5 +55,12 @@ public class Genre extends GenericModel {
 
     public void setGames(Set<Game> games) {
         this.games = games;
+    }
+
+    /* *** Methods *** */
+
+    public static List<Genre> getAll() {
+        Query q = Genre.em().createNativeQuery("select * from Genre order by name", Genre.class);
+        return q.getResultList();
     }
 }

@@ -85,10 +85,10 @@ public class ProviderTest  extends UnitTest {
 	@Test
 	public void providerGame () {
 		/* Création d'un game */		
-		Game game1 = new Game("Mario Kart 8", null); game1.save();
-		Game game2 = new Game("Mario Kart 7", null); game2.save();
-		Game game3 = new Game("Mario Kart 6", null); game3.save();
-		Game game4 = new Game("RandomGame", null); game4.save();
+		Game game1 = new Game("Mario Kart 8"); game1.save();
+		Game game2 = new Game("Mario Kart 7"); game2.save();
+		Game game3 = new Game("Mario Kart 6"); game3.save();
+		Game game4 = new Game("RandomGame"); game4.save();
 		
 		Set<Game> setGame = new HashSet<Game>();
 		setGame.add(game1); setGame.add(game2); setGame.add(game3);

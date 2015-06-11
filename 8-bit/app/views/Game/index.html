@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Rechercher un jeu' /}
+#{set title:game.name /}
 #{set 'moreStyles'}
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/game.css'}">
 #{/set}
@@ -32,8 +32,6 @@
 	    				JAPON : ${game.releaseDates["JAPAN"]}
 	    		</li>
 	    	</ul>
-
-    		<img src="@{gamePhoto(game.name)}"/>
     </div>
     
     <div>
@@ -120,7 +118,7 @@
 
             <ul id="config-displayed"></ul>
 
-			<form  method="GET" action="/Configuration/compare">
+			<form  method="get" action="/configuration/compare">
                 <select id="select-config-gamer" name="idUser">
 					#{list items:user.configurations, as: 'configGamer'}
 						#{if configGamer_index == 1}
