@@ -1,5 +1,76 @@
 #{extends 'main.html' /}
 #{set title:'Configuration système' /}
+#{set 'moreStyles'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/sweetalert.css'}">
+#{/set}
+#{set 'moreScripts'}
+<script src="@{'/public/javascripts/sweetalert.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/configuration.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
 <main>
     <h1>Configuration système</h1>
+	<p class="info-txt">
+		Ici renseignez une ou plusieurs configurations et vous pourrez ensuite comparer les performances de votre PC à
+		celles requises pour les jeux recherchés. Une configuration se résume à : l'espace disque disponible (e.g. 500
+		Go), la taille de la RAM (e.g. 8 Go), le système d'exploitation utilisé (Windows ou Mac OS), le processeur et
+		la carte graphique (principale). Vous pouvez retrouver toutes ces informations dans votre panneau de
+		configuration préféré.
+	</p>
+	<div id="configuration-form">
+		<form>
+			<h2>Ajouter une configuration</h2>
+			<h3>Informations générales</h3>
+			<input type="text" name="name" id="name" placeholder="Nom *" class="text-input form-input" autocomplete="off">
+			<input type="text" name="freeDiskSpace" id="free-disk-space" placeholder="Espace disque (en Go) *" class="text-input form-input" autocomplete="off">
+			<input type="text" name="ram" id="ram" placeholder="RAM (en Go) *" class="text-input form-input" autocomplete="off">
+			<h3>Système d'exploitation</h3>
+			<select name="operatingSystem" id="operating-system">
+				<option value=""></option>
+			#{list items:osList, as:'os'}
+				<option value="${os.id}">${os.name} ${os.version}</option>
+			#{/list}
+			</select>
+			<h3>Processeur</h3>
+			<select name="processor" id="processor">
+				<option value=""></option>
+			#{list items:processorList, as:'processor'}
+				<option value="${processor.name}">${processor.manufacturer} ${processor.name}</option>
+			#{/list}
+			</select>
+			<h3>Carte graphique principale</h3>
+			<select name="videoCard" id="video-card">
+				<option value=""></option>
+			#{list items:videoCardList, as:'videoCard'}
+				<option value="${videoCard.name}">${videoCard.manufacturer} ${videoCard.name}</option>
+			#{/list}
+			</select>
+			<input type="submit" class="keyboard-submit">
+		</form>
+	</div>
+	<h2>Mes configurations</h2>
+	<button id="add-configuration" class="btn">Ajouter une configuration</button>
+	<table id="configurations">
+		<thead>
+		<tr>
+			<th>Nom</th>
+			<th>Espace disque</th>
+			<th>RAM</th>
+			<th>Système d'exploitation</th>
+			<th>Processeur</th>
+			<th>Carte graphique</th>
+		</tr>
+		</thead>
+		<tbody>
+		#{list items:user.configurations, as:'configuration'}
+		<tr>
+			<td>${configuration.name}</td>
+			<td>${configuration.freeDiskSpace}</td>
+			<td>${configuration.RAM}</td>
+			<td>${configuration.operatingSystems[0].name} ${configuration.operatingSystems[0].version}</td>
+			<td>${configuration.processors[0].manufacturer} ${configuration.processors[0].name}</td>
+			<td>${configuration.videoCards[0].manufacturer} ${configuration.videoCards[0].name}</td>
+		</tr>
+		#{/list}
+		</tbody>
+	</table>
 </main>

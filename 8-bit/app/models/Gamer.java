@@ -1,5 +1,6 @@
 package models;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -18,14 +19,14 @@ public class Gamer extends User {
             name="Gamer_genres",
             joinColumns={@JoinColumn(name="gamer_pseudo", referencedColumnName="pseudo")},
             inverseJoinColumns={@JoinColumn(name="genre_name", referencedColumnName="name")})
-    private Set<Genre> preferredGenres;
+    private Set<Genre> preferredGenres = new HashSet<Genre>();
 
 	@OneToMany
     @JoinTable(
             name="Gamer_configurations",
             joinColumns={@JoinColumn(name="gamer_pseudo", referencedColumnName="pseudo")},
             inverseJoinColumns={@JoinColumn(name="configuration_id", referencedColumnName="id")})
-	private Set<Configuration> configurations;
+	private Set<Configuration> configurations = new HashSet<Configuration>();
 
 	
 	/* *** Constructor *** */

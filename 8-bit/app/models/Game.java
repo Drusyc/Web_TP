@@ -1,11 +1,8 @@
 package models;
 
 import java.sql.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-import play.db.jpa.Blob;
 import play.db.jpa.GenericModel;
 
 import javax.persistence.*;
@@ -19,18 +16,18 @@ public class Game extends GenericModel {
     @ElementCollection
     @CollectionTable(joinColumns=@JoinColumn(name="game_name"))
     @Column(name="developer")
-    private Set<String> developers;
+    private Set<String> developers = new HashSet<String>();
 
     @ElementCollection
     @CollectionTable(joinColumns=@JoinColumn(name="game_name"))
     @Column(name="mode")
-    private Set<String> modes;
+    private Set<String> modes = new HashSet<String>();
 
     @ElementCollection
     @MapKeyColumn(name="country")
     @CollectionTable(joinColumns=@JoinColumn(name="game_name"))
     @Column(name="release_date")
-    private Map<String, Date> releaseDates;
+    private Map<String, Date> releaseDates = new HashMap<String, Date>();
     
     /* *** Constructors *** */
     
@@ -54,7 +51,7 @@ public class Game extends GenericModel {
 	}
 
 	public Game(String name, Set<String> developers, Set<String> modes,
-			Map<String, Date> releaseDates, Blob photo, Set<Genre> genres,
+			Map<String, Date> releaseDates, Set<Genre> genres,
 			Provider provider, Configuration configuration) {
 		super();
 		this.name = name;

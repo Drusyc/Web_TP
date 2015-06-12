@@ -6,15 +6,17 @@
 
 GET     /                                       Application.index
 GET     /about                                  About.index
-POST    /addGame                                Manage.addGame
-POST    /addProcessor                           Manage.addProcessor
-POST    /addVideoCard                           Manage.addVideoCard
 GET     /conditions                             Conditions.index
 GET     /configuration                          Configuration.index
+POST    /configuration/add                      Configuration.add
+POST    /configuration/compare                  Configuration.compare
 GET     /contact                                Contact.index
 GET 	/game/gamephoto							Game.gamePhoto
 GET		/game/{name}							Game.index
 GET     /manage                                 Manage.hardware
+POST    /manage/addGame                         Manage.addGame
+POST    /manage/addProcessor                    Manage.addProcessor
+POST    /manage/addVideoCard                    Manage.addVideoCard
 GET     /manage/games                           Manage.games
 GET     /manage/hardware                        Manage.hardware
 GET     /manage/requests                        Manage.requests

@@ -118,7 +118,7 @@
 
             <ul id="config-displayed"></ul>
 
-			<form  method="get" action="/configuration/compare">
+			#{form @Configuration.compare()}
                 <select id="select-config-gamer" name="idUser">
 					#{list items:user.configurations, as: 'configGamer'}
 						#{if configGamer_index == 1}
@@ -133,7 +133,7 @@
 				<!-- <input type="submit" value="Compare" onclick="javascript:compareConfig('${game.name}')"/> -->
                 <input type="text" id="idGame" name="idGame" value="${game.name}" hidden>
                 <button type="submit" class="btn signup-btn">Compare</button>
-            </form>
+            #{/form}
 
 		#{/if}
 		#{else}

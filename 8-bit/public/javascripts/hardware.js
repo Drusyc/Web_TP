@@ -84,7 +84,7 @@ $(function setDialogForms() {
 
         if ( valid ) {
             /* Ajax request to add the processor */
-            $.post("/addProcessor",
+            $.post("/manage/addProcessor",
                 {
                     name: processorName.val(),
                     manufacturer: processorManufacturer.val(),
@@ -156,7 +156,7 @@ $(function setDialogForms() {
 
         if ( valid ) {
             /* Ajax request */
-            $.post("/addVideoCard",
+            $.post("/manage/addVideoCard",
                 {
                     name: videoCardName.val(),
                     manufacturer: videoCardManufacturer.val(),
