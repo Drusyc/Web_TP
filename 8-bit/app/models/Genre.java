@@ -4,10 +4,7 @@ import play.db.jpa.GenericModel;
 
 import javax.persistence.*;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Genre extends GenericModel {
@@ -58,8 +55,8 @@ public class Genre extends GenericModel {
 
     /* *** Methods *** */
 
-    public static Set<String> getNames(Collection<Genre> genres) {
-        Set<String> strings = new HashSet<String>();
+    public static List<String> getNames(Collection<Genre> genres) {
+        List<String> strings = new ArrayList<String>();
 
         for (Genre g : genres) {
             strings.add(g.getName());

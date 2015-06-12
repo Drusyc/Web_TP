@@ -179,7 +179,5 @@ public class GameTest extends UnitTest {
 		game1.delete();
 		conf1.delete();
 	}
-	
-	
 
 }

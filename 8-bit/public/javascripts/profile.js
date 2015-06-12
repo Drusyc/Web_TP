@@ -125,7 +125,7 @@ $(function validate() {
  * Show form ('change Password' or 'change Email') when click on it
  */
 $(function () {
-    $(".show-form").click(function () {
+    $(".form-header").click(function () {
         $(this).next().toggle();
     });
 });
