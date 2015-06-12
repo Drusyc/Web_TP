@@ -1,6 +1,5 @@
-
 /*
-    Sur la page d'un jeu, permet d'afficher la configuration du joueur selectionné dans la selectBox
+ * Sur la page d'un jeu, permet d'afficher la configuration du joueur sélectionnée dans la selectBox
  */
 $(function selectConfiguration () {
     var configIndex = $("#select-config-gamer option:selected").val();
