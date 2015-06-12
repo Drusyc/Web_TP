@@ -194,10 +194,28 @@ tbody {
 	font-size: 11px;
 }
 
-thead th, tbody td {
+th, td {
 	border: 1px solid #FFF;
 	padding: 5px 10px;
 	text-align: center;
+}
+
+.ok {
+	font-weight: 600;
+	font-style: italic;
+	background: rgba(2, 212, 112, 0.5);
+	-webkit-box-shadow: 0 0 5px 1px #02D470;
+	-moz-box-shadow: 0 0 5px 1px #02D470;
+	box-shadow: 0 0 5px 1px #02D470;
+}
+
+.ko {
+	font-weight: 600;
+	font-style: italic;
+	background: rgba(212, 58, 87, 0.5);
+	-webkit-box-shadow: 0 0 5px 1px #D43A57;
+	-moz-box-shadow: 0 0 5px 1px #D43A57;
+	box-shadow: 0 0 5px 1px #D43A57;
 }
 
 /* Animations */
