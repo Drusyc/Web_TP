@@ -2,6 +2,7 @@
 #{set title:'Bienvenue sur 8-bit !' /}
 #{set 'moreStyles'}
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/signup.css'}">
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/search.css'}">
 #{/set}
 <main>
 	<div class="col-1 info-txt">
@@ -18,7 +19,12 @@
 		</p>
 	</div>
 	<aside class="col-2">
-		<h2>Jeux ajoutés</h2>
+		<h2>Exemples de jeux</h2>
+		<ul class="search-list">
+			#{list items:models.Game.getRandomGames(), as:'game'}
+				<li class="search-item"><a href="game/${game.name}">${game.name}</a></li>
+			#{/list}
+		</ul>
 	</aside>
 	#{if user == null}
 		<div class="row">
