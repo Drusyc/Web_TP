@@ -2,9 +2,7 @@ package models;
 
 import play.db.jpa.GenericModel;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -13,7 +11,8 @@ import java.util.Set;
 
 @Entity
 public class Genre extends GenericModel {
-	
+
+    /* Used for tests */
 	public static final String Action = "Action";
 	public static final String RPG = "RPG"; 
 	public static final String Aventure = "Aventure";
@@ -23,11 +22,10 @@ public class Genre extends GenericModel {
     @Id
     private String name;
 
-
     /* *** Relationships *** */
 
     @ManyToMany(mappedBy="genres")
-    private Set<Game> games;
+    private Set<Game> games = new HashSet<Game>();
     
     /* *** Constructors *** */
     
@@ -69,4 +67,8 @@ public class Genre extends GenericModel {
         return strings;
     }
 
+    public static List<Genre> getAll() {
+        Query q = Genre.em().createNativeQuery("select * from Genre order by name", Genre.class);
+        return q.getResultList();
+    }
 }

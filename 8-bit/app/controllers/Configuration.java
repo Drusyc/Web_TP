@@ -1,5 +1,7 @@
 package controllers;
 
+import models.Gamer;
+import models.OS;
 import models.Processor;
 import models.VideoCard;
 import play.Logger;
@@ -7,37 +9,78 @@ import play.mvc.Controller;
 import play.mvc.With;
 import validators.Check;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 @With(Secure.class)
 @Check("gamer")
 public class Configuration extends Controller {
 
     public static void index() {
-        render();
+        /* OS */
+        List<OS> osList = OS.getAll();
+
+        /* Processors */
+        List<Processor> processorList = Processor.getAll(); /* Ordered by manufacturer, name */
+
+        /* Video cards */
+        List<VideoCard> videoCardList = VideoCard.getAll(); /* Ordered by manufacturer, name */
+
+        render(osList, processorList, videoCardList);
     }
 
-    public static void compare (String idUser, String idGame) {
+    public static void add(String name, Double freeDiskSpace, Double ram,
+                           Long operatingSystem, String processor, String videoCard) {
+        Logger.debug("Configuration::add\n"
+                + "-- name: " + name + "\n"
+                + "-- freeDiskSpace: " + freeDiskSpace + "\n"
+                + "-- ram: " + ram + "\n"
+                + "-- operatingSystem: " + operatingSystem + "\n"
+                + "-- processor: " + processor + "\n"
+                + "-- videoCard: " + videoCard + "\n");
+
+        /* Find OS, processor and video card by id */
+        OS os = OS.findById(operatingSystem);
+        Processor p = Processor.findById(processor);
+        VideoCard v = VideoCard.findById(videoCard);
+
+        Set<OS> setOS = new HashSet<OS>();
+        Set<Processor> setP = new HashSet<Processor>();
+        Set<VideoCard> setV = new HashSet<VideoCard>();
+
+        setOS.add(os);
+        setP.add(p);
+        setV.add(v);
+
+        /* Create and save configuration */
+        models.Configuration configuration = new models.Configuration(name, freeDiskSpace, ram, setOS, setP, setV);
+        configuration.save();
+        Logger.info("Configuration::add - Configuration " + name + " created.");
+
+        /* Add it to user configurations */
+        Gamer gamer = (Gamer) Secure.loadCurrentUser();
+        gamer.getConfigurations().add(configuration);
+        gamer.save();
+        Logger.info("Configuration::add - Configuration " + name + " added to user " + gamer.getPseudo() + ".");
+    }
+
+    public static void compare(String idUser, String idGame) {
 
         /* Récupération de l'utilisateur */
         models.Gamer user = (models.Gamer) Secure.loadCurrentUser();
-        Logger.debug("User to find : " + user.getPseudo());
+        Logger.debug("Configuration::compare - User to find : " + user.getPseudo());
 
         /* Récupération de la configuration de l'utilisateur */
         models.Configuration configUser = models.Configuration.findById(Long.parseLong(idUser));
-        Logger.debug("Gamer Config to find : " + configUser.getName());
+        Logger.debug("Configuration::compare - Gamer configuration to find : " + configUser.getName());
 
         /* Récupération du jeu */
         idGame = idGame.replaceAll("\\+", " ");
         models.Game game = models.Game.findById(idGame);
-        Logger.debug("Game : " + game.getName());
+        Logger.debug("Configuration::compare - Game : " + game.getName());
 
         /* Récupération de la configuration du jeu*/
         models.Configuration configGame = game.getConfiguration();
-        Logger.debug("Game Config to find : " + configGame.getName());
+        Logger.debug("Configuration::compare - Game configuration to find : " + configGame.getName());
 
         /* Création de la map pour stocker les résultats */
         Map<String, String> eval = new HashMap<String, String>();
@@ -60,7 +103,6 @@ public class Configuration extends Controller {
                 minSpeed = proc.getSpeed();
             }
         }
-        Logger.debug("minProcGame : " + minProcGame);
 
         Set<Processor> procUser = configUser.getProcessors();
         /* Récupération du processeur le "moins" puissant du gamer, en comparant les vitesses */
@@ -72,7 +114,6 @@ public class Configuration extends Controller {
                 maxSpeed = proc.getSpeed();
             }
         }
-
 
         /* Comparaison des processeurs */
             /* Comparaison de la vitesse */
@@ -101,7 +142,6 @@ public class Configuration extends Controller {
             }
         }
 
-
         Set<VideoCard> vidCardUser = configUser.getVideoCards();
         /* Récupération de la carte vidéo la "moins" puissante du user, comparant les vitesses */
         Integer maxVSpeed = Integer.MIN_VALUE;
@@ -112,8 +152,6 @@ public class Configuration extends Controller {
                 maxVSpeed = vd.getSpeed();
             }
         }
-
-
 
         /* Comparaison des cartes vidéos */
             /* Comparaison de la vitesse */

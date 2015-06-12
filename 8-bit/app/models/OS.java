@@ -1,9 +1,11 @@
 package models;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Query;
 
 import play.db.jpa.Model;
 
@@ -62,5 +64,12 @@ public class OS extends Model {
 	public void setDate(Date date) {
 		this.releaseDate = date;
 	}
+
+    /* *** Methods *** */
+
+    public static List<OS> getAll() {
+        Query q = OS.em().createNativeQuery("select * from OS order by name, version", OS.class);
+        return q.getResultList();
+    }
 
 }

@@ -73,7 +73,7 @@ public class ApplicationTest extends FunctionalTest {
     	/*
     	 * ******* GAMES ***********
     	 */
-		Game game1 = new Game("Starcraft 2", null); 
+		Game game1 = new Game("Starcraft 2");
 		
 		Set<String> setDevGame1 = new HashSet<String>(); setDevGame1.add("Blizzard Entertainment");
 		Set<String> setModeGame1 = new HashSet<String>(); setModeGame1.add("Solo"); setModeGame1.add("Multi");
@@ -107,7 +107,7 @@ public class ApplicationTest extends FunctionalTest {
 		prov1.save();
 
 		
-		Game game2 = new Game ("Les Sims 3", null);
+		Game game2 = new Game ("Les Sims 3");
 		Set<String> setDevGame2 = new HashSet<String>(); setDevGame2.add("Maxis");
 		Set<String> setModeGame2 = new HashSet<String>(); setModeGame2.add("Solo");
 		Map<String, Date> setReleaseGame2 = new HashMap<String, Date>();

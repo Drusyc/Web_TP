@@ -851,9 +851,7 @@ body .ui-tooltip {
 	color: #ffffff;
 }
 .ui-widget-header {
-	color: #ffffff;
-	font-weight: bold;
-	letter-spacing: 1px;
+	display: none;
 }
 .ui-widget-header a {
 	color: #ffffff;

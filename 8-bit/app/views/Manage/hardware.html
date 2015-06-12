@@ -10,8 +10,9 @@
 <main>
 	<h1>Gestion du matériel</h1>
 	<div class="col-1">
-		<div id="processors-form" title="Ajouter un processeur">
+		<div id="processors-form">
 			<form>
+				<h2>Ajouter un processeur</h2>
 				<input type="text" name="processor-name" id="processor-name" placeholder="Nom *" class="text-input form-input" autocomplete="off">
 				<input type="text" name="processor-manufacturer" id="processor-manufacturer" placeholder="Fabricant *" class="text-input form-input" autocomplete="off">
 				<input type="text" name="processor-speed" id="processor-speed" placeholder="Vitesse (en GHz) *" class="text-input form-input" autocomplete="off">
@@ -43,14 +44,15 @@
 		</table>
 	</div>
 	<div class="col-2">
-		<div id="video-cards-form" title="Ajouter une carte graphique">
-				<form>
-					<input type="text" name="video-card-name" id="video-card-name" placeholder="Nom *" class="text-input form-input" autocomplete="off">
-					<input type="text" name="video-card-manufacturer" id="video-card-manufacturer" placeholder="Fabricant *" class="text-input form-input" autocomplete="off">
-					<input type="text" name="video-card-speed" id="video-card-speed" placeholder="Vitesse (en MHz) *" class="text-input form-input" autocomplete="off">
-					<input type="text" name="directX" id="directX" placeholder="Version DirectX *" class="text-input form-input" autocomplete="off">
-					<input type="submit" class="keyboard-submit">
-				</form>
+		<div id="video-cards-form">
+			<form>
+				<h2>Ajouter une carte graphique</h2>
+				<input type="text" name="video-card-name" id="video-card-name" placeholder="Nom *" class="text-input form-input" autocomplete="off">
+				<input type="text" name="video-card-manufacturer" id="video-card-manufacturer" placeholder="Fabricant *" class="text-input form-input" autocomplete="off">
+				<input type="text" name="video-card-speed" id="video-card-speed" placeholder="Vitesse (en MHz) *" class="text-input form-input" autocomplete="off">
+				<input type="text" name="directX" id="directX" placeholder="Version DirectX *" class="text-input form-input" autocomplete="off">
+				<input type="submit" class="keyboard-submit">
+			</form>
 		</div>
 		<h2>Cartes graphiques</h2>
 		<button id="add-video-card" class="btn">Ajouter une carte graphique</button>

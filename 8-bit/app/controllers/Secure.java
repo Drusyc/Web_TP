@@ -48,8 +48,7 @@ public class Secure extends Controller {
 
     static User loadCurrentUser() {
         String username = session.get("username");
-        final User user = username != null ? loadCurrentUser(username) : null;
-        return user;
+        return username != null ? loadCurrentUser(username) : null;
     }
 
     private static User loadCurrentUser(String username) {
@@ -178,11 +177,8 @@ public class Secure extends Controller {
             User user = User.findById(connected());
             if ("gamer".equals(profile)) {
                 return user instanceof Gamer;
-            } else if ("provider".equals(profile)) {
-                return user instanceof Provider;
-            } else {
-                return false;
-            }
+            } else
+                return "provider".equals(profile) && user instanceof Provider;
         }
 
         /**

@@ -23,7 +23,7 @@ public class GameTest extends UnitTest {
 	@Test
 	public void createGame () {
 		/* Création d'un game */		
-		Game game1 = new Game("Mario Kart 8", null); 
+		Game game1 = new Game("Mario Kart 8");
 		
 		Set<String> setDev = new HashSet<String>(); setDev.add("Nintendo"); setDev.add("Bandai");
 		Set<String> setMode = new HashSet<String>(); setMode.add("Solo"); setMode.add("Multi");
@@ -50,7 +50,7 @@ public class GameTest extends UnitTest {
 	@Test
 	public void deleteGame() {
 		/* Création d'un game */
-		Game game1 = new Game("testCreateGame", null); game1.save();
+		Game game1 = new Game("testCreateGame"); game1.save();
 		
 		Game found = Game.findById(game1.getName());
 		assertEquals(game1, found);
@@ -71,7 +71,7 @@ public class GameTest extends UnitTest {
 	@Test
 	public void updateGame() {	
 		/* Création d'un game */
-		Game game1 = new Game("updateGameName", null); game1.save();
+		Game game1 = new Game("updateGameName"); game1.save();
 		
 		Game found = Game.findById(game1.getName());
 		assertEquals(game1, found);
@@ -99,7 +99,7 @@ public class GameTest extends UnitTest {
 	public void gameGenres () {
 		
 		/* Création d'un game */
-		Game game1 = new Game("8 Trak Oiram", null); 
+		Game game1 = new Game("8 Trak Oiram");
 		
 		/* Création des genres RPG / ACTION / AVENTURE */
     	Genre ge1 = new Genre(Genre.RPG); ge1.save();
@@ -139,7 +139,7 @@ public class GameTest extends UnitTest {
 		Provider prov1 = new Provider("Oiram Srob", "mdp","Bowser@test.com",null); prov1.save();
 
 		/* Création d'un game */
-		Game game1 = new Game("8 Trak Oiram", null); 
+		Game game1 = new Game("8 Trak Oiram");
 		game1.setProvider(prov1); game1.save();
 		
 		/* Assert */
@@ -164,7 +164,7 @@ public class GameTest extends UnitTest {
 		Configuration conf1 = new Configuration("maConfig", 0.5, 2.0); conf1.save();
 
 		/* Création d'un game */
-		Game game1 = new Game("8 Trak Oiram", null); 
+		Game game1 = new Game("8 Trak Oiram");
 		game1.setConfiguration(conf1); game1.save();
 		
 		/* Assert */

@@ -1,8 +1,8 @@
 package models;
 
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -16,7 +16,7 @@ public class Provider extends User {
 	/* *** Relationships *** */
 
 	@OneToMany(mappedBy="provider")
-	private Set<Game> games;
+	private Set<Game> games = new HashSet<Game>();
 
 	/* *** Constructors *** */
 	
