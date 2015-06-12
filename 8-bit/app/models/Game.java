@@ -162,7 +162,7 @@ public class Game extends GenericModel {
     }
 
     public static List<Game> getRandomGames() {
-        Query q = Game.em().createNativeQuery("select * from Game order by rand() limit 7", Game.class);
+        Query q = Game.em().createNativeQuery("select * from Game order by rand() limit 10", Game.class);
         return q.getResultList();
     }
 }
