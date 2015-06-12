@@ -1,7 +1,27 @@
+#{fixture delete:'all', load:'data-test.yml' /}
+
 *{ You can use plain selenium command using the selenium tag }*
 
 #{selenium}
+    clearSession()
+
     // Open the home page, and check that no error occured
     open('/')
-    assertNotTitle('Application error')
+
+    // Check title
+    assertTitle('Bienvenue sur 8-bit !')
+
+    //Check texts
+    assertTextPresent('Bienvenue sur 8-bit')
+    assertTextPresent('Pas encore inscrit ?')
+
+    //Check Buttons
+    verifyElementPresent(//header/nav/ul)
+    verifyElementPresent(//header/div/form)
+
+    //
+    type(//header/div/form/input, "Thomas")
+    type(//header/div/form/input, "password")
+
+    clickAndWait(//header)
 #{/selenium}

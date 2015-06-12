@@ -1,5 +1,111 @@
 #{extends 'main.html' /}
 #{set title:'Mon profil' /}
+#{set 'moreStyles'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/profile.css'}">
+#{/set}
+#{set 'moreScripts'}
+<script src="@{'/public/javascripts/profile.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+
 <main>
-    <h1>Mon profil</h1>
+    <h1>${user.pseudo}</h1>
+
+    <ul id="user-list">
+        <li class="show-form">
+            Mail courant : ${user.mail}<a>+</a>
+        </li>
+
+        <li class="liste-form">
+            #{form @Profile.changeMail()}
+                <input type="text" id="email" name="email" value="${flash.email}" class="text-input" title="#{error 'email' /}" placeholder="Email *" autocomplete="off"/>
+                <button type="submit" class="btn">Replace !</button>
+            #{/form}
+        </li>
+
+        <li class="show-form">
+            Password<a>+</a>
+        </li>
+        <li class="liste-form">
+            #{form @Profile.changePassword()}
+                <input type="password" id="password" name="password" value="" class="text-input" title="#{error 'password' /}" placeholder="Mot de passe *"/>
+                <input type="password" id="password2" name="password2" class="text-input" title="#{error 'password2' /}" placeholder="Confirmez votre mot de passe *"/>
+                <button type="submit" class="btn">Replace !</button>
+            #{/form}
+        </li>
+        <li>
+            Genres préférés: #{list items:user.preferredGenres, as: 'genre'}${genre.name} #{/list}
+        </li>
+            #{set userGenres:models.Genre.getNames(user.preferredGenres) /}
+            #{set tableGenres:models.Genre.getNames(models.Genre.findAll()) /}
+
+            #{form @Profile.changeGenres()}
+                #{list items:tableGenres, as: 'listGenre'}
+                    <input type="checkbox" id="genre${listGenre}" name="genre${listGenre}"
+                           #{if userGenres.contains(listGenre) == true}checked #{/if}/>
+                        ${listGenre}<br>
+                #{/list}
+                <button type="submit" class="btn">Update !</button>
+            #{/form}
+        </li>
+    </ul>
+
+    #{if user instanceof models.Gamer && !user.configurations.empty}
+        <h2>Vos configurations : </h2>
+
+        #{list items:user.configurations, as: 'configGamer'}
+            <ul id="config-${configGamer.id}" class="liste-config">
+                <li id="user-OS"><strong>OS :</strong>
+                    #{list items:configGamer.operatingSystems, as: 'OS'}
+                    ${OS.name} ${OS.version}
+                    #{/list}
+                </li>
+                <li id="user-RAM"><strong>RAM :</strong>
+                ${configGamer?.RAM}
+                </li>
+                <li id="user-freeDiskSpace"><strong>Espace Mémoire :</strong>
+                ${configGamer?.freeDiskSpace}
+                </li>
+                <li><strong>Processeurs :</strong>
+                    #{list items:configGamer?.processors, as: 'procGamer'}
+                        <ul>
+                            <li id="user-processors-name"><strong>Nom :</strong> ${procGamer.name} </li>
+                            <li id="user-processors-manufacturer"><strong>Fabriquant :</strong> ${procGamer.manufacturer} </li>
+                            <li id="user-processors-speed"><strong>Vitesse (Fréquence) :</strong> ${procGamer.speed} </li>
+                            <li id="user-processors-cores"><strong>Nombre de coeurs :</strong> ${procGamer.cores} </li>
+                        </ul>
+                    #{/list}
+                </li>
+                <li><strong>Carte Video :</strong>
+                    #{list items:configGamer?.videoCards, as: 'vidCardGamer'}
+                        <ul>
+                            <li id="user-videoCard-name"><strong>Nom :</strong> ${vidCardGamer.name} </li>
+                            <li id="user-videoCard-manufacturer"><strong>Fabriquant :</strong> ${vidCardGamer.manufacturer} </li>
+                            <li id="user-videoCard-speed"><strong>Vitesse (Fréquence) :</strong> ${vidCardGamer.speed} </li>
+                            <li id="user-videoCard-directX"><strong>Direct X :</strong> ${vidCardGamer.versionDirectX} </li>
+
+                        </ul>
+                    #{/list}
+                </li>
+            </ul>
+        #{/list}
+
+
+
+        <select id="select-config-gamer" name="idUser">
+            #{list items:user.configurations, as: 'configGamer'}
+                #{if configGamer_index == 1}
+                    <option value="${configGamer.id}" selected>${configGamer.name}</option>
+                #{/if}
+                #{else}
+                    <option value="${configGamer.id}">${configGamer.name}</option>
+                #{/else}
+            #{/list}
+        </select>
+
+        <ul id="config-displayed"></ul>
+    #{/if}
+    #{else}
+    #{/else}
+
+
 </main>
