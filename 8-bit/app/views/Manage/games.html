@@ -98,7 +98,7 @@
 	    		#{/list}
 			</td>
 			<td>
-				${game.releaseDates["EU"]?.format()}
+				${game.releaseDates["EU"] ? game.releaseDates["EU"].format() : '?'}
 			</td>
 			<td>
 				#{list items:game.genres, as: 'genre'}

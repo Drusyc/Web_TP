@@ -4,15 +4,15 @@
 $(function selectConfiguration () {
     var configIndex = $("#select-config-gamer option:selected").val();
 
-    var ul = $("#config-"+configIndex);
+    var table = $("#config-"+configIndex);
     $("#config-displayed").empty();
-    $("#config-displayed").append(ul.children().clone());
+    $("#config-displayed").append(table.children().clone());
 
     $("#select-config-gamer").bind("change", function() {
         var configIndex = $("#select-config-gamer option:selected").val();
 
-        var ul = $("#config-"+configIndex);
+        var table = $("#config-"+configIndex);
         $("#config-displayed").empty();
-        $("#config-displayed").append(ul.children().clone());
+        $("#config-displayed").append(table.children().clone());
     });
 });

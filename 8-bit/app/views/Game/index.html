@@ -1,145 +1,189 @@
 #{extends 'main.html' /}
 #{set title:game.name /}
-#{set 'moreStyles'}
-<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/game.css'}">
-#{/set}
 #{set 'moreScripts'}
-<script src="@{'/public/javascripts/game.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+	<script src="@{'/public/javascripts/game.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 #{/set}
 
 <main>
-    <h1>${game.name}</h1>
-	    <div id="section">
-	    	<h2>Informations sur le jeu</h2>
-	    		
-	    	<ul id="info_game">
-	    		<li>
-	    			<strong>Developpeurs :</strong>
-	    			#{list items:game.developers, as: 'dev'}
-	    				${dev}
-	    			#{/list}
-	    		</li>
-	    		<li>
-	    		   	<strong>Modes :</strong>
-	    			#{list items:game.modes, as: 'mode'}
-	    				${mode}
-	    			#{/list}
-	    		</li>
-	    		<li>
-	    		   	<strong>Sorties :</strong>
-	    				USA : ${game.releaseDates["USA"]}
-	    				EU : ${game.releaseDates["EU"]}
-	    				JAPON : ${game.releaseDates["JAPAN"]}
-	    		</li>
-	    	</ul>
-    </div>
-    
-    <div>
-    	<h2>Configuration minimale</h2>
-	    	#{set config:game.configuration /}
-	    	<ul>
-	    	    <li id="game-OS"><strong>OS :</strong>
-	    			#{list items:config?.operatingSystems, as: 'OS'}
-	    				${OS.name}${OS.version}
-	    			#{/list}    	    	
-	    		</li>
-	    		<li id="game-RAM"><strong>RAM :</strong>
-	    			${config?.RAM}
-	    		</li>
-	    		<li id="game-freeDiskSpace"><strong>Espace Mémoire :</strong>
-	    			${config?.freeDiskSpace}
-	    		</li>
-	    		<li><strong>Processeur</strong>
-	    			#{list items:config?.processors, as: 'proc'}
-	    			<ul>
-	    				<li id="game-processors-name"><strong>Nom :</strong> ${proc.name} </li>
-	    				<li id="game-processors-manufacturer"><strong>Fabriquant :</strong> ${proc.manufacturer} </li>
-	    				<li id="game-processors-speed"><strong>Vitesse (Fréquence) :</strong> ${proc.speed} </li>
-	    				<li id="game-processors-cores"><strong>Nombre de coeurs :</strong> ${proc.cores} </li>
-	    			</ul>
-	    			#{/list}
-	    		</li>
-	    		<li><strong>Carte vidéo</strong>
-	    			#{list items:config?.videoCards, as: 'vidCard'}
-	    			<ul>
-	    				<li id="game-videoCard-name"><strong>Nom :</strong> ${vidCard.name} </li>
-	    				<li id="game-videoCard-manufacturer"><strong>Fabriquant :</strong> ${vidCard.manufacturer} </li>
-	    				<li id="game-videoCard-speed"><strong>Vitesse (Fréquence) :</strong> ${vidCard.speed} </li>
-	    				<li id="game-videoCard-directX"><strong>Direct X :</strong> ${vidCard.versionDirectX} </li>
-	    			
-	    			</ul>
-	    			#{/list}
-	    		</li>
-	    	</ul>
-	  </div>
-
-	<div>
-
-    	
-    	#{if user instanceof models.Gamer && !user.configurations.empty}
-    		<h2>Vos configurations : (User = ${user.pseudo})</h2>
-
-			#{list items:user.configurations, as: 'configGamer'}
-                <ul id="config-${configGamer.id}" class="liste-config">
-		    	    <li id="user-OS"><strong>OS :</strong>
-		    			#{list items:configGamer.operatingSystems, as: 'OS'}
-		    				${OS.name} ${OS.version}
-		    			#{/list}
-		    		</li>
-		    		<li id="user-RAM"><strong>RAM :</strong>
-		    			${configGamer?.RAM}
-		    		</li>
-		    		<li id="user-freeDiskSpace"><strong>Espace Mémoire :</strong>
-		    			${configGamer?.freeDiskSpace}
-		    		</li>
-		    		<li><strong>Processeurs :</strong>
-						#{list items:configGamer?.processors, as: 'procGamer'}
-                            <ul>
-                                <li id="user-processors-name"><strong>Nom :</strong> ${procGamer.name} </li>
-                                <li id="user-processors-manufacturer"><strong>Fabriquant :</strong> ${procGamer.manufacturer} </li>
-                                <li id="user-processors-speed"><strong>Vitesse (Fréquence) :</strong> ${procGamer.speed} </li>
-                                <li id="user-processors-cores"><strong>Nombre de coeurs :</strong> ${procGamer.cores} </li>
-                            </ul>
+	<h1>${game.name}</h1>
+	<table>
+		<tbody>
+			<tr>
+				<td colspan="2"><strong>Informations générales</strong></td>
+			</tr>
+			<tr>
+				<td>Développeur(s)</td>
+				<td>
+					#{list items:game.developers, as: 'dev'}
+						${dev}#{if !dev_isLast}, #{/if}
+					#{/list}
+				</td>
+			</tr>
+			<tr>
+				<td>Mode(s)</td>
+				<td>
+					#{list items:game.modes, as: 'mode'}
+						${mode}#{if !mode_isLast}, #{/if}
+					#{/list}
+				</td>
+			</tr>
+			<tr>
+				<td>Genre(s)</td>
+				<td>
+				#{list items:game.genres, as: 'genre'}
+				${genre.name}#{if !genre_isLast}, #{/if}
+				#{/list}
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><strong>Dates de sortie</strong></td>
+			</tr>
+			<tr>
+				<td>EU</td>
+				<td>${game.releaseDates["EU"] ? game.releaseDates["EU"]?.format() : '?'}</td>
+			</tr>
+			<tr>
+				<td>USA</td>
+				<td>${game.releaseDates["USA"] ? game.releaseDates["USA"]?.format() : '?'}</td>
+			</tr>
+			<tr>
+				<td>JPN</td>
+				<td>${game.releaseDates["JAPON"]? game.releaseDates["JAPON"]?.format() : '?'}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="col-1">
+		<h2>Configuration requise</h2>
+		#{set config:game.configuration /}
+		<table>
+			<tbody>
+				<tr>
+					<td colspan="4"><strong>Informations générales</strong></td>
+				</tr>
+				<tr>
+					<td colspan="2">Système(s) d'exploitation</td>
+					<td colspan="2">
+						#{list items:config?.operatingSystems, as: 'OS'}
+							${OS.name} ${OS.version}#{if !OS_isLast}, #{/if}
 						#{/list}
-		    		</li>
-		    		<li><strong>Carte Video :</strong>
-						#{list items:configGamer?.videoCards, as: 'vidCardGamer'}
-                            <ul>
-                                <li id="user-videoCard-name"><strong>Nom :</strong> ${vidCardGamer.name} </li>
-                                <li id="user-videoCard-manufacturer"><strong>Fabriquant :</strong> ${vidCardGamer.manufacturer} </li>
-                                <li id="user-videoCard-speed"><strong>Vitesse (Fréquence) :</strong> ${vidCardGamer.speed} </li>
-                                <li id="user-videoCard-directX"><strong>Direct X :</strong> ${vidCardGamer.versionDirectX} </li>
-
-                            </ul>
-						#{/list}
-		    		</li>
-	    		</ul>
-			#{/list}
-
-            <ul id="config-displayed"></ul>
-
-			#{form @Configuration.compare()}
-                <select id="select-config-gamer" name="idUser">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">RAM</td>
+					<td colspan="2">${config?.RAM} Go</td>
+				</tr>
+				<tr>
+					<td colspan="2">Espace disque</td>
+					<td colspan="2">${config?.freeDiskSpace} Go</td>
+				</tr>
+				<tr>
+					<td colspan="4"><strong>Processeurs</strong></td>
+				</tr>
+				<tr>
+					<td colspan="2">Nom</td>
+					<td>Fréquence</td>
+					<td>Cœurs</td>
+				</tr>
+				#{list items:config?.processors, as: 'proc'}
+					<tr>
+						<td colspan="2">${proc.manufacturer} ${proc.name}</td>
+						<td>${proc.speed} GHz</td>
+						<td>${proc.cores}</td>
+					</tr>
+				#{/list}
+				<tr>
+					<td colspan="4"><strong>Cartes graphiques</strong></td>
+				</tr>
+				<tr>
+					<td colspan="2">Nom</td>
+					<td>Fréquence</td>
+					<td>DirectX</td>
+				</tr>
+				#{list items:config?.videoCards, as: 'vidCard'}
+					<tr>
+						<td colspan="2">${vidCard.manufacturer} ${vidCard.name}</td>
+						<td>${vidCard.speed} MHz</td>
+						<td>${vidCard.versionDirectX}</td>
+					</tr>
+				#{/list}
+			</tbody>
+		</table>
+	</div>
+	#{if user instanceof models.Gamer && !user.configurations.empty}
+		<div class="col-3">
+			<button type="submit" class="btn" form="compare-form">Comparer</button>
+		</div>
+		<div class="col-2">
+			<h2>Mes configurations</h2>
+			#{form @Configuration.compare(), id:'compare-form'}
+				<select id="select-config-gamer" name="idUser">
 					#{list items:user.configurations, as: 'configGamer'}
 						#{if configGamer_index == 1}
-                            <option value="${configGamer.id}" selected>${configGamer.name}</option>
+							<option value="${configGamer.id}" selected>${configGamer.name}</option>
 						#{/if}
 						#{else}
-                            <option value="${configGamer.id}">${configGamer.name}</option>
+							<option value="${configGamer.id}">${configGamer.name}</option>
 						#{/else}
 					#{/list}
-                </select>
+				</select>
+				<input type="text" name="idGame" value="${game.name}" hidden>
+			#{/form}
+			#{list items:user.configurations, as: 'configGamer'}
+				<table id="config-${configGamer.id}" hidden>
+					<tbody>
+						<tr>
+							<td colspan="4"><strong>Informations générales</strong></td>
+						</tr>
+						<tr>
+							<td colspan="2">Système(s) d'exploitation</td>
+							<td colspan="2">
+								#{list items:configGamer.operatingSystems, as: 'OS'}
+									${OS.name} ${OS.version}
+								#{/list}
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">RAM</td>
+							<td colspan="2">${configGamer?.RAM} Go</td>
+						</tr>
+						<tr>
+							<td colspan="2">Espace disque</td>
+							<td colspan="2">${configGamer?.freeDiskSpace} Go</td>
+						</tr>
+						<tr>
+							<td colspan="4"><strong>Processeur</strong></td>
+						</tr>
+						<tr>
+							<td colspan="2">Nom</td>
+							<td>Fréquence</td>
+							<td>Cœurs</td>
+						</tr>
+							#{list items:configGamer?.processors, as: 'proc'}
+							<tr>
+								<td colspan="2">${proc.manufacturer} ${proc.name}</td>
+								<td>${proc.speed} GHz</td>
+								<td>${proc.cores}</td>
+							</tr>
+							#{/list}
+						<tr>
+							<td colspan="4"><strong>Carte graphique</strong></td>
+						</tr>
+						<tr>
+							<td colspan="2">Nom</td>
+							<td>Fréquence</td>
+							<td>DirectX</td>
+						</tr>
+						#{list items:configGamer?.videoCards, as: 'vidCard'}
+							<tr>
+								<td colspan="2">${vidCard.manufacturer} ${vidCard.name}</td>
+								<td>${vidCard.speed} MHz</td>
+								<td>${vidCard.versionDirectX}</td>
+							</tr>
+						#{/list}
+					</tbody>
+				</table>
+			#{/list}
 
-				<!-- <input type="submit" value="Compare" onclick="javascript:compareConfig('${game.name}')"/> -->
-                <input type="text" id="idGame" name="idGame" value="${game.name}" hidden>
-                <button type="submit" class="btn signup-btn">Compare</button>
-            #{/form}
-
-		#{/if}
-		#{else}
-	   	 	
-		#{/else}
-		 	
-		
-	</div>
+			<table id="config-displayed"></table>
+	#{/if}
 </main>

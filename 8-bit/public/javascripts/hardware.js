@@ -7,7 +7,7 @@ $(function setDialogForms() {
         gameDialog, gameForm,
 
         dateRegex = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/,
-        doubleRegex = /^[0-9]*[.][0-9]+$/,
+        doubleRegex = /^[0-9]+([.][0-9]+)?$/,
         integerRegex = /^[0-9]+$/,
         coresRegex = /^[1-8]$/,
 

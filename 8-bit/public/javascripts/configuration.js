@@ -4,7 +4,7 @@
 $(function setDialogForm() {
     var configurationDialog, configurationForm,
 
-        doubleRegex = /^[0-9]*[.][0-9]+$/,
+        doubleRegex = /^[0-9]+([.][0-9]+)?$/,
 
         /* Configuration fields */
         name = $( "#name" ),
