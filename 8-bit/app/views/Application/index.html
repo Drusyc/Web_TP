@@ -1,7 +1,13 @@
 #{extends 'main.html' /}
 #{set title:'Bienvenue sur 8-bit !' /}
 #{set 'moreStyles'}
-<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/signup.css'}">
+	<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/signup.css'}">
+	<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/search.css'}">
+	<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/vegas.css'}">
+#{/set}
+#{set 'moreScripts'}
+	<script src="@{'/public/javascripts/vegas.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+	<script src="@{'/public/javascripts/background.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 #{/set}
 <main>
 	<div class="col-1 info-txt">
@@ -18,7 +24,12 @@
 		</p>
 	</div>
 	<aside class="col-2">
-		<h2>Jeux ajoutés</h2>
+		<h2>Exemples de jeux</h2>
+		<ul class="search-list">
+			#{list items:models.Game.getRandomGames(), as:'game'}
+				<li class="search-item"><a href="game/${game.name}">${game.name}</a></li>
+			#{/list}
+		</ul>
 	</aside>
 	#{if user == null}
 		<div class="row">

@@ -1,64 +1,86 @@
 #{extends 'main.html' /}
-#{set title:'Configuration système' /}
+#{set title:'Comparaison' /}
+#{set 'moreScripts'}
+	<script src="@{'/public/javascripts/compare.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
 <main>
-    <h1>Comparaison de configs</h1>
+    <h1>Comparaison</h1>
+	<p class="info-txt">
+		#{if eval.get("Final") == "OK"}
+			Ah ça oui, votre PC est une vraie bombe ! Faites quand même attention qu'il ne vous explose pas à la figure
+			lorsque vous réglez les graphismes et le son de ${game.name} au maximum. Vous devriez quand même consulter
+			les détails du comparatif...
+		#{/if}
+		#{else}
+			Eh bien non, votre configuration n'est pas suffisante pour jouer à ${game.name} ! Jetez donc un
+			œil au comparatif ci-dessous... Il vous faudrait changer certains composants, ou pire, votre PC ! Pour vous
+			consoler, sachez qu'il existe d'autres (très bons) jeux auxquels vous pouvez jouer. Allez, faites une autre
+			recherche.
+		#{/else}
+	</p>
     <table>
 	    <thead>
 	        <tr>
 	            <th></th>
 	            <th>${game.name}</th>
 	            <th>${configUser.name}</th>
-	            <th>Evaluation</th>
+	            <th>Évaluation</th>
 	        </tr>
 	    </thead>
 	    <tbody>
 	        <tr>
-	            <td><strong>Espace Mémoire (GigaOctets)</strong></td>
-	            <td>${configGame.freeDiskSpace}</td>
-	            <td>${configUser.freeDiskSpace}</td>
-	            <td>${eval.get("EspaceMemoire")}</td>
+	            <td><strong>Espace disque</strong></td>
+	            <td>${configGame.freeDiskSpace} Go</td>
+	            <td>${configUser.freeDiskSpace} Go</td>
+	            <td class="eval">${eval.get("EspaceMemoire")}</td>
 	        </tr>
 	        <tr>
-	            <td><strong>RAM (Giga)</strong></td>
-	            <td>${configGame.RAM}</td>
-	            <td>${configUser.RAM}</td>
-	            <td>${eval.get("RAM")}</td>
+	            <td><strong>RAM</strong></td>
+	            <td>${configGame.RAM} Go</td>
+	            <td>${configUser.RAM} Go</td>
+	            <td class="eval">${eval.get("RAM")}</td>
+	        </tr>
+	        <tr>
+		        <td colspan="4"></td>
 	        </tr>
 	        <tr>
 	            <td><strong>Processeur</strong></td>
-	            <td>${minProcGame.name}</td>
-	            <td>${maxProcUser.name}</td>
-	            <td>${eval.get("Processeur")}</td>
+	            <td>${minProcGame.manufacturer} ${minProcGame.name}</td>
+	            <td>${maxProcUser.manufacturer} ${maxProcUser.name}</td>
+	            <td class="eval">${eval.get("Processeur")}</td>
 	        </tr>
 	        <tr>
-	            <td><strong>Vitesse du Processeur</strong></td>
-	            <td>${minProcGame.speed}</td>
-	            <td>${maxProcUser.speed}</td>
-	            <td>${eval.get("VitesseProcesseur")}</td>
+	            <td><strong>Fréquence</strong></td>
+	            <td>${minProcGame.speed} GHz</td>
+	            <td>${maxProcUser.speed} GHz</td>
+	            <td class="eval">${eval.get("VitesseProcesseur")}</td>
 	        </tr>
 	        <tr>
-	            <td><strong>Nombre de coeurs</strong></td>
+	            <td><strong>Cœurs</strong></td>
 	            <td>${minProcGame.cores}</td>
 	            <td>${maxProcUser.cores}</td>
-	            <td>${eval.get("NombreDeCoeurs")}</td>
+	            <td class="eval">${eval.get("NombreDeCoeurs")}</td>
 	        </tr>
 	        <tr>
-	            <td><strong>Carte Vidéo</strong></td>
-	            <td>${minVdCard.name}</td>
-	            <td>${maxVDUser.name}</td>
-	            <td>${eval.get("CarteVideo")}</td>
+		        <td colspan="4"></td>
 	        </tr>
 	        <tr>
-	            <td><strong>Vitesse de la Carte Vidéo</strong></td>
-	            <td>${minVdCard.speed}</td>
-	            <td>${maxVDUser.speed}</td>
-	            <td>${eval.get("VitesseCarteVideo")}</td>
+	            <td><strong>Carte graphique</strong></td>
+	            <td>${minVdCard.manufacturer} ${minVdCard.name}</td>
+	            <td>${maxVDUser.manufacturer} ${maxVDUser.name}</td>
+	            <td class="eval">${eval.get("CarteVideo")}</td>
 	        </tr>
 	        <tr>
-	            <td><strong>Version DirectX</strong></td>
+	            <td><strong>Fréquence</strong></td>
+	            <td>${minVdCard.speed} MHz</td>
+	            <td>${maxVDUser.speed} Mhz</td>
+	            <td class="eval">${eval.get("VitesseCarteVideo")}</td>
+	        </tr>
+	        <tr>
+	            <td><strong>DirectX</strong></td>
 	            <td>${minVdCard.versionDirectX}</td>
 	            <td>${maxVDUser.versionDirectX}</td>
-	            <td>${eval.get("DirectX")}</td>
+	            <td class="eval">${eval.get("DirectX")}</td>
 	        </tr>
 	    </tbody>
     </table>

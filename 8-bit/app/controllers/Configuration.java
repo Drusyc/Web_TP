@@ -92,6 +92,7 @@ public class Configuration extends Controller {
         eval.put("CarteVideo","KO");
         eval.put("VitesseCarteVideo","KO");
         eval.put("DirectX","KO");
+        eval.put("Final", "KO");
 
         Set<Processor> procGame = configGame.getProcessors();
         /* Récupération du processeur le "moins" puissant du jeu, en comparant les vitesses */
@@ -127,7 +128,7 @@ public class Configuration extends Controller {
             eval.put("NombreDeCoeurs", "OK");
         }
 
-        if (eval.get("VitesseProcesseur").compareTo("OK") == 0 || eval.get("NombreDeCoeurs").compareTo("OK") == 0) {
+        if (eval.get("VitesseProcesseur").compareTo("OK") == 0 && eval.get("NombreDeCoeurs").compareTo("OK") == 0) {
             eval.put("Processeur", "OK");
         }
 
@@ -185,7 +186,7 @@ public class Configuration extends Controller {
             eval.put("DirectX", "OK");
         }
 
-        if (eval.get("VitesseCarteVideo").compareTo("OK") == 0 || eval.get("DirectX").compareTo("OK") == 0) {
+        if (eval.get("VitesseCarteVideo").compareTo("OK") == 0 && eval.get("DirectX").compareTo("OK") == 0) {
             eval.put("CarteVideo", "OK");
         }
 
@@ -197,6 +198,14 @@ public class Configuration extends Controller {
         /* Comparaison freeDiskSpace */
         if (configGame.getFreeDiskSpace() <= configUser.getFreeDiskSpace()) {
             eval.put("EspaceMemoire", "OK");
+        }
+
+        /* Résultat final */
+        if (eval.get("EspaceMemoire").compareTo("OK") == 0
+                && eval.get("RAM").compareTo("OK") == 0
+                && eval.get("Processeur").compareTo("OK") == 0
+                && eval.get("CarteVideo").compareTo("OK") == 0) {
+            eval.put("Final", "OK");
         }
 
         render(game, user, configGame, configUser, minProcGame, maxProcUser, minVdCard, maxVDUser, eval);

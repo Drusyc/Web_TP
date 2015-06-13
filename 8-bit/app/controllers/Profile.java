@@ -18,6 +18,8 @@ import java.util.Set;
 @Check("gamer")
 public class Profile extends Controller {
 
+    private static final String EMAIL = "email";
+
     public static void index() {
         render();
     }
@@ -27,74 +29,80 @@ public class Profile extends Controller {
         Logger.debug("Profile::changeMail\n"
                 + "-- mail: " + email + "\n");
 
-        User user = Secure.loadCurrentUser();
-        user.setMail(email);
-        try {
-            user.save();
-        } catch (Throwable e) {
-            Logger.error("Signup::createAccount - Error while invoking user.save()");
+        if (validation.hasErrors()) {
+            Logger.debug("Profile::changeMail - Validation errors: " + validation.errorsMap());
+            flash.put(EMAIL, email);
+            validation.keep();
+            index();
         }
 
-        renderTemplate("Profile/index.html");
+        User user = Secure.loadCurrentUser();
+        if (user != null) {
+            user.setMail(email);
+            try {
+                user.save();
+            } catch (Throwable e) {
+                Logger.error("Profile::changeMail - Error while invoking user.save()");
+            }
+        }
+
+        index();
     }
 
     public static void changePassword(@Required(message = "requiredPassword") @MinSize(value = 8, message = "invalidPassword") String password,
                                       @Required(message = "passwordsMustMatch") @Equals(value = "password", message = "passwordsMustMatch") String password2)
                                       throws Throwable {
-
         Logger.debug("Profile::changePassword\n"
                 + "-- password: " + password + "\n"
                 + "-- password2: " + password2 + "\n");
 
-        User user = Secure.loadCurrentUser();
-        Logger.debug("Profile::changePassword\n" +
-                "-- user: " + user.getPseudo());
-
-        // Set email and hashed password
-        user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
-
-        try {
-            user.save();
-        } catch (Throwable e) {
-            Logger.error("Signup::createAccount - Error while invoking user.save()");
+        if (validation.hasErrors()) {
+            Logger.debug("Profile::changePassword - Validation errors: " + validation.errorsMap());
+            validation.keep();
+            index();
         }
 
-        renderTemplate("Profile/index.html");
+        User user = Secure.loadCurrentUser();
+
+        if (user != null) {
+            Logger.debug("Profile::changePassword\n" +
+                    "-- user: " + user.getPseudo());
+            // Set email and hashed password
+            user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
+
+            try {
+                user.save();
+            } catch (Throwable e) {
+                Logger.error("Profile::changePassword - Error while invoking user.save()");
+            }
+        }
+
+        index();
     }
 
-    public static void changeGenres(String genreReflexion,
-                                    String genreAction,
-                                    String genreAventure,
-                                    String genreRPG,
-                                    String genreStrategie) {
+    public static void changeGenres(List<String> genres) {
+        Logger.debug("Profile::changeGenres\n"
+                + "-- genres: " + genres);
 
         Set<Genre> newGenre = new HashSet<Genre>();
 
-        if (genreReflexion != null) {
-            newGenre.add(new Genre(Genre.Reflexion));
-        }
-
-        if (genreAction != null) {
-            newGenre.add(new Genre(Genre.Action));
-        }
-
-        if (genreAventure != null) {
-            newGenre.add(new Genre(Genre.Aventure));
-        }
-
-        if (genreRPG != null) {
-            newGenre.add(new Genre(Genre.RPG));
-        }
-
-        if (genreStrategie != null) {
-            newGenre.add(new Genre(Genre.Strategie));
+        if (genres != null) {
+            for (String genreName : genres) {
+                if (genreName != null && genreName.length() > 0) {
+                    Genre g = Genre.findById(genreName);
+                    newGenre.add(g);
+                }
+            }
         }
 
         Gamer gamer = (Gamer) Secure.loadCurrentUser();
-        gamer.setPreferredGenres(newGenre);
-        gamer.save();
 
-        renderTemplate("Profile/index.html");
+        if (gamer != null) {
+            gamer.setPreferredGenres(newGenre);
+            gamer.save();
+        }
+
+        index();
     }
 
 }
