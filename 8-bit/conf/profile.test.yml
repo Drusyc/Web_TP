@@ -1,0 +1,43 @@
+Genre(Reflexion):
+    name: "Reflexion"
+
+Genre(Strategie):
+    name: "Strategie"
+
+Genre(RPG):
+    name: "RPG"
+
+Genre(Aventure):
+    name: "Aventure"
+
+OS(win7):
+    name: "Windows"
+    version: "7"
+    releaseDate: 2009-10-22
+
+Processor(procUser):
+     name: "i7-3517u"
+     manufacturer: "Intel"
+     speed: 1.9
+     cores: 2
+
+VideoCard(vdUser):
+    name: "GeForce GT 635M"
+    manufacturer: "NVIDIA"
+    speed: 900
+    versionDirectX: 11
+
+Configuration(confUser):
+    name: "conf-Thomas-asus"
+    rAM: 4.0
+    freeDiskSpace: 500.0
+    operatingSystems: [win7]
+    processors: [procUser]
+    videoCards: [vdUser]
+
+Gamer(Thomas):
+    pseudo: "Thomas"
+    password: "$2a$10$48I/5hgsfr2YWJ5nFIVAJO0x5NvKfcobS7Fdgt727Fy3.T6sDm1J."
+    mail: thomas@gmail.com
+    configurations: [confUser]
+    preferredGenres: [Strategie, Reflexion]

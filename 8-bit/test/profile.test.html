@@ -1,0 +1,59 @@
+#{fixture delete:'all', load:'profile.test.yml' /}
+
+*{ You can use plain selenium command using the selenium tag }*
+
+#{selenium}
+    clearSession()
+
+    // Open the home page, and check that no error occured
+    open('/')
+
+    //Check title
+    assertTitle('Bienvenue sur 8-bit !')
+
+    //login
+    type(username, Thomas)
+    type(password, password)
+    clickAndWait(name=login-button)
+    waitForElementPresent(//h1)
+    assertTextPresent('Bienvenue sur 8-bit Thomas !')
+
+    //Ouvre Profile/index.html
+    clickAndWait(link=Mon profil)
+    verifyTextPresent('Thomas')
+    verifyTextPresent('+ Mon mail')
+    assertElementPresent(update-email-button)
+    verifyTextPresent('+ Mon mot de passe')
+    assertElementPresent(update-password-button)
+    //vérification des genres du joueurs
+    verifyTextPresent('Mes genres préférés')
+    verifyTextPresent('Reflexion')
+    verifyTextPresent('Strategie')
+    assertElementPresent(update-genres-button)
+
+
+    //vérifie que les infos de la config du joueur sont bien affichées
+    //configuration
+    verifyTextPresent('Mes configurations')
+    //RAM
+    verifyTextPresent('4.0 Go')
+    //espace mémoire
+    verifyTextPresent('500.0 Go')
+    //processeur
+    verifyTextPresent('Intel i7-3517u')
+    //carte vidéo
+    verifyTextPresent('NVIDIA GeForce GT 635M')
+
+    //Modification du password et reconnexion
+    type(password, newpassword)
+    type(password2, newpassword)
+    clickAndWait(update-password-button)
+    clickAndWait(link=Déconnexion)
+    type(username, Thomas)
+    type(password, newpassword)
+    clickAndWait(name=login-button)
+    waitForElementPresent(//h1)
+    assertTextPresent('Bienvenue sur 8-bit Thomas !')
+
+
+#{/selenium}

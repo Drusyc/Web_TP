@@ -1,0 +1,80 @@
+#{fixture delete:'all', load:'compare.test.yml' /}
+
+*{ You can use plain selenium command using the selenium tag }*
+
+#{selenium}
+    clearSession()
+
+    // Open the home page, and check that no error occured
+    open('/')
+
+    //Check title
+    assertTitle('Bienvenue sur 8-bit !')
+
+    //login
+    type(username, Thomas)
+    type(password, password)
+    clickAndWait(name=login-button)
+    waitForElementPresent(//h1)
+    assertTextPresent('Bienvenue sur 8-bit Thomas !')
+
+    //Ouvre search.html pour rechercher un jeu présent dans la base
+    clickAndWait(link=Rechercher un jeu)
+    assertTitle('Rechercher un jeu')
+    assertTextPresent('Rechercher un jeu')
+    verifyElementPresent(//body/main/form/input)
+    verifyElementPresent(game-list)
+
+    //Recherche un jeu
+    type(name=game, Starcraft)
+    keyPress(name=game, \13)
+    waitForElementPresent(link=Starcraft 2)
+
+    clickAndWait(link=Starcraft 2)
+
+    //Vérifie que les cong du jeu et du joueur sont affichées(cf. compare.test.yml)
+    waitForElementPresent(//body/main/div/button)
+    verifyTextPresent('Starcraft 2')
+    verifyTextPresent('Mes configurations')
+    verifyElementPresent(compare-form)
+
+    //vérifie que les infos de la config du joueur sont bien affichées
+    //configuration
+    //RAM
+    verifyTextPresent('4.0 Go')
+    //espace mémoire
+    verifyTextPresent('500.0 Go')
+    //frequence processeur
+    verifyTextPresent('1.9 GHz')
+    //vitesse carte vidéo
+    verifyTextPresent('900 MHz')
+
+    //Vérifie la comparaison des configurations
+    clickAndWait(//body/main/div/button)
+    verifyTextPresent('Comparaison')
+    waitForElementPresent(//body/main/table)
+
+    //Vérifie que les informations relatives au jeu et au joueur sont bien présentes dans le tableau
+    //configuration du jeu
+    verifyTextPresent('Starcraft 2')
+    //RAM
+    verifyTextPresent('1.5 Go')
+    //espace mémoire
+    verifyTextPresent('20.0 Go')
+    //frequence processeur
+    verifyTextPresent('3.0 GHz')
+    //vitesse carte vidéo
+    verifyTextPresent('400 MHz')
+
+    //configuration du joueur
+    verifyTextPresent('conf-Thomas-asus')
+    //RAM
+    verifyTextPresent('4.0 Go')
+    //espace mémoire
+    verifyTextPresent('500.0 Go')
+    //frequence processeur
+    verifyTextPresent('1.9 GHz')
+    //vitesse carte vidéo
+    verifyTextPresent('400 MHz')
+
+#{/selenium}

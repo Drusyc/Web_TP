@@ -1,0 +1,66 @@
+#{fixture delete:'all', load:'configuration.test.yml' /}
+
+*{ You can use plain selenium command using the selenium tag }*
+
+#{selenium}
+    clearSession()
+
+    // Open the home page, and check that no error occured
+    open('/')
+
+    //Check title
+    assertTitle('Bienvenue sur 8-bit !')
+
+    //login
+    type(username, Thomas)
+    type(password, password)
+    clickAndWait(name=login-button)
+    waitForElementPresent(//h1)
+    assertTextPresent('Bienvenue sur 8-bit Thomas !')
+
+    //Ouvre Configuration/index.html la gestion des configs
+    clickAndWait(link=Configuration système)
+    assertTitle('Configuration système')
+    assertTextPresent('Configuration système')
+    verifyElementPresent(add-configuration)
+    verifyElementPresent(configurations)
+
+    //Vérifie que la configuration du joueur est bien affichée
+    verifyTextPresent('conf-Thomas-asus')
+    //Windows 7
+    verifyTextPresent('Windows 7')
+    //RAM
+    verifyTextPresent('4.0 Go')
+    //espace mémoire
+    verifyTextPresent('500.0 Go')
+    //processeur
+    verifyTextPresent('Intel i7-3517U')
+    //carte vidéo
+    verifyTextPresent('NVIDIA GeForce GT 635M')
+
+    //Ouvre la popup d'ajout de configuration
+    click(add-configuration)
+    verifyElementPresent(configuration-form)
+
+    //Ajout d'un configuration
+    type(name, conf-msi-GE60)
+    type(free-disk-space, '1000.0')
+    type(ram, '8.0')
+    select(operating-system, Windows 8)
+    select(processor, Intel i7-4710HQ)
+    select(video-card, NVIDIA GeForce GTX 850M)
+    keyPress(name, \13)
+
+
+    //Vérifie que la configuration a bien été ajouté
+    waitForPageToLoad(5000)
+    waitForElementPresent(configurations)
+    verifyTextPresent('conf-msi-GE60')
+    //Windows 8
+    verifyTextPresent('Windows 8')
+    //RAM
+    verifyTextPresent('8.0 Go')
+    //espace mémoire
+    verifyTextPresent('1000.0 Go')
+
+#{/selenium}

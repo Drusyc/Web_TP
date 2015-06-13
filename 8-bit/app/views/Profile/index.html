@@ -16,7 +16,7 @@
             #{form @Profile.changeMail()}
 	            <input type="text" value="${user.mail}" class="text-input signup-input icon mail-icon" disabled>
                 <input type="text" id="email" name="email" value="${flash.email}" class="text-input signup-input icon mail-icon" title="#{error 'email' /}" placeholder="Nouvel email *" autocomplete="off"/>
-                <button type="submit" class="btn">Changer mon email</button>
+                <button type="submit" class="btn" id="update-email-button">Changer mon email</button>
             #{/form}
         </li>
 		<!-- Password -->
@@ -25,7 +25,7 @@
             #{form @Profile.changePassword()}
                 <input type="password" id="password" name="password" value="" class="text-input signup-input icon pwd-icon" title="#{error 'password' /}" placeholder="Nouveau mot de passe *"/>
                 <input type="password" id="password2" name="password2" class="text-input signup-input icon pwd-icon" title="#{error 'password2' /}" placeholder="Confirmez votre nouveau mot de passe *"/>
-                <button type="submit" class="btn">Changer mon mot de passe</button>
+                <button type="submit" class="btn" id="update-password-button">Changer mon mot de passe</button>
             #{/form}
         </li>
     </ul>
@@ -39,7 +39,7 @@
 			<label for="${genre}">${genre}</label>
 		#{/list}
 		<br>
-		<button type="submit" class="btn">Valider</button>
+		<button type="submit" class="btn" id="update-genres-button">Valider</button>
 	#{/form}
     <h2>Mes configurations</h2>
     <table>

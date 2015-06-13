@@ -1,0 +1,40 @@
+Provider(Steven):
+    pseudo: "Steven"
+    password: "$2a$10$48I/5hgsfr2YWJ5nFIVAJO0x5NvKfcobS7Fdgt727Fy3.T6sDm1J."
+    mail: Steven@gmail.com
+
+Processor(proc1):
+    name: "i7-4710HQ"
+    manufacturer: "Intel"
+    speed: 3.5
+    cores: 4
+
+Processor(proc2):
+    name: "i5-5250U"
+    manufacturer: "Intel"
+    speed: 1.6
+    cores: 2
+
+Processor(proc3):
+    name: "i7-3517U"
+    manufacturer: "Intel"
+    speed: 1.9
+    cores: 2
+
+VideoCard(vd1):
+    name: "GeForce GT 220"
+    manufacturer: "NVIDIA"
+    speed: 790
+    versionDirectX: 10.1
+
+VideoCard(vd2):
+    name: "GeForce GTX 850M"
+    manufacturer: "NVIDIA"
+    speed: 2500
+    versionDirectX: 11.2
+
+VideoCard(vd3):
+    name: "GeForce GT 635M"
+    manufacturer: "NVIDIA"
+    speed: 900
+    versionDirectX: 11

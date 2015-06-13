@@ -1,4 +1,4 @@
-#{fixture delete:'all', load:'data-test.yml' /}
+#{fixture delete:'all', load:'search.test.yml' /}
 
 *{ You can use plain selenium command using the selenium tag }*
 
@@ -12,10 +12,10 @@
     assertTitle('Bienvenue sur 8-bit !')
 
     //login
-    type(username index=0, Thomas)
+    type(username, Thomas)
     type(password, password)
     clickAndWait(name=login-button)
-    waitForElementPresent(//h2)
+    waitForElementPresent(//h1)
     assertTextPresent('Bienvenue sur 8-bit Thomas !')
 
     //Ouvre search.html pour rechercher un jeu présent dans la base
@@ -30,19 +30,36 @@
     //tape partiellement le nom et vérifie qu'il apparait dans la liste des résultats
     type(name=game, Starc)
     keyPress(name=game, \13)
-    waitForElementPresent(link=Starcraft)
+    waitForElementPresent(link=Starcraft 2)
 
     //tape entièrement le nom et vérifie qu'il apparait dans la liste des résultats
     type(name=game, Starcraft)
-    waitForElementPresent(link=Starcraft)
+    waitForElementPresent(link=Starcraft 2)
 
-    clickAndWait(link=Starcraft)
+    clickAndWait(link=Starcraft 2)
 
-    //Vérifie que les caractéristiques du jeux sont bien affichées (cf. data-test.yml)
-    assertTitle('Starcraft')
-    assertTextPresent(Blizzard1)
-    assertTextPresent(Blizzard2)
-    assertTextPresent(solo)
-    assertTextPresent(multi)
-    assertTextPresent(Reflexion)
+    //Vérifie que les caractéristiques du jeux sont bien affichées (cf. search.test.yml)
+    verifyTextPresent('Starcraft 2')
+    //developers
+    verifyTextPresent(Blizzard1)
+    verifyTextPresent(Blizzard2)
+    //modes
+    verifyTextPresent(solo)
+    verifyTextPresent(multi)
+    //genres
+    verifyTextPresent(Reflexion)
+    verifyTextPresent(Strategie)
+    //releasesdates
+    verifyTextPresent(27/07/2012)
+
+    //configuration
+    //RAM
+    verifyTextPresent('1.5 Go')
+    //espace mémoire
+    verifyTextPresent('20.0 Go')
+    //frequence processeur
+    verifyTextPresent('3.0 GHz')
+    //vitesse carte vidéo
+    verifyTextPresent('400 MHz')
+
 #{/selenium}

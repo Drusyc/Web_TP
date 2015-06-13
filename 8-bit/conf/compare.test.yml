@@ -1,0 +1,72 @@
+
+
+Genre(Reflexion):
+    name: "Reflexion"
+
+Genre(Strategie):
+    name: "Strategie"
+
+Processor(procGame):
+    name: "D Processor 925"
+    manufacturer: "Intel"
+    speed: 3.0
+    cores: 2
+
+VideoCard(vdGame):
+    name: "GeForce GT 7600"
+    manufacturer: "NVIDIA"
+    speed: 400
+    versionDirectX: 9.0
+
+OS(win7):
+    name: "Windows"
+    version: "7"
+    releaseDate: 2009-10-22
+
+Configuration(confGame):
+    name: "conf-Starcraft2"
+    rAM: 1.5
+    freeDiskSpace: 20.0
+    operatingSystems: [win7]
+    processors: [procGame]
+    videoCards: [vdGame]
+
+Game(Starcraft):
+    name: "Starcraft 2"
+    developers: [Blizzard1, Blizzard2]
+    modes: [solo, multi]
+    genres: [Reflexion, Strategie]
+    configuration: confGame
+    releaseDates:
+        ? "EU"
+        : 2012-07-27
+        ? "JAPON"
+        : 2012-07-27
+        ? "USA"
+        : 2012-07-27
+
+Processor(procUser):
+     name: "i7-3517u"
+     manufacturer: "Intel"
+     speed: 1.9
+     cores: 2
+
+VideoCard(vdUser):
+    name: "GeForce GT 635M"
+    manufacturer: "NVIDIA"
+    speed: 900
+    versionDirectX: 11
+
+Configuration(confUser):
+    name: "conf-Thomas-asus"
+    rAM: 4.0
+    freeDiskSpace: 500.0
+    operatingSystems: [win7]
+    processors: [procUser]
+    videoCards: [vdUser]
+
+Gamer(Thomas):
+    pseudo: "Thomas"
+    password: "$2a$10$48I/5hgsfr2YWJ5nFIVAJO0x5NvKfcobS7Fdgt727Fy3.T6sDm1J."
+    mail: thomas@gmail.com
+    configurations: [confUser]
