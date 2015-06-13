@@ -1,0 +1,48 @@
+#{fixture delete:'all', load:'data-test.yml' /}
+
+*{ You can use plain selenium command using the selenium tag }*
+
+#{selenium}
+    clearSession()
+
+    // Open the home page, and check that no error occured
+    open('/')
+
+    //Check title
+    assertTitle('Bienvenue sur 8-bit !')
+
+    //login
+    type(username index=0, Thomas)
+    type(password, password)
+    clickAndWait(name=login-button)
+    waitForElementPresent(//h2)
+    assertTextPresent('Bienvenue sur 8-bit Thomas !')
+
+    //Ouvre search.html pour rechercher un jeu présent dans la base
+    clickAndWait(link=Rechercher un jeu)
+    assertTitle('Rechercher un jeu')
+    assertTextPresent('Rechercher un jeu')
+    verifyElementPresent(//body/main/form/input)
+    verifyElementPresent(game-list)
+
+    //Recherche un jeu
+    focus(name=game)
+    //tape partiellement le nom et vérifie qu'il apparait dans la liste des résultats
+    type(name=game, Starc)
+    keyPress(name=game, \13)
+    waitForElementPresent(link=Starcraft)
+
+    //tape entièrement le nom et vérifie qu'il apparait dans la liste des résultats
+    type(name=game, Starcraft)
+    waitForElementPresent(link=Starcraft)
+
+    clickAndWait(link=Starcraft)
+
+    //Vérifie que les caractéristiques du jeux sont bien affichées (cf. data-test.yml)
+    assertTitle('Starcraft')
+    assertTextPresent(Blizzard1)
+    assertTextPresent(Blizzard2)
+    assertTextPresent(solo)
+    assertTextPresent(multi)
+    assertTextPresent(Reflexion)
+#{/selenium}

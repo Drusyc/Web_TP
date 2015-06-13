@@ -13,6 +13,8 @@ import org.junit.Test;
 
 import play.test.UnitTest;
 
+import javax.validation.constraints.AssertTrue;
+
 
 public class GameTest extends UnitTest {
 	
@@ -76,7 +78,7 @@ public class GameTest extends UnitTest {
 		Game found = Game.findById(game1.getName());
 		assertEquals(game1, found);
 		assertEquals(game1.getName(), found.getName());
-		assertNull(found.getDevelopers());
+		assertEquals(found.getDevelopers().size(), 0);
 		
 		Set<String> setDev = new HashSet<String>(); setDev.add("Nintendo");
 		game1.setDevelopers(setDev);
@@ -84,7 +86,8 @@ public class GameTest extends UnitTest {
 		game1.save();
 		found = Game.findById(game1.getName());
 		assertEquals(game1.getName(), found.getName());
-		assertNotNull(found.getDevelopers());
+		assertEquals(found.getDevelopers().size(), 1);
+		assertTrue(found.getDevelopers().contains("Nintendo"));
 		
 		game1.delete();
 	}

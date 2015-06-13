@@ -23,10 +23,10 @@
 	#{if user == null}
 		<div class="row">
 			<h2>Pas encore inscrit ?</h2>
-			#{form @Signup.show()}
+			#{form @Signup.show(), name:'signup-form'}
 				<input type="text" name="username" class="text-input signup-input icon user-icon" placeholder="Pseudo" autocomplete="off"/>
 				<input type="text" name="email" class="text-input signup-input icon mail-icon" placeholder="Email" autocomplete="off"/>
-				<button type="submit" class="btn signup-btn">S'inscrire</button>
+				<button type="submit" class="btn signup-btn" name="signup-button">S'inscrire</button>
 			#{/form}
 		</div>
 	#{/if}

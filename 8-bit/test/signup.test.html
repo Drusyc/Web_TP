@@ -1,0 +1,62 @@
+#{fixture delete:'all' /}
+
+*{ You can use plain selenium command using the selenium tag }*
+
+#{selenium}
+    clearSession()
+
+    // Open the home page, and check that no error occured
+    open('/')
+
+    //Check title
+    assertTitle('Bienvenue sur 8-bit !')
+
+    //Check texts
+    assertTextPresent('Bienvenue sur 8-bit')
+    assertTextPresent('Pas encore inscrit ?')
+
+    //Check Buttons
+    verifyElementPresent(//header/nav/ul)
+    verifyElementPresent(//header/div/form)
+
+    //Tentative de connexion
+    type(username index=0, Thomas)
+    type(password, password)
+    clickAndWait(name=login-button)
+    waitForElementPresent(//header)
+
+    assertTitle('Bienvenue sur 8-bit !')
+
+    //Sign-up
+    type(username index=1, Thomas)
+    type(email, invalide@mail)
+    clickAndWait(name=signup-button)
+    waitForElementPresent(//header)
+
+    assertTitle('S'inscrire sur 8-bit')
+    verifyElementPresent(//body/main/form)
+    verifyElementPresent(id=pseudo)
+    verifyElementPresent(id=email)
+    verifyElementPresent(id=password)
+    verifyElementPresent(//body/main/form/button)
+
+    //Vérification que les données entrées sur la page d'acceuil ont bien été reportées
+    verifyElementPresent(name=pseudo value=Thomas)
+    verifyElementPresent(name=email value=invalide@mail)
+
+    type(id=password, password)
+    type(id=password2, password)
+
+    //Confirme formulaire avec email invalide
+    clickAndWait(//body/main/form/button)
+    assertTitle('S'inscrire sur 8-bit')
+
+    type(email, 'toto@gmail.com')
+    type(password, password)
+    type(password2, password)
+
+    //Confirme formulaire avec email valide
+    clickAndWait(//body/main/form/button)
+    assertTitle('Bienvenue sur 8-bit !')
+    assertTextPresent('Bienvenue sur 8-bit Thomas !')
+#{/selenium}
