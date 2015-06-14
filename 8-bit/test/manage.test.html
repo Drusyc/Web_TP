@@ -59,6 +59,8 @@
     assertElementPresent(cores)
     type(cores, 2)
     keyPress(processor-name, \13)
+    //submit(processor-name)
+    //submit(add-processors-form)
 
     //Vérifie que le processeur a bien été ajouté
     verifyTextPresent('Processeurs')
@@ -77,6 +79,7 @@
     assertElementPresent(directX)
     type(directX, 10)
     keyPress(video-card-name, \13)
+    //submit(add-video-cards-form)
 
     //Vérifie que le processeur a bien été ajouté
     verifyTextPresent('Cartes graphiques')

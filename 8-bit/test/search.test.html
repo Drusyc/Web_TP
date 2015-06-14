@@ -26,14 +26,15 @@
     verifyElementPresent(game-list)
 
     //Recherche un jeu
-    focus(name=game)
     //tape partiellement le nom et vérifie qu'il apparait dans la liste des résultats
-    type(name=game, Starc)
-    keyPress(name=game, \13)
+    focus(search)
+    type(search, 'Starc')
+    submit(//body/main/form)
     waitForElementPresent(link=Starcraft 2 - SeleniumTest)
 
     //tape entièrement le nom et vérifie qu'il apparait dans la liste des résultats
-    type(name=game, Starcraft)
+    type(search, 'Starcraft')
+    submit(//body/main/form)
     waitForElementPresent(link=Starcraft 2 - SeleniumTest)
 
     clickAndWait(link=Starcraft 2 - SeleniumTest)

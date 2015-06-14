@@ -4,6 +4,7 @@ import play.db.jpa.Model;
 
 import javax.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -116,6 +117,22 @@ public class Configuration extends Model {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	    /* *** Methods *** */
+
+	public static List<Configuration> findByName (String name) {
+		String NAME = "name";
+		String CONF_REQUEST = "SELECT * FROM CONFIGURATION "
+				+ "WHERE LOWER(NAME) LIKE LOWER(" + ":" + NAME + ") ORDER BY NAME;";
+
+		EntityManager m = Configuration.em();
+
+    	/* Création de la requête */
+		Query q = m.createNativeQuery(CONF_REQUEST);
+		q.setParameter(NAME, "%" + name.toUpperCase() + "%");
+
+		return q.getResultList();
 	}
 
 }
