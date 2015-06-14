@@ -1,7 +1,6 @@
 package controllers;
 
-import models.Game;
-
+import models.User;
 import play.mvc.Controller;
 import play.mvc.With;
 import play.test.Fixtures;
@@ -12,8 +11,8 @@ public class Application extends Controller {
     public static void index() {
 
         /* Peuple la base de données si elle est vide */
-        if (Game.findAll().size() == 0) {
-            Fixtures.deleteDatabase();
+        if (User.findAll().size() == 0) {
+            Fixtures.delete();
             Fixtures.loadModels("data.test.yml");
         }
 
