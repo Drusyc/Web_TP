@@ -1,0 +1,298 @@
+### Genres ###
+
+Genre(Reflexion):
+    name: "Reflexion"
+
+Genre(Strategie):
+    name: "Strategie"
+
+Genre(RPG):
+    name: "RPG"
+
+Genre(Aventure):
+    name: "Aventure"
+
+Genre(Action):
+    name: "Action"
+
+
+### OS ###
+
+OS(win7):
+    name: "Windows"
+    version: "7"
+    releaseDate: 2009-10-22
+
+OS(win8):
+    name: "Windows"
+    version: "8"
+    releaseDate: 2012-10-25
+
+OS(macX107):
+    name: "Mac"
+    version: "10.7"
+    releaseDate: 2012-10-04
+
+OS(winXP):
+    name: "Windows"
+    version: "XP"
+    releaseDate: 2001-10-25
+
+
+
+
+
+### Processors ###
+
+Processor(procStarcraft2):
+    name: "D Processor 925"
+    manufacturer: "Intel"
+    speed: 3.0
+    cores: 2
+
+Processor(procLeagueOfLegends):
+    name: "i5-5200U"
+    manufacturer: "Intel"
+    speed: 2.2
+    cores: 2
+
+Processor(procLesSims3):
+    name: "i3-4010Y"
+    manufacturer: "Intel"
+    speed: 1.3
+    cores: 2
+
+Processor(procLeMaitreDeLOlympeZeus):
+    name: "Pentium Processor 957"
+    manufacturer: "Intel"
+    speed: 1.2
+    cores: 2
+
+Processor(procDiablo3):
+    name: "Pentium D 805"
+    manufacturer: "Intel"
+    speed: 2.0
+    cores: 2
+
+Processor(procTheWitcher3):
+    name: "i5-2500K"
+    manufacturer: "Intel"
+    speed: 3.3
+    cores: 4
+
+Processor(procThomas):
+    name: "i7-3517U"
+    manufacturer: "Intel"
+    speed: 1.9
+    cores: 2
+
+
+
+
+
+### CardVideo ###
+
+VideoCard(vdStarcraft2):
+    name: "GeForce GT 7600"
+    manufacturer: "NVIDIA"
+    speed: 400
+    versionDirectX: 9.0
+
+VideoCard(vdLeagueOfLegends):
+    name: "GeForce 8800 GS"
+    manufacturer: "NVIDIA"
+    speed: 550
+    versionDirectX: 10
+
+VideoCard(vdLesSims3):
+    name: "GeForce GTX 260"
+    manufacturer: "NVIDIA"
+    speed: 576
+    versionDirectX: 9.0
+
+VideoCard(vdLeMaitreDeLOlympeZeus):
+    name: "GeForce 2 GTS"
+    manufacturer: "NVIDIA"
+    speed: 200
+    versionDirectX: 7
+
+VideoCard(vdDiablo3):
+    name: "GeForce 7800 GTX"
+    manufacturer: "NVIDIA"
+    speed: 600
+    versionDirectX: 10.0
+
+VideoCard(vdTheWitcher3):
+    name: "GeForce GTX 660"
+    manufacturer: "NVIDIA"
+    speed: 1500
+    versionDirectX: 11.0
+
+VideoCard(vdThomas):
+    name: "GeForce GT 635M"
+    manufacturer: "NVIDIA"
+    speed: 900
+    versionDirectX: 11.0
+
+
+
+
+### Configurations ###
+
+Configuration(confStarcraft2):
+    name: "conf-Starcraft2"
+    rAM: 1.5
+    freeDiskSpace: 20.0
+    operatingSystems: [win7]
+    processors: [procStarcraft2]
+    videoCards: [vdStarcraft2]
+
+Configuration(confLeagueOfLegends):
+    name: "conf-LeagueOfLegends"
+    rAM: 2.0
+    freeDiskSpace: 12.0
+    operatingSystems: [win7]
+    processors: [procLeagueOfLegends]
+    videoCards: [vdLeagueOfLegends]
+
+Configuration(confLesSims3):
+    name: "conf-LesSims3"
+    rAM: 1.0
+    freeDiskSpace: 6.1
+    operatingSystems: [winXP]
+    processors: [procLesSims3]
+    videoCards: [vdLesSims3]
+
+Configuration(confLeMaitreDeLOlympeZeus):
+    name: "conf-LeMaitreDeLOlympeZeus"
+    rAM: 0.5
+    freeDiskSpace: 0.5
+    operatingSystems: [winXP]
+    processors: [procLeMaitreDeLOlympeZeus]
+    videoCards: [vdLeMaitreDeLOlympeZeus]
+
+Configuration(confDiablo3):
+    name: "conf-Diablo3"
+    rAM: 2
+    freeDiskSpace: 12
+    operatingSystems: [winXP]
+    processors: [procDiablo3]
+    videoCards: [vdDiablo3]
+
+Configuration(confTheWitcher3):
+    name: "conf-TheWitcher3"
+    rAM: 6
+    freeDiskSpace: 40
+    operatingSystems: [win7]
+    processors: [procTheWitcher3]
+    videoCards: [vdTheWitcher3]
+
+Configuration(confThomas):
+    name: "conf-Thomas-asus"
+    rAM: 4.0
+    freeDiskSpace: 500.0
+    operatingSystems: [win7]
+    processors: [procThomas]
+    videoCards: [vdThomas]
+
+
+
+
+
+### Games ###
+
+Game(Starcraft):
+    name: "Starcraft 2"
+    developers: [Blizzard Entertainment]
+    modes: [solo, multi]
+    genres: [Reflexion, Strategie]
+    configuration: confStarcraft2
+    releaseDates:
+        ? "EU"
+        : 2012-07-27
+        ? "JAPON"
+        : 2012-07-27
+        ? "USA"
+        : 2012-07-27
+
+Game(leagueOfLegends):
+    name: "League Of Legend"
+    developers: [Riot Games]
+    modes: [multi]
+    genres: [Strategie, Action]
+    configuration: confLeagueOfLegends
+    releaseDates:
+        ? "EU"
+        : 2009-10-27
+        ? "JAPON"
+        : 2009-10-27
+        ? "USA"
+        : 2009-10-27
+
+Game(lesSims3):
+    name: "Les Sims 3"
+    developers: [Maxis]
+    modes: [solo]
+    genres: [Reflexion]
+    configuration: confLesSims3
+    releaseDates:
+        ? "EU"
+        : 2009-06-02
+        ? "JAPON"
+        : 2009-06-02
+        ? "USA"
+        : 2009-06-02
+
+Game(leMaitreDeLOlympeZeus):
+    name: "Le Maître de L'Olympe : Zeus"
+    developers: [Sierra]
+    modes: [solo]
+    genres: [Reflexion, Strategie]
+    configuration: confLeMaitreDeLOlympeZeus
+    releaseDates:
+        ? "EU"
+        : 2000-11-13
+        ? "USA"
+        : 2000-11-22
+
+Game(diablo3):
+    name: "Diablo 3"
+    developers: [Blizzard Entertainment]
+    modes: [solo, multi]
+    genres: [RPG, Action]
+    configuration: confDiablo3
+    releaseDates:
+        ? "EU"
+        : 2012-05-15
+        ? "JAPON"
+        : 2012-05-15
+        ? "USA"
+        : 2012-05-15
+
+Game(theWitcher3):
+    name: "The Witcher 3 : Wild Hunt"
+    developers: [CD Projekt RED]
+    modes: [solo]
+    genres: [RPG, Action]
+    configuration: confTheWitcher3
+    releaseDates:
+        ? "EU"
+        : 2015-05-15
+        ? "JAPON"
+        : 2015-05-15
+        ? "USA"
+        : 2015-05-15
+
+### Gamers ###
+
+Gamer(Thomas):
+    pseudo: "Thomas"
+    password: "$2a$10$48I/5hgsfr2YWJ5nFIVAJO0x5NvKfcobS7Fdgt727Fy3.T6sDm1J." # => 'password'
+    mail: thomas@gmail.com
+    preferredGenres: [RPG, Strategie, Reflexion]
+    configurations: [confThomas]
+
+Provider(Steven):
+    pseudo: "Steven"
+    password: "$2a$10$48I/5hgsfr2YWJ5nFIVAJO0x5NvKfcobS7Fdgt727Fy3.T6sDm1J." # => 'password'
+    mail: Steven@gmail.com

@@ -1,5 +1,9 @@
 package controllers;
 
+import play.*;
+import play.test.*;
+import models.*;
+
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -7,6 +11,7 @@ import play.mvc.With;
 public class About extends Controller {
 
     public static void index() {
+        //Fixtures.loadModels("data.test.yml");
         render();
     }
 }

@@ -147,7 +147,7 @@ public class Configuration extends Controller {
         /* Récupération de la carte vidéo la "moins" puissante du user, comparant les vitesses */
         Integer maxVSpeed = Integer.MIN_VALUE;
         VideoCard maxVDUser = null;
-        for (VideoCard vd : vidCardGame) {
+        for (VideoCard vd : vidCardUser) {
             if (vd.getSpeed() > maxVSpeed) {
                 maxVDUser = vd;
                 maxVSpeed = vd.getSpeed();
@@ -156,7 +156,7 @@ public class Configuration extends Controller {
 
         /* Comparaison des cartes vidéos */
             /* Comparaison de la vitesse */
-        if (maxVSpeed <= minVSpeed)  {
+        if (maxVSpeed >= minVSpeed)  {
             /* Si "vitesse du proc requis" <= "vitesse du proc disponibles" */
             eval.put("VitesseCarteVideo", "OK");
         }
