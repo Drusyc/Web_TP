@@ -13,8 +13,6 @@ import org.junit.Test;
 
 import play.test.UnitTest;
 
-import javax.validation.constraints.AssertTrue;
-
 
 public class GameTest extends UnitTest {
 	

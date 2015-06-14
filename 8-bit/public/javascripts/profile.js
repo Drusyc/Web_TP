@@ -138,7 +138,8 @@ $(function selectConfiguration () {
         var configIndex = $("#select-config-gamer option:selected").val();
 
         var ul = $("#config-"+configIndex);
-        $("#config-displayed").empty();
-        $("#config-displayed").append(ul.children().clone());
+        var configDisplayed = $("#config-displayed");
+        configDisplayed.empty();
+        configDisplayed.append(ul.children().clone());
     });
 });

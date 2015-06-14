@@ -3,16 +3,17 @@
  */
 $(function selectConfiguration () {
     var configIndex = $("#select-config-gamer option:selected").val();
+    var configDisplayed = $("#config-displayed");
 
     var table = $("#config-"+configIndex);
-    $("#config-displayed").empty();
-    $("#config-displayed").append(table.children().clone());
+    configDisplayed.empty();
+    configDisplayed.append(table.children().clone());
 
     $("#select-config-gamer").bind("change", function() {
         var configIndex = $("#select-config-gamer option:selected").val();
 
         var table = $("#config-"+configIndex);
-        $("#config-displayed").empty();
-        $("#config-displayed").append(table.children().clone());
+        configDisplayed.empty();
+        configDisplayed.append(table.children().clone());
     });
 });

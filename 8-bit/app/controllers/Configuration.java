@@ -17,7 +17,7 @@ public class Configuration extends Controller {
 
     public static void index() {
         /* OS */
-        List<OS> osList = OS.getAll();
+        List<OS> osList = OS.getAll(); /* Ordered by name */
 
         /* Processors */
         List<Processor> processorList = Processor.getAll(); /* Ordered by manufacturer, name */
@@ -78,7 +78,7 @@ public class Configuration extends Controller {
         models.Game game = models.Game.findById(idGame);
         Logger.debug("Configuration::compare - Game : " + game.getName());
 
-        /* Récupération de la configuration du jeu*/
+        /* Récupération de la configuration du jeu */
         models.Configuration configGame = game.getConfiguration();
         Logger.debug("Configuration::compare - Game configuration to find : " + configGame.getName());
 
@@ -106,7 +106,7 @@ public class Configuration extends Controller {
         }
 
         Set<Processor> procUser = configUser.getProcessors();
-        /* Récupération du processeur le "moins" puissant du gamer, en comparant les vitesses */
+        /* Récupération du processeur le "plus" puissant du gamer, en comparant les vitesses */
         Double maxSpeed = Double.MIN_VALUE;
         Processor maxProcUser = null;
         for (Processor proc : procUser) {
@@ -123,7 +123,7 @@ public class Configuration extends Controller {
             eval.put("VitesseProcesseur", "OK");
         }
             /* Comparaison de nombre de coeurs */
-        if (minProcGame.getCores() <= maxProcUser.getCores()) {
+        if (minProcGame != null && maxProcUser != null && minProcGame.getCores() <= maxProcUser.getCores()) {
             /* Si "nombre de coeurs requis" <= "nombre de coeurs disponibles" */
             eval.put("NombreDeCoeurs", "OK");
         }
@@ -144,7 +144,7 @@ public class Configuration extends Controller {
         }
 
         Set<VideoCard> vidCardUser = configUser.getVideoCards();
-        /* Récupération de la carte vidéo la "moins" puissante du user, comparant les vitesses */
+        /* Récupération de la carte vidéo la "plus" puissante du user, comparant les vitesses */
         Integer maxVSpeed = Integer.MIN_VALUE;
         VideoCard maxVDUser = null;
         for (VideoCard vd : vidCardUser) {
@@ -157,33 +157,35 @@ public class Configuration extends Controller {
         /* Comparaison des cartes vidéos */
             /* Comparaison de la vitesse */
         if (maxVSpeed >= minVSpeed)  {
-            /* Si "vitesse du proc requis" <= "vitesse du proc disponibles" */
+            /* Si "vitesse du proc requis" <= "vitesse du proc disponible" */
             eval.put("VitesseCarteVideo", "OK");
         }
 
         /* Comparaison des versions DirectX */
-        Scanner sc1 = new Scanner(minVdCard.getVersionDirectX().replaceAll("\\.", ","));
-        Scanner sc2 = new Scanner(maxVDUser.getVersionDirectX().replaceAll("\\.", ","));
+        if (minVdCard != null && maxVDUser != null) {
+            Scanner sc1 = new Scanner(minVdCard.getVersionDirectX().replaceAll("\\.", ","));
+            Scanner sc2 = new Scanner(maxVDUser.getVersionDirectX().replaceAll("\\.", ","));
 
-        Double minVersion = Double.parseDouble(sc1.findInLine("^(\\d\\*.)?\\d+"));
-        Double maxVersion = Double.parseDouble(sc2.findInLine("^(\\d\\*.)?\\d+"));
-        String minCharVersion = sc1.findInLine("[a-z]$");
-        String maxCharVersion = sc2.findInLine("[a-z]$");
+            Double minVersion = Double.parseDouble(sc1.findInLine("^(\\d\\*.)?\\d+"));
+            Double maxVersion = Double.parseDouble(sc2.findInLine("^(\\d\\*.)?\\d+"));
+            String minCharVersion = sc1.findInLine("[a-z]$");
+            String maxCharVersion = sc2.findInLine("[a-z]$");
 
-        if (minCharVersion == null) {
-            minCharVersion = " ";
-        }
+            if (minCharVersion == null) {
+                minCharVersion = " ";
+            }
 
-        if (maxCharVersion == null) {
-            maxCharVersion = " ";
-        }
+            if (maxCharVersion == null) {
+                maxCharVersion = " ";
+            }
 
-        if (minVersion < maxVersion) {
+            if (minVersion < maxVersion) {
             /* Si "nombre de coeurs requis" <= "nombre de coeurs disponibles" */
-            eval.put("DirectX", "OK");
-        } else if (minVersion.compareTo(maxVersion) == 0 &&
-                minCharVersion.compareTo(maxCharVersion) <= 0) {
-            eval.put("DirectX", "OK");
+                eval.put("DirectX", "OK");
+            } else if (minVersion.compareTo(maxVersion) == 0 &&
+                    minCharVersion.compareTo(maxCharVersion) <= 0) {
+                eval.put("DirectX", "OK");
+            }
         }
 
         if (eval.get("VitesseCarteVideo").compareTo("OK") == 0 && eval.get("DirectX").compareTo("OK") == 0) {

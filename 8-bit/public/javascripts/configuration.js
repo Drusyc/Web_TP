@@ -2,7 +2,7 @@
  * Set dialog configuration form
  */
 $(function setDialogForm() {
-    var configurationDialog, configurationForm,
+    var dialog, form,
 
         doubleRegex = /^[0-9]+([.][0-9]+)?$/,
 
