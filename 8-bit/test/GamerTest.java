@@ -32,7 +32,7 @@ public class GamerTest extends UnitTest {
 	@Test
 	public void createGamer() {
 		
-		Gamer ga = new Gamer("createGamerTest", "mdp", "createGamerTest@test.com",null);ga.save();
+		Gamer ga = new Gamer("createGamer - UnitTest", "mdp", "createGamerTest@test.com",null);ga.save();
     	
     	String id = ga.getPseudo();
     	
@@ -58,7 +58,7 @@ public class GamerTest extends UnitTest {
 	@Test
 	public void deleteGamer() {
 		
-		Gamer ga = new Gamer("deleteGamerTest", "mdp", "deleteGamerTest@test.com", null);ga.save();
+		Gamer ga = new Gamer("deleteGamer - UnitTest", "mdp", "deleteGamerTest@test.com", null);ga.save();
     	
     	String id = ga.getPseudo();
     	
@@ -81,7 +81,7 @@ public class GamerTest extends UnitTest {
 	 */
 	@Test
 	public void updateGamer() {	
-		Gamer ga = new Gamer("updateGamerTest", "mdp", "wrongMail@test.com", null);ga.save();
+		Gamer ga = new Gamer("updateGamer - UnitTest", "mdp", "wrongMail@test.com", null);ga.save();
 		
 		Gamer found = Gamer.findById(ga.getPseudo());
 		assertEquals(ga, found);
@@ -111,8 +111,8 @@ public class GamerTest extends UnitTest {
 	public void gamerGenres() {
 		
 		/* Création des users Toto et Titi */
-		Gamer ga1 = new Gamer("Toto", "mdp", "Toto@test.com", null); ga1.save();
-		Gamer ga2 = new Gamer("Titi", "mdp", "Titi@test.com", null); ga2.save();
+		Gamer ga1 = new Gamer("Toto - UnitTest", "mdp", "Toto@test.com", null); ga1.save();
+		Gamer ga2 = new Gamer("Titi - UnitTest", "mdp", "Titi@test.com", null); ga2.save();
 		
 		/* Création des genres RPG / ACTION / AVENTURE */
     	Genre ge1 = new Genre(Genre.RPG); ge1.save();
@@ -135,7 +135,7 @@ public class GamerTest extends UnitTest {
     	ga2.save();	
     	
     	/* ASSERT */
-    	Gamer found = Gamer.findById("Toto");
+    	Gamer found = Gamer.findById("Toto - UnitTest");
     	    	
     	Set<Genre> tmp = found.getPreferredGenres();    	
     	assertEquals(tmp.size(),2);
@@ -143,7 +143,7 @@ public class GamerTest extends UnitTest {
     	assertTrue(tmp.contains(new Genre(Genre.Action)));
     	assertFalse(tmp.contains(new Genre(Genre.Reflexion)));
     	
-    	found = Gamer.findById("Titi");
+    	found = Gamer.findById("Titi - UnitTest");
     	
     	tmp = found.getPreferredGenres();
     	assertEquals(tmp.size(),3);
@@ -172,28 +172,28 @@ public class GamerTest extends UnitTest {
 	public void gamerConfig() {
 
 		/* Création des users Toto et Titi */
-		Gamer ga1 = new Gamer("Toto", "mdp", "Toto@test.com", null); ga1.save();
-		Gamer ga2 = new Gamer("Titi", "mdp", "Titi@test.com", null); ga2.save();
+		Gamer ga1 = new Gamer("Toto - UnitTest", "mdp", "Toto@test.com", null); ga1.save();
+		Gamer ga2 = new Gamer("Titi - UnitTest", "mdp", "Titi@test.com", null); ga2.save();
 		
 		/* Création d'une configuration avec seulement freeDiskSpace et RAM */
-		Configuration conf1 = new Configuration("maConfig", 0.5, 2.0); conf1.save();
+		Configuration conf1 = new Configuration("maConfig - UnitTest", 0.5, 2.0); conf1.save();
 		
 		/* Création d'une configuration avec freeDiskSpace, RAM, Processor / VideoCard / OS */
 			/* * Création de Processor * */
-			Processor proc = new Processor("i7-3517u", "Intel", 1900.0, 2); proc.save();
+			Processor proc = new Processor("i7-3517u - UnitTest", "Intel", 1900.0, 2); proc.save();
 			Set<Processor> setProc = new HashSet<Processor>(); setProc.add(proc);
 		
 			/* * Création de la VideoCard * */
-			VideoCard vidCard = new VideoCard("GeForce GT 635M", "NVIDIA", 900, "11"); vidCard.save();
+			VideoCard vidCard = new VideoCard("GeForce GT 635M - UnitTest", "NVIDIA", 900, "11"); vidCard.save();
 			Set<VideoCard> setVD = new HashSet<VideoCard>(); setVD.add(vidCard); 
 		
 			/* * Création de l'OS * */
-			OS win81 = new OS("Windows", "8.1", Date.valueOf("2013-10-17")); win81.save();
-			OS win7 = new OS("Windows", "7", Date.valueOf("2009-10-22")); win7.save();
+			OS win81 = new OS("Windows - UnitTest", "8.1", Date.valueOf("2013-10-17")); win81.save();
+			OS win7 = new OS("Windows - UnitTest", "7", Date.valueOf("2009-10-22")); win7.save();
 			
 			Set<OS> setOS = new HashSet<OS>(); setOS.add(win7); setOS.add(win81);
 			
-		Configuration conf2 = new Configuration("maConfig", 0.1, 4.0, setOS, setProc, setVD); conf2.save();
+		Configuration conf2 = new Configuration("maConfig - UnitTest", 0.1, 4.0, setOS, setProc, setVD); conf2.save();
 		
 		
 		/* Mapping Toto <=> conf1 */

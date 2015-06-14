@@ -12,11 +12,11 @@
     assertTitle('Bienvenue sur 8-bit !')
 
     //login
-    type(username, Thomas)
+    type(username, GamerSeleniumTest)
     type(password, password)
     clickAndWait(name=login-button)
     waitForElementPresent(//h1)
-    assertTextPresent('Bienvenue sur 8-bit Thomas !')
+    assertTextPresent('Bienvenue sur 8-bit GamerSeleniumTest !')
 
     //Ouvre search.html pour rechercher un jeu présent dans la base
     clickAndWait(link=Rechercher un jeu)
@@ -30,16 +30,16 @@
     //tape partiellement le nom et vérifie qu'il apparait dans la liste des résultats
     type(name=game, Starc)
     keyPress(name=game, \13)
-    waitForElementPresent(link=Starcraft 2)
+    waitForElementPresent(link=Starcraft 2 - SeleniumTest)
 
     //tape entièrement le nom et vérifie qu'il apparait dans la liste des résultats
     type(name=game, Starcraft)
-    waitForElementPresent(link=Starcraft 2)
+    waitForElementPresent(link=Starcraft 2 - SeleniumTest)
 
-    clickAndWait(link=Starcraft 2)
+    clickAndWait(link=Starcraft 2 - SeleniumTest)
 
     //Vérifie que les caractéristiques du jeux sont bien affichées (cf. search.test.yml)
-    verifyTextPresent('Starcraft 2')
+    verifyTextPresent('Starcraft 2 - SeleniumTest')
     //developers
     verifyTextPresent(Blizzard1)
     verifyTextPresent(Blizzard2)

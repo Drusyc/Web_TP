@@ -12,11 +12,11 @@
     assertTitle('Bienvenue sur 8-bit !')
 
     //login as a provider
-    type(username, Steven)
+    type(username, ProviderSeleniumTest)
     type(password, password)
     clickAndWait(name=login-button)
     waitForElementPresent(//h1)
-    assertTextPresent('Bienvenue sur 8-bit Steven !')
+    assertTextPresent('Bienvenue sur 8-bit ProviderSeleniumTest !')
 
     //Ouvre Manage/hardware.html pour gérer le matériel
     clickAndWait(link=Gestion du matériel)
@@ -29,21 +29,21 @@
     assertElementPresent(video-cards)
 
     //Vérifie que les processeurs de la bases sont bien affichés (cf manage.test.yml)
-    verifyTextPresent('i5-5250U')
+    verifyTextPresent('i5-5250U - SeleniumTest')
     verifyTextPresent('1.6')
-    verifyTextPresent('i7-3517U')
+    verifyTextPresent('i7-3517U - SeleniumTest')
     verifyTextPresent('1.9')
-    verifyTextPresent('i7-4710HQ')
+    verifyTextPresent('i7-4710HQ - SeleniumTest')
     verifyTextPresent('3.5')
 
     //Vérifie que les cartes graphiques de la bases sont bien affichés (cf manage.test.yml)
-    verifyTextPresent('GeForce GT 220')
+    verifyTextPresent('GeForce GT 220 - SeleniumTest')
     verifyTextPresent('790')
     verifyTextPresent('10.1')
-    verifyTextPresent('GeForce GT 635M')
+    verifyTextPresent('GeForce GT 635M - SeleniumTest')
     verifyTextPresent('900')
     verifyTextPresent('11')
-    verifyTextPresent('GeForce GTX 850M')
+    verifyTextPresent('GeForce GTX 850M - SeleniumTest')
     verifyTextPresent('2500')
     verifyTextPresent('11.2')
 
@@ -51,7 +51,7 @@
     click(add-processor)
     assertElementPresent(processors-form)
     assertElementPresent(processor-name)
-    type(processor-name, i3-5005U)
+    type(processor-name, i3-5005U - SeleniumTest)
     assertElementPresent(processor-manufacturer)
     type(processor-manufacturer, Intel)
     assertElementPresent(processor-speed)
@@ -62,14 +62,14 @@
 
     //Vérifie que le processeur a bien été ajouté
     verifyTextPresent('Processeurs')
-    verifyTextPresent('i3-5005U')
+    verifyTextPresent('i3-5005U - SeleniumTest')
     verifyTextPresent('2.9')
 
     //Ajout d'une carte graphique
     click(add-video-card)
     assertElementPresent(video-cards-form)
     assertElementPresent(video-card-name)
-    type(video-card-name, GeForce GT 330)
+    type(video-card-name, GeForce GT 330 - SeleniumTest)
     assertElementPresent(video-card-manufacturer)
     type(video-card-manufacturer, NVIDIA)
     assertElementPresent(video-card-speed)
@@ -80,7 +80,7 @@
 
     //Vérifie que le processeur a bien été ajouté
     verifyTextPresent('Cartes graphiques')
-    verifyTextPresent('GeForce GT 330')
+    verifyTextPresent('GeForce GT 330 - SeleniumTest')
     verifyTextPresent('500')
     verifyTextPresent('10')
 

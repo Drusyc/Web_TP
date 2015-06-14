@@ -12,23 +12,23 @@
     assertTitle('Bienvenue sur 8-bit !')
 
     //login
-    type(username, Thomas)
+    type(username, GamerSeleniumTest)
     type(password, password)
     clickAndWait(name=login-button)
     waitForElementPresent(//h1)
-    assertTextPresent('Bienvenue sur 8-bit Thomas !')
+    assertTextPresent('Bienvenue sur 8-bit GamerSeleniumTest !')
 
     //Ouvre Profile/index.html
     clickAndWait(link=Mon profil)
-    verifyTextPresent('Thomas')
+    verifyTextPresent('GamerSeleniumTest')
     verifyTextPresent('+ Mon mail')
     assertElementPresent(update-email-button)
     verifyTextPresent('+ Mon mot de passe')
     assertElementPresent(update-password-button)
     //vérification des genres du joueurs
     verifyTextPresent('Mes genres préférés')
-    verifyTextPresent('Reflexion')
-    verifyTextPresent('Strategie')
+    verifyTextPresent('Reflexion - SeleniumTest')
+    verifyTextPresent('Strategie - SeleniumTest')
     assertElementPresent(update-genres-button)
 
 
@@ -40,20 +40,20 @@
     //espace mémoire
     verifyTextPresent('500.0 Go')
     //processeur
-    verifyTextPresent('Intel i7-3517u')
+    verifyTextPresent('Intel i7-3517u - SeleniumTest')
     //carte vidéo
-    verifyTextPresent('NVIDIA GeForce GT 635M')
+    verifyTextPresent('NVIDIA GeForce GT 635M - SeleniumTest')
 
     //Modification du password et reconnexion
     type(password, newpassword)
     type(password2, newpassword)
     clickAndWait(update-password-button)
     clickAndWait(link=Déconnexion)
-    type(username, Thomas)
+    type(username, GamerSeleniumTest)
     type(password, newpassword)
     clickAndWait(name=login-button)
     waitForElementPresent(//h1)
-    assertTextPresent('Bienvenue sur 8-bit Thomas !')
+    assertTextPresent('Bienvenue sur 8-bit GamerSeleniumTest !')
 
 
 #{/selenium}

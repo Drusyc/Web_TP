@@ -12,11 +12,11 @@
     assertTitle('Bienvenue sur 8-bit !')
 
     //login
-    type(username, Thomas)
+    type(username, GamerSeleniumTest)
     type(password, password)
     clickAndWait(name=login-button)
     waitForElementPresent(//h1)
-    assertTextPresent('Bienvenue sur 8-bit Thomas !')
+    assertTextPresent('Bienvenue sur 8-bit GamerSeleniumTest !')
 
     //Ouvre search.html pour rechercher un jeu présent dans la base
     clickAndWait(link=Rechercher un jeu)
@@ -28,13 +28,13 @@
     //Recherche un jeu
     type(name=game, Starcraft)
     keyPress(name=game, \13)
-    waitForElementPresent(link=Starcraft 2)
+    waitForElementPresent(link=Starcraft 2 - SeleniumTest)
 
-    clickAndWait(link=Starcraft 2)
+    clickAndWait(link=Starcraft 2 - SeleniumTest)
 
     //Vérifie que les cong du jeu et du joueur sont affichées(cf. compare.test.yml)
     waitForElementPresent(//body/main/div/button)
-    verifyTextPresent('Starcraft 2')
+    verifyTextPresent('Starcraft 2 - SeleniumTest')
     verifyTextPresent('Mes configurations')
     verifyElementPresent(compare-form)
 
@@ -56,7 +56,7 @@
 
     //Vérifie que les informations relatives au jeu et au joueur sont bien présentes dans le tableau
     //configuration du jeu
-    verifyTextPresent('Starcraft 2')
+    verifyTextPresent('Starcraft 2 - SeleniumTest')
     //RAM
     verifyTextPresent('1.5 Go')
     //espace mémoire
@@ -67,7 +67,7 @@
     verifyTextPresent('400 MHz')
 
     //configuration du joueur
-    verifyTextPresent('conf-Thomas-asus')
+    verifyTextPresent('conf-GamerSeleniumTest-asus')
     //RAM
     verifyTextPresent('4.0 Go')
     //espace mémoire

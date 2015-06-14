@@ -18,7 +18,7 @@ public class ProviderTest  extends UnitTest {
 	@Test
 	public void createProvider () {
 		/* Création d'un Provider */		
-		Provider prov1 = new Provider("createProviderTest", "mdp", "createProviderTest@test.com",null); 
+		Provider prov1 = new Provider("createProvider - UnitTest", "mdp", "createProviderTest@test.com",null);
 		prov1.save();
 		
 		assertNotNull(Provider.findById(prov1.getPseudo()));
@@ -36,7 +36,7 @@ public class ProviderTest  extends UnitTest {
 	@Test
 	public void deleteGame() {
 		/* Création d'un Provider */
-		Provider prov1 = new Provider("deleteProviderTest", "mdp", "deleteProviderTest@test.com",null); 
+		Provider prov1 = new Provider("deleteProvider - UnitTest", "mdp", "deleteProviderTest@test.com",null);
 		prov1.save();
 		
 		Provider found =  Provider.findById(prov1.getPseudo());
@@ -58,7 +58,7 @@ public class ProviderTest  extends UnitTest {
 	@Test
 	public void updateProvider() {	
 		/* Création d'un Provider */
-		Provider prov1 = new Provider("updateProviderTest", "mdp", "wrongMail@test.com",null); 
+		Provider prov1 = new Provider("updateProvider - UnitTest", "mdp", "wrongMail@test.com",null);
 		prov1.save();
 		
 		Provider found = Provider.findById(prov1.getPseudo());
@@ -85,16 +85,16 @@ public class ProviderTest  extends UnitTest {
 	@Test
 	public void providerGame () {
 		/* Création d'un game */		
-		Game game1 = new Game("Mario Kart 8"); game1.save();
-		Game game2 = new Game("Mario Kart 7"); game2.save();
-		Game game3 = new Game("Mario Kart 6"); game3.save();
-		Game game4 = new Game("RandomGame"); game4.save();
+		Game game1 = new Game("Mario Kart 8 - UnitTest"); game1.save();
+		Game game2 = new Game("Mario Kart 7 - UnitTest"); game2.save();
+		Game game3 = new Game("Mario Kart 6 - UnitTest"); game3.save();
+		Game game4 = new Game("RandomGame - UnitTest"); game4.save();
 		
 		Set<Game> setGame = new HashSet<Game>();
 		setGame.add(game1); setGame.add(game2); setGame.add(game3);
 		
 		/* Création d'un Provider */
-		Provider prov1 = new Provider("Nihoné", "mdp", "Nihonhéarobaselu@test.com",null);
+		Provider prov1 = new Provider("providerTest - UnitTest", "mdp", "providerTest@test.com",null);
 		prov1.setGames(setGame); prov1.save();
 		
 		/* Assert */

@@ -1,30 +1,30 @@
 
 
 Genre(Reflexion):
-    name: "Reflexion"
+    name: "Reflexion - SeleniumTest"
 
 Genre(Strategie):
-    name: "Strategie"
+    name: "Strategie - SeleniumTest"
 
 Processor(procGame):
-    name: "D Processor 925"
+    name: "D Processor 925 - SeleniumTest"
     manufacturer: "Intel"
     speed: 3.0
     cores: 2
 
 VideoCard(vdGame):
-    name: "GeForce GT 7600"
+    name: "GeForce GT 7600 - SeleniumTest"
     manufacturer: "NVIDIA"
     speed: 400
     versionDirectX: 9.0
 
 OS(win7):
-    name: "Windows"
+    name: "Windows - SeleniumTest"
     version: "7"
     releaseDate: 2009-10-22
 
 Configuration(confGame):
-    name: "conf-Starcraft2"
+    name: "conf-Starcraft2 - SeleniumTest"
     rAM: 1.5
     freeDiskSpace: 20.0
     operatingSystems: [win7]
@@ -32,7 +32,7 @@ Configuration(confGame):
     videoCards: [vdGame]
 
 Game(Starcraft):
-    name: "Starcraft 2"
+    name: "Starcraft 2 - SeleniumTest"
     developers: [Blizzard1, Blizzard2]
     modes: [solo, multi]
     genres: [Reflexion, Strategie]
@@ -46,27 +46,27 @@ Game(Starcraft):
         : 2012-07-27
 
 Processor(procUser):
-     name: "i7-3517u"
+     name: "i7-3517u - SeleniumTest"
      manufacturer: "Intel"
      speed: 1.9
      cores: 2
 
 VideoCard(vdUser):
-    name: "GeForce GT 635M"
+    name: "GeForce GT 635M - SeleniumTest"
     manufacturer: "NVIDIA"
     speed: 900
     versionDirectX: 11
 
 Configuration(confUser):
-    name: "conf-Thomas-asus"
+    name: "conf-GamerSeleniumTest-asus"
     rAM: 4.0
     freeDiskSpace: 500.0
     operatingSystems: [win7]
     processors: [procUser]
     videoCards: [vdUser]
 
-Gamer(Thomas):
-    pseudo: "Thomas"
+Gamer(GamerSeleniumTest):
+    pseudo: "GamerSeleniumTest"
     password: "$2a$10$48I/5hgsfr2YWJ5nFIVAJO0x5NvKfcobS7Fdgt727Fy3.T6sDm1J."
-    mail: thomas@gmail.com
+    mail: GamerSeleniumTest@gmail.com
     configurations: [confUser]

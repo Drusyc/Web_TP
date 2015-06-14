@@ -19,7 +19,7 @@ public class RequestTest extends UnitTest {
 	@Test
 	public void createRequest () {
 		/* Création d'une requête avec seulement date / game / status */
-		Request r1 = new Request(new Date(System.currentTimeMillis()), "testCreationRequest", Request.Status.IN_PROGRESS);
+		Request r1 = new Request(new Date(System.currentTimeMillis()), "testCreationRequest - UnitTest", Request.Status.IN_PROGRESS);
 		r1.save();
 		
 		Request found = Request.findById(r1.getId());
@@ -35,7 +35,7 @@ public class RequestTest extends UnitTest {
 	@Test
 	public void deleteRequest () {
 		/* Création d'une requête avec seulement date / game / status */
-		Request r1 = new Request(new Date(System.currentTimeMillis()), "testDeleteRequest", Request.Status.IN_PROGRESS);
+		Request r1 = new Request(new Date(System.currentTimeMillis()), "testDeleteRequest - UnitTest", Request.Status.IN_PROGRESS);
 		r1.save();
 		
 		Request found = Request.findById(r1.getId());
@@ -54,7 +54,7 @@ public class RequestTest extends UnitTest {
 	@Test
 	public void updateRequest () {
 		/* Création d'une requête avec seulement date / game / status */
-		Request r1 = new Request(new Date(System.currentTimeMillis()), "wrongNameRequest", Request.Status.IN_PROGRESS);
+		Request r1 = new Request(new Date(System.currentTimeMillis()), "wrongNameRequest - UnitTest", Request.Status.IN_PROGRESS);
 		r1.save();
 		
 		Request found = Request.findById(r1.getId());
@@ -63,7 +63,7 @@ public class RequestTest extends UnitTest {
 		
 		String tmp = found.getGame();
 		
-		r1.setGame("rightNameRequest"); r1.save();
+		r1.setGame("rightNameRequest - UnitTest"); r1.save();
 		assertNotEquals(r1.getGame(), tmp);
 		
 		found = Request.findById(r1.getId());
@@ -79,14 +79,14 @@ public class RequestTest extends UnitTest {
 	@Test
 	public void osRequest () {
 		/* * Création de l'OS * */
-		OS win81 = new OS("Windows", "8.1", Date.valueOf("2013-10-17")); win81.save();
-		OS win7 = new OS("Windows", "7", Date.valueOf("2009-10-22")); win7.save();
+		OS win81 = new OS("Windows - UnitTest", "8.1", Date.valueOf("2013-10-17")); win81.save();
+		OS win7 = new OS("Windows - UnitTest", "7", Date.valueOf("2009-10-22")); win7.save();
 		
 		/* Création de Request */
-		Request r1 = new Request(new Date(System.currentTimeMillis()), "r1win81", Request.Status.IN_PROGRESS);	
+		Request r1 = new Request(new Date(System.currentTimeMillis()), "r1win81 - UnitTest", Request.Status.IN_PROGRESS);
 		r1.setOS(win81);r1.save();
 		
-		Request r2 = new Request(new Date(System.currentTimeMillis()), "r2win7", Request.Status.IN_PROGRESS);	
+		Request r2 = new Request(new Date(System.currentTimeMillis()), "r2win7 - UnitTest", Request.Status.IN_PROGRESS);
 		r2.setOS(win7);r2.save();
 		
 		
@@ -121,15 +121,15 @@ public class RequestTest extends UnitTest {
 	public void gamerRequest () {
 		
 		/* Création d'user*/
-		Gamer ga1 = new Gamer("Toto", "mdp","Toto@test.com", null); ga1.save();
-		Gamer ga2 = new Gamer("Titi", "mdp","Titi@test.com", null); ga2.save();
+		Gamer ga1 = new Gamer("Toto - UnitTest", "mdp","Toto@test.com", null); ga1.save();
+		Gamer ga2 = new Gamer("Titi - UnitTest", "mdp","Titi@test.com", null); ga2.save();
 		
 		/* Création de request */
-		Request r1 = new Request(new Date(System.currentTimeMillis()), "r1userToto", Request.Status.IN_PROGRESS);	
+		Request r1 = new Request(new Date(System.currentTimeMillis()), "r1userToto - UnitTest", Request.Status.IN_PROGRESS);
 		r1.setRequester(ga1);r1.save();
 		
 		/* Création de request */
-		Request r2 = new Request(new Date(System.currentTimeMillis()), "r2userTiti", Request.Status.IN_PROGRESS);	
+		Request r2 = new Request(new Date(System.currentTimeMillis()), "r2userTiti - UnitTest", Request.Status.IN_PROGRESS);
 		r2.setRequester(ga2);r2.save();
 		
 		/* Assert */

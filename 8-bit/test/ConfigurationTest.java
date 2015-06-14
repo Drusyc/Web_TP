@@ -23,24 +23,24 @@ public class ConfigurationTest extends UnitTest {
 	@Test
 	public void createConf () {
 		/* Création avec seulement freeDiskSpace et RAM */
-		Configuration conf1 = new Configuration("maConfig",0.5, 2.0); conf1.save();
+		Configuration conf1 = new Configuration("maConfig - UnitTest",0.5, 2.0); conf1.save();
 
 		/* Création avec freeDiskSpace, RAM, Processor / VideoCard / OS */
 			/* * Création de Processor * */
-			Processor proc = new Processor("i7-3517u", "Intel", 1900.0, 2); proc.save();
+			Processor proc = new Processor("i7-3517u - UnitTest", "Intel", 1900.0, 2); proc.save();
 			Set<Processor> setProc = new HashSet<Processor>(); setProc.add(proc);
 		
 			/* * Création de la VideoCard * */
-			VideoCard vidCard = new VideoCard("GeForce GT 635M", "NVIDIA", 900, "11"); vidCard.save();
+			VideoCard vidCard = new VideoCard("GeForce GT 635M - UnitTest", "NVIDIA", 900, "11"); vidCard.save();
 			Set<VideoCard> setVD = new HashSet<VideoCard>(); setVD.add(vidCard); 
 		
 			/* * Création de l'OS * */
-			OS win81 = new OS("Windows", "8.1", Date.valueOf("2013-10-17")); win81.save();
-			OS win7 = new OS("Windows", "7", Date.valueOf("2009-10-22")); win7.save();
+			OS win81 = new OS("Windows - UnitTest", "8.1", Date.valueOf("2013-10-17")); win81.save();
+			OS win7 = new OS("Windows - UnitTest", "7", Date.valueOf("2009-10-22")); win7.save();
 			
 			Set<OS> setOS = new HashSet<OS>(); setOS.add(win7); setOS.add(win81);
 			
-		Configuration conf2 = new Configuration("maConfig",0.1, 4.0, setOS, setProc, setVD); conf2.save();
+		Configuration conf2 = new Configuration("maConfig - UnitTest",0.1, 4.0, setOS, setProc, setVD); conf2.save();
 		
 		/* ASSERT */
 		Configuration found = Configuration.findById(conf1.getId());
@@ -76,7 +76,7 @@ public class ConfigurationTest extends UnitTest {
 	@Test
 	public void deleteConf () {
 		/* Création avec seulement freeDiskSpace et RAM */
-		Configuration conf1 = new Configuration("maConfig",0.5, 2.0); conf1.save();
+		Configuration conf1 = new Configuration("maConfig - UnitTest",0.5, 2.0); conf1.save();
 		
 		Configuration found = Configuration.findById(conf1.getId());
 		assertEquals(conf1,found);
@@ -93,20 +93,20 @@ public class ConfigurationTest extends UnitTest {
 	@Test
 	public void updateConf () {
 		/* Création avec seulement freeDiskSpace et RAM */
-		Configuration conf1 = new Configuration("maConfig",0.5, 2.0); conf1.save();
+		Configuration conf1 = new Configuration("maConfig - UnitTest",0.5, 2.0); conf1.save();
 		
 		/* Création avec freeDiskSpace, RAM, Processor / VideoCard / OS */
 			/* * Création de Processor * */
-			Processor proc = new Processor("i7-3517u", "Intel", 1900.0, 2); proc.save();
+			Processor proc = new Processor("i7-3517u - UnitTest", "Intel", 1900.0, 2); proc.save();
 			Set<Processor> setProc = new HashSet<Processor>(); setProc.add(proc);
 		
 			/* * Création de la VideoCard * */
-			VideoCard vidCard = new VideoCard("GeForce GT 635M", "NVIDIA", 900, "11"); vidCard.save();
+			VideoCard vidCard = new VideoCard("GeForce GT 635M - UnitTest", "NVIDIA", 900, "11"); vidCard.save();
 			Set<VideoCard> setVD = new HashSet<VideoCard>(); setVD.add(vidCard); 
 		
 			/* * Création de l'OS * */		
-			OS win81 = new OS("Windows", "8.1", Date.valueOf("2013-10-17")); win81.save();
-			OS win7 = new OS("Windows", "7", Date.valueOf("2009-10-22")); win7.save();
+			OS win81 = new OS("Windows - UnitTest", "8.1", Date.valueOf("2013-10-17")); win81.save();
+			OS win7 = new OS("Windows - UnitTest", "7", Date.valueOf("2009-10-22")); win7.save();
 			
 			Set<OS> setOS = new HashSet<OS>(); setOS.add(win7); setOS.add(win81);
 			
