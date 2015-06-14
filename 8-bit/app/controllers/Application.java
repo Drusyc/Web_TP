@@ -13,6 +13,7 @@ public class Application extends Controller {
 
         /* Peuple la base de données si elle est vide */
         if (Game.findAll().size() == 0) {
+            Fixtures.deleteDatabase();
             Fixtures.loadModels("data.test.yml");
         }
 
