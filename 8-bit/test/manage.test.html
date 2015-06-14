@@ -58,7 +58,7 @@
     type(processor-speed, '2.9')
     assertElementPresent(cores)
     type(cores, 2)
-    keyPress(processor-name, \13)
+	click(name=proc-submit)
 
     //Vérifie que le processeur a bien été ajouté
     verifyTextPresent('Processeurs')
@@ -76,7 +76,7 @@
     type(video-card-speed, '500')
     assertElementPresent(directX)
     type(directX, 10)
-    keyPress(video-card-name, \13)
+	click(name=vc-submit)
 
     //Vérifie que le processeur a bien été ajouté
     verifyTextPresent('Cartes graphiques')
@@ -85,3 +85,5 @@
     verifyTextPresent('10')
 
 #{/selenium}
+
+#{fixture delete:'all' /}

@@ -15,7 +15,7 @@
     type(username, GamerSeleniumTest)
     type(password, password)
     clickAndWait(name=login-button)
-    waitForElementPresent(//h1)
+    waitForVisible(//h1)
     assertTextPresent('Bienvenue sur 8-bit GamerSeleniumTest !')
 
     //Ouvre search.html pour rechercher un jeu présent dans la base
@@ -29,7 +29,7 @@
     focus(name=game)
     //tape partiellement le nom et vérifie qu'il apparait dans la liste des résultats
     type(name=game, Starc)
-    keyPress(name=game, \13)
+    clickAndWait(name=search-submit)
     waitForElementPresent(link=Starcraft 2 - SeleniumTest)
 
     //tape entièrement le nom et vérifie qu'il apparait dans la liste des résultats
@@ -63,3 +63,5 @@
     verifyTextPresent('400 MHz')
 
 #{/selenium}
+
+#{fixture delete:'all' /}

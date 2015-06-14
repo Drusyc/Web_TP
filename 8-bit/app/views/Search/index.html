@@ -11,7 +11,7 @@
     <h1>Rechercher un jeu</h1>
 	#{form @Search.index()}
 		<input type="text" id="search" name="game" class="text-input search-input" value="${params.game}" placeholder="Grand Theft Auto V, The Witcher 3: Wild Hunt..." autocomplete="off"/>
-		<input type="submit" class="keyboard-submit"/>
+		<input type="submit" name="search-submit" class="keyboard-submit"/>
 	#{/form}
 
 	<ul id="game-list" class="search-list">

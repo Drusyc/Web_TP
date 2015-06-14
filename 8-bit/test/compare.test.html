@@ -27,7 +27,7 @@
 
     //Recherche un jeu
     type(name=game, Starcraft)
-    keyPress(name=game, \13)
+	clickAndWait(name=search-submit)
     waitForElementPresent(link=Starcraft 2 - SeleniumTest)
 
     clickAndWait(link=Starcraft 2 - SeleniumTest)
@@ -78,3 +78,5 @@
     verifyTextPresent('400 MHz')
 
 #{/selenium}
+
+#{fixture delete:'all' /}

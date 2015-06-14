@@ -49,8 +49,7 @@
     select(operating-system, Windows - SeleniumTest 8)
     select(processor, Intel i7-4710HQ - SeleniumTest)
     select(video-card, NVIDIA GeForce GTX 850M - SeleniumTest)
-    keyPress(name, \13)
-
+	click(name=conf-submit)
 
     //Vérifie que la configuration a bien été ajouté
     waitForPageToLoad(5000)
@@ -64,3 +63,5 @@
     verifyTextPresent('1000.0 Go')
 
 #{/selenium}
+
+#{fixture delete:'all' /}
