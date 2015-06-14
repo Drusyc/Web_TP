@@ -46,7 +46,7 @@ public class Secure extends Controller {
         }
     }
 
-    static User loadCurrentUser() {
+    public static User loadCurrentUser() {
         String username = session.get("username");
         return username != null ? loadCurrentUser(username) : null;
     }

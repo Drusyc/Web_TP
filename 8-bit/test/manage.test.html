@@ -16,7 +16,7 @@
     type(password, password)
     clickAndWait(name=login-button)
     waitForElementPresent(//h1)
-    assertTextPresent('Bienvenue sur 8-bit ProviderSeleniumTest !')
+    waitForTextPresent('Bienvenue sur 8-bit ProviderSeleniumTest !')
 
     //Ouvre Manage/hardware.html pour gérer le matériel
     clickAndWait(link=Gestion du matériel)

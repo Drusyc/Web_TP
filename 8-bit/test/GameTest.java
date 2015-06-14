@@ -103,9 +103,9 @@ public class GameTest extends UnitTest {
 		Game game1 = new Game("8 Trak Oiram - UnitTest");
 		
 		/* Création des genres RPG / ACTION / AVENTURE */
-    	Genre ge1 = new Genre(Genre.RPG); ge1.save();
-    	Genre ge2 = new Genre(Genre.Action); ge2.save();
-    	Genre ge3 = new Genre(Genre.Aventure); ge3.save();
+    	Genre ge1 = new Genre("RPG - UnitTest"); ge1.save();
+    	Genre ge2 = new Genre("Action - UnitTest"); ge2.save();
+    	Genre ge3 = new Genre("Aventure - UnitTest"); ge3.save();
     	
     	Set<Genre> setGenre = new HashSet<Genre>();
     	setGenre.add(ge2); setGenre.add(ge3);
@@ -120,9 +120,9 @@ public class GameTest extends UnitTest {
     	
     	Set<Genre> tmp = found.getGenres();    	
     	assertEquals(tmp.size(),2);
-    	assertTrue(tmp.contains(new Genre(Genre.Aventure)));
-    	assertTrue(tmp.contains(new Genre(Genre.Action)));
-    	assertFalse(tmp.contains(new Genre(Genre.RPG)));
+    	assertFalse(tmp.contains(ge1));
+    	assertTrue(tmp.contains(ge2));
+    	assertTrue(tmp.contains(ge3));
     	
     	/* Ménage.. */    
     	game1.delete();	

@@ -115,9 +115,9 @@ public class GamerTest extends UnitTest {
 		Gamer ga2 = new Gamer("Titi - UnitTest", "mdp", "Titi@test.com", null); ga2.save();
 		
 		/* Création des genres RPG / ACTION / AVENTURE */
-    	Genre ge1 = new Genre(Genre.RPG); ge1.save();
-    	Genre ge2 = new Genre(Genre.Action); ge2.save();
-    	Genre ge3 = new Genre(Genre.Aventure); ge3.save();
+    	Genre ge1 = new Genre("RPG - UnitTest"); ge1.save();
+    	Genre ge2 = new Genre("Action - UnitTest"); ge2.save();
+    	Genre ge3 = new Genre("Aventure - UnitTest"); ge3.save();
     	
     	/* Mapping entre le gamer : Toto et les genres : RPG/ACTION */
     	Set<Genre> setga = new HashSet<Genre>();
@@ -139,18 +139,18 @@ public class GamerTest extends UnitTest {
     	    	
     	Set<Genre> tmp = found.getPreferredGenres();    	
     	assertEquals(tmp.size(),2);
-    	assertTrue(tmp.contains(new Genre(Genre.RPG)));
-    	assertTrue(tmp.contains(new Genre(Genre.Action)));
-    	assertFalse(tmp.contains(new Genre(Genre.Reflexion)));
+    	assertTrue(tmp.contains(ge1));
+    	assertTrue(tmp.contains(ge2));
+    	assertFalse(tmp.contains(ge3));
     	
     	found = Gamer.findById("Titi - UnitTest");
     	
     	tmp = found.getPreferredGenres();
     	assertEquals(tmp.size(),3);
-    	assertTrue(tmp.contains(new Genre(Genre.RPG)));
-    	assertTrue(tmp.contains(new Genre(Genre.Action)));
-    	assertTrue(tmp.contains(new Genre(Genre.Aventure)));
-    	assertFalse(tmp.contains(new Genre(Genre.Reflexion)));
+    	assertTrue(tmp.contains(ge1));
+    	assertTrue(tmp.contains(ge2));
+    	assertTrue(tmp.contains(ge3));
+    	assertFalse(tmp.contains(new Genre("Reflexion - UnitTest")));
     	
     	ga1.delete();
     	ga2.delete();

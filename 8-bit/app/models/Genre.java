@@ -9,13 +9,6 @@ import java.util.*;
 @Entity
 public class Genre extends GenericModel {
 
-    /* Used for tests */
-	public static final String Action = "Action";
-	public static final String RPG = "RPG"; 
-	public static final String Aventure = "Aventure";
-	public static final String Reflexion = "Reflexion";
-	public static final String Strategie = "Strategie";
-
     @Id
     private String name;
 

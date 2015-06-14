@@ -16,7 +16,7 @@
     type(password, password)
     clickAndWait(name=login-button)
     waitForElementPresent(//h1)
-    assertTextPresent('Bienvenue sur 8-bit GamerSeleniumTest !')
+    waitForTextPresent('Bienvenue sur 8-bit GamerSeleniumTest !')
 
     //Ouvre Configuration/index.html la gestion des configs
     clickAndWait(link=Configuration système)

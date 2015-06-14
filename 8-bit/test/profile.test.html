@@ -16,7 +16,7 @@
     type(password, password)
     clickAndWait(name=login-button)
     waitForVisible(//h1)
-    assertTextPresent('Bienvenue sur 8-bit GamerSeleniumTest !')
+    waitForTextPresent('Bienvenue sur 8-bit GamerSeleniumTest !')
 
     //Ouvre Profile/index.html
     clickAndWait(link=Mon profil)

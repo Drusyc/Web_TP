@@ -16,7 +16,7 @@
     type(password, password)
     clickAndWait(name=login-button)
     waitForElementPresent(//h1)
-    assertTextPresent('Bienvenue sur 8-bit GamerSeleniumTest !')
+    waitForTextPresent('Bienvenue sur 8-bit GamerSeleniumTest !')
 
     //Ouvre search.html pour rechercher un jeu présent dans la base
     clickAndWait(link=Rechercher un jeu)
